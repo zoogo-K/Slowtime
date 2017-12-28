@@ -1,0 +1,10 @@
+
+github "Alamofire/Alamofire"
+github "SnapKit/SnapKit"
+github "ReactiveX/RxSwift" "master"
+github "mac-cain13/R.swift.Library"
+github "ibireme/YYText"
+github "Moya/Moya"
+github "SwiftyJSON/SwiftyJSON"
+github "CoderMJLee/MJRefresh"
+
