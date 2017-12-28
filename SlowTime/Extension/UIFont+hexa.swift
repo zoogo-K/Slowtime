@@ -9,5 +9,13 @@
 import UIKit
 
 extension UIFont {
+ 
+    open class func my_systemFont(ofSize fontSize: CGFloat) -> UIFont {
+        if let font = RF.fZSXSLKJWGB10(size: fontSize) {
+            return font
+        }else {
+            return .systemFont(ofSize: fontSize)
+        }
+    }
     
 }

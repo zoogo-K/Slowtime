@@ -18,16 +18,18 @@
 		6F887B661FF48E810097B640 /* Array+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B5A1FF48E800097B640 /* Array+hexa.swift */; };
 		6F887B671FF48E810097B640 /* String+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B5B1FF48E800097B640 /* String+hexa.swift */; };
 		6F887B681FF48E810097B640 /* UIColor+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B5C1FF48E800097B640 /* UIColor+hexa.swift */; };
-		6F887B6A1FF48E810097B640 /* DispatchQueue+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B5E1FF48E800097B640 /* DispatchQueue+hexa.swift */; };
 		6F887B6B1FF48E810097B640 /* UIImage+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B5F1FF48E800097B640 /* UIImage+hexa.swift */; };
-		6F887B6C1FF48E810097B640 /* String+Iconfont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B601FF48E800097B640 /* String+Iconfont.swift */; };
 		6F887B6D1FF48E810097B640 /* UIDevice+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B611FF48E800097B640 /* UIDevice+hexa.swift */; };
 		6F887B6E1FF48E810097B640 /* UIView+hexa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B621FF48E800097B640 /* UIView+hexa.swift */; };
 		6F887C491FF48F0A0097B640 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887C461FF48F0A0097B640 /* RequestModel.swift */; };
 		6F887C501FF48FF80097B640 /* Parseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887C4E1FF48FF80097B640 /* Parseable.swift */; };
+		6F887C531FF496170097B640 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887C521FF496170097B640 /* BaseViewController.swift */; };
+		6F887C551FF498AA0097B640 /* MailListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887C541FF498AA0097B640 /* MailListController.swift */; };
+		6F887C571FF4AAA40097B640 /* WRNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887C561FF4AAA40097B640 /* WRNavigationBar.swift */; };
+		6F887C591FF4C4680097B640 /* fzsx.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F887C581FF4C4680097B640 /* fzsx.ttf */; };
 		6FB8AEC41FF3B7DE009DA465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC31FF3B7DE009DA465 /* AppDelegate.swift */; };
-		6FB8AEC61FF3B7DE009DA465 /* MailListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC51FF3B7DE009DA465 /* MailListController.swift */; };
-		6FB8AEC91FF3B7DE009DA465 /* MailListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC71FF3B7DE009DA465 /* MailListController.storyboard */; };
+		6FB8AEC61FF3B7DE009DA465 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC51FF3B7DE009DA465 /* UserListController.swift */; };
+		6FB8AEC91FF3B7DE009DA465 /* Mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC71FF3B7DE009DA465 /* Mail.storyboard */; };
 		6FB8AECB1FF3B7DE009DA465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8AECA1FF3B7DE009DA465 /* Assets.xcassets */; };
 		6FB8AECE1FF3B7DE009DA465 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8AECC1FF3B7DE009DA465 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -44,17 +46,19 @@
 		6F887B5A1FF48E800097B640 /* Array+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+hexa.swift"; sourceTree = "<group>"; };
 		6F887B5B1FF48E800097B640 /* String+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+hexa.swift"; sourceTree = "<group>"; };
 		6F887B5C1FF48E800097B640 /* UIColor+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hexa.swift"; sourceTree = "<group>"; };
-		6F887B5E1FF48E800097B640 /* DispatchQueue+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+hexa.swift"; sourceTree = "<group>"; };
 		6F887B5F1FF48E800097B640 /* UIImage+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+hexa.swift"; sourceTree = "<group>"; };
-		6F887B601FF48E800097B640 /* String+Iconfont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Iconfont.swift"; sourceTree = "<group>"; };
 		6F887B611FF48E800097B640 /* UIDevice+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+hexa.swift"; sourceTree = "<group>"; };
 		6F887B621FF48E800097B640 /* UIView+hexa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hexa.swift"; sourceTree = "<group>"; };
 		6F887C461FF48F0A0097B640 /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		6F887C4E1FF48FF80097B640 /* Parseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parseable.swift; sourceTree = "<group>"; };
+		6F887C521FF496170097B640 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		6F887C541FF498AA0097B640 /* MailListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailListController.swift; sourceTree = "<group>"; };
+		6F887C561FF4AAA40097B640 /* WRNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WRNavigationBar.swift; sourceTree = "<group>"; };
+		6F887C581FF4C4680097B640 /* fzsx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fzsx.ttf; sourceTree = "<group>"; };
 		6FB8AEC01FF3B7DE009DA465 /* SlowTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlowTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB8AEC31FF3B7DE009DA465 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6FB8AEC51FF3B7DE009DA465 /* MailListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailListController.swift; sourceTree = "<group>"; };
-		6FB8AEC81FF3B7DE009DA465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MailListController.storyboard; sourceTree = "<group>"; };
+		6FB8AEC51FF3B7DE009DA465 /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
+		6FB8AEC81FF3B7DE009DA465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Mail.storyboard; sourceTree = "<group>"; };
 		6FB8AECA1FF3B7DE009DA465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FB8AECD1FF3B7DE009DA465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FB8AECF1FF3B7DE009DA465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 		6F887B531FF48E640097B640 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				6F887C561FF4AAA40097B640 /* WRNavigationBar.swift */,
 				6F887B541FF48E740097B640 /* R.generated.swift */,
 			);
 			path = Libraries;
@@ -106,9 +111,7 @@
 				6F887B5A1FF48E800097B640 /* Array+hexa.swift */,
 				6F887B5B1FF48E800097B640 /* String+hexa.swift */,
 				6F887B5C1FF48E800097B640 /* UIColor+hexa.swift */,
-				6F887B5E1FF48E800097B640 /* DispatchQueue+hexa.swift */,
 				6F887B5F1FF48E800097B640 /* UIImage+hexa.swift */,
-				6F887B601FF48E800097B640 /* String+Iconfont.swift */,
 				6F887B611FF48E800097B640 /* UIDevice+hexa.swift */,
 				6F887B621FF48E800097B640 /* UIView+hexa.swift */,
 			);
@@ -118,8 +121,10 @@
 		6F887C441FF48F030097B640 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6FB8AEC51FF3B7DE009DA465 /* MailListController.swift */,
-				6FB8AEC71FF3B7DE009DA465 /* MailListController.storyboard */,
+				6FB8AEC51FF3B7DE009DA465 /* UserListController.swift */,
+				6F887C541FF498AA0097B640 /* MailListController.swift */,
+				6FB8AEC71FF3B7DE009DA465 /* Mail.storyboard */,
+				6F887C511FF495FE0097B640 /* Base */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -145,6 +150,14 @@
 				6F887C4E1FF48FF80097B640 /* Parseable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		6F887C511FF495FE0097B640 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6F887C521FF496170097B640 /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		6FB8AEB71FF3B7DE009DA465 = {
@@ -176,6 +189,7 @@
 				6F887C451FF48F0A0097B640 /* Model */,
 				6F887C4B1FF48F100097B640 /* Views */,
 				6FB8AECA1FF3B7DE009DA465 /* Assets.xcassets */,
+				6F887C581FF4C4680097B640 /* fzsx.ttf */,
 				6FB8AECC1FF3B7DE009DA465 /* LaunchScreen.storyboard */,
 				6FB8AECF1FF3B7DE009DA465 /* Info.plist */,
 			);
@@ -243,9 +257,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F887C591FF4C4680097B640 /* fzsx.ttf in Resources */,
 				6FB8AECE1FF3B7DE009DA465 /* LaunchScreen.storyboard in Resources */,
 				6FB8AECB1FF3B7DE009DA465 /* Assets.xcassets in Resources */,
-				6FB8AEC91FF3B7DE009DA465 /* MailListController.storyboard in Resources */,
+				6FB8AEC91FF3B7DE009DA465 /* Mail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,12 +319,14 @@
 				6F887B651FF48E810097B640 /* UIFont+hexa.swift in Sources */,
 				6F887B631FF48E810097B640 /* UIViewController+hexa.swift in Sources */,
 				6F887B671FF48E810097B640 /* String+hexa.swift in Sources */,
-				6FB8AEC61FF3B7DE009DA465 /* MailListController.swift in Sources */,
+				6F887C551FF498AA0097B640 /* MailListController.swift in Sources */,
+				6FB8AEC61FF3B7DE009DA465 /* UserListController.swift in Sources */,
+				6F887C531FF496170097B640 /* BaseViewController.swift in Sources */,
 				6F887B491FF48E410097B640 /* Request.swift in Sources */,
 				6F887B501FF48E550097B640 /* Config.swift in Sources */,
 				6F887C491FF48F0A0097B640 /* RequestModel.swift in Sources */,
 				6F887B6E1FF48E810097B640 /* UIView+hexa.swift in Sources */,
-				6F887B6C1FF48E810097B640 /* String+Iconfont.swift in Sources */,
+				6F887C571FF4AAA40097B640 /* WRNavigationBar.swift in Sources */,
 				6F887B481FF48E410097B640 /* Network+Moya+SwiftyJSON.swift in Sources */,
 				6F887B6B1FF48E810097B640 /* UIImage+hexa.swift in Sources */,
 				6F887B6D1FF48E810097B640 /* UIDevice+hexa.swift in Sources */,
@@ -317,7 +334,6 @@
 				6F887B551FF48E740097B640 /* R.generated.swift in Sources */,
 				6F887C501FF48FF80097B640 /* Parseable.swift in Sources */,
 				6FB8AEC41FF3B7DE009DA465 /* AppDelegate.swift in Sources */,
-				6F887B6A1FF48E810097B640 /* DispatchQueue+hexa.swift in Sources */,
 				6F887B511FF48E550097B640 /* RegexHelper.swift in Sources */,
 				6F887B661FF48E810097B640 /* Array+hexa.swift in Sources */,
 			);
@@ -326,12 +342,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6FB8AEC71FF3B7DE009DA465 /* MailListController.storyboard */ = {
+		6FB8AEC71FF3B7DE009DA465 /* Mail.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6FB8AEC81FF3B7DE009DA465 /* Base */,
 			);
-			name = MailListController.storyboard;
+			name = Mail.storyboard;
 			sourceTree = "<group>";
 		};
 		6FB8AECC1FF3B7DE009DA465 /* LaunchScreen.storyboard */ = {
