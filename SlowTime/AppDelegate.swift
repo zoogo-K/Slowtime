@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
         
         let navigationController = R.storyboard.mail().instantiateInitialViewController()! as? UINavigationController
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(color: .clear), for: .default)
         window?.rootViewController = navigationController
         
         window?.makeKeyAndVisible()

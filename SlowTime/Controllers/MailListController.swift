@@ -17,8 +17,7 @@ class MailListController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        
-        
+        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "userList")
         
     }
   

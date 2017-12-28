@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6F2940EA1FF4D5DA00873A9A /* ReadMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940E91FF4D5DA00873A9A /* ReadMailController.swift */; };
 		6F2940EC1FF4E4BD00873A9A /* WriteMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */; };
+		6F2940EE1FF4EDBA00873A9A /* PackToSendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */; };
 		6F887B471FF48E410097B640 /* NetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B441FF48E410097B640 /* NetworkManger.swift */; };
 		6F887B481FF48E410097B640 /* Network+Moya+SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B451FF48E410097B640 /* Network+Moya+SwiftyJSON.swift */; };
 		6F887B491FF48E410097B640 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F887B461FF48E410097B640 /* Request.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		6F2940E91FF4D5DA00873A9A /* ReadMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMailController.swift; sourceTree = "<group>"; };
 		6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMailController.swift; sourceTree = "<group>"; };
+		6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackToSendController.swift; sourceTree = "<group>"; };
 		6F887B441FF48E410097B640 /* NetworkManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		6F887B451FF48E410097B640 /* Network+Moya+SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Network+Moya+SwiftyJSON.swift"; sourceTree = "<group>"; };
 		6F887B461FF48E410097B640 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				6F887C541FF498AA0097B640 /* MailListController.swift */,
 				6F2940E91FF4D5DA00873A9A /* ReadMailController.swift */,
 				6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */,
+				6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */,
 				6FB8AEC71FF3B7DE009DA465 /* Mail.storyboard */,
 				6F887C511FF495FE0097B640 /* Base */,
 			);
@@ -342,6 +345,7 @@
 				6F887B551FF48E740097B640 /* R.generated.swift in Sources */,
 				6F887C501FF48FF80097B640 /* Parseable.swift in Sources */,
 				6FB8AEC41FF3B7DE009DA465 /* AppDelegate.swift in Sources */,
+				6F2940EE1FF4EDBA00873A9A /* PackToSendController.swift in Sources */,
 				6F887B511FF48E550097B640 /* RegexHelper.swift in Sources */,
 				6F887B661FF48E810097B640 /* Array+hexa.swift in Sources */,
 			);
