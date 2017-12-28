@@ -25,7 +25,7 @@ class UserListController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableview.backgroundColor = UIColor(patternImage: RI.short()!)
         
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: "userList")
 
@@ -47,9 +47,9 @@ class UserListController: BaseViewController {
         self.tableview.mj_header.endRefreshing()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
 }

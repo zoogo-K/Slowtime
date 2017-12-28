@@ -14,7 +14,7 @@ extension UIViewController {
         case left, right
     }
     
-    func navigationBarButtonItem(with direction: BarButtonItemLocation, selector: Selector, title: String? = nil, textColor: UIColor = UIColor.hexaCustomMainText, image: UIImage? = nil) -> Void {
+    func navigationBarButtonItem(with direction: BarButtonItemLocation, selector: Selector, title: String? = nil, textColor: UIColor = .black, image: UIImage? = nil) -> Void {
         
         let button = UIButton(type: .custom)
         button.addTarget(self, action: selector, for: .touchUpInside)
@@ -23,10 +23,10 @@ extension UIViewController {
             button.frame = CGRect(origin: .zero, size: image.size)
         }else if let title = title {
             button.setTitle(title, for: .normal)
-            let size = title.stringRect(with: .systemFont(ofSize: 17))
+            let size = title.stringRect(with: .my_systemFont(ofSize: 17))
             button.frame = CGRect(x: 0, y: 0, width: size.width+8, height: 30)
             button.setTitleColor(textColor, for: .normal)
-            button.titleLabel?.font = .systemFont(ofSize: 17)
+            button.titleLabel?.font = .my_systemFont(ofSize: 17)
         }
         let item = UIBarButtonItem(customView: button)
         if direction == .left {

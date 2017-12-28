@@ -28,12 +28,6 @@ class MailListController: BaseViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
 }
 
 // Mark: delagate,datasouce
