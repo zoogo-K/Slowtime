@@ -22,6 +22,38 @@ class LoginController: LoginBaseViewController {
     @IBOutlet weak var loginButton: UIButton!
 
     
+    private var timer: Timer?
+    
+    private var isCounting: Bool = false {
+        willSet(newValue) {
+            if newValue {
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer(timer:)), userInfo: nil, repeats: true)
+            } else {
+                timer?.invalidate()
+                timer = nil
+            }
+        }
+    }
+    
+    private var remainingSeconds: Int = 0 {
+        willSet(newSeconds) {
+            let seconds = newSeconds%60
+            getCodeButton.setTitle("重新发送 \(seconds)s", for: .selected)
+        }
+    }
+    
+    @objc func updateTimer(timer: Timer) {// 更新时间
+        if remainingSeconds > 0 {
+            remainingSeconds -= 1
+        }
+        
+        if remainingSeconds == 0 {
+            getCodeButton.isSelected = false
+            getCodeButton.setTitle("获取验证码", for: .normal)
+            isCounting = !isCounting
+            timer.invalidate()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +69,16 @@ class LoginController: LoginBaseViewController {
 //            .disposed(by: disposeBag)
         
         _ = phoneTextField.rx.sentMessage(#selector(becomeFirstResponder))
+        
+        
+        getCodeButton.rx.tap
+            .throttle(60, scheduler: MainScheduler.instance)
+            .bind { [unowned self] in
+                self.remainingSeconds = 59
+                self.isCounting = !self.isCounting
+                self.getCodeButton.isSelected = true
+            }
+            .disposed(by: disposeBag)
         
         loginButton.rx.tap
             .throttle(1, scheduler: MainScheduler.instance)
@@ -62,6 +104,8 @@ class LoginController: LoginBaseViewController {
         //网络请求-验证码无误则跳转
         performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
     }
+    
+    
     
 }
 
