@@ -37,9 +37,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="4dM-wL-GPg" kind="show" identifier="showMailList" id="5lk-RU-Czq"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -48,7 +45,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.65092921260000003" green="0.65100914239999996" blue="0.65090209249999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="92T-YF-2Ql" firstAttribute="leading" secondItem="PTx-OX-zYo" secondAttribute="leading" id="1fS-DA-xuD"/>
                             <constraint firstItem="PTx-OX-zYo" firstAttribute="trailing" secondItem="92T-YF-2Ql" secondAttribute="trailing" id="AGC-CK-Ewy"/>
@@ -63,6 +59,7 @@
                     <navigationItem key="navigationItem" id="iwf-nu-5Qf"/>
                     <connections>
                         <outlet property="tableview" destination="bYK-LQ-P8P" id="lky-8y-ZOx"/>
+                        <segue destination="4dM-wL-GPg" kind="show" identifier="showMailList" id="WeU-I9-x5Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

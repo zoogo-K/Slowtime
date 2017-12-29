@@ -19,8 +19,6 @@ class PackToSendController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        stampCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "stampCell")
-
         // Do any additional setup after loading the view.
     }
 

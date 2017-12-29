@@ -18,23 +18,19 @@ class UserListController: BaseViewController {
         $0.setTitle("释放刷新", for: .pulling)
         $0.setTitle("加载信件", for: .refreshing)
         $0.lastUpdatedTimeLabel.isHidden = true
-        $0.backgroundColor = .red
+        $0.backgroundColor = .clear
         return $0
     }(MJRefreshNormalHeader())
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableview.backgroundColor = UIColor(patternImage: RI.short()!)
-        
-        tableview.register(UITableViewCell.self, forCellReuseIdentifier: "userList")
-
+        tableview.backgroundColor = .clear
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         self.tableview.mj_header = header
         
-
-
+        self.tableview.tableFooterView = UIView()
         
 
     }
