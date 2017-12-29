@@ -32,7 +32,7 @@ public struct User {
 }
 
 extension User: Parseable {
-    public static var identifier: String = "users"
+    public static var identifier: String = "user"
     
     public init(json: JSON) {
         id          <-      json["id"].intValue

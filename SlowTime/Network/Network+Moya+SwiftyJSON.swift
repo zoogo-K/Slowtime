@@ -96,6 +96,7 @@ fileprivate extension JSON {
     
     
     fileprivate func filterObject<T: Parseable>(to type: T.Type) -> T {
+        DLog(T(json: self["data"][T.identifier]))
         return T(json: self["data"][T.identifier])
     }
     
