@@ -26,22 +26,24 @@ extension Moya.TargetType {
     public var task: Task { return .requestPlain }
 }
 
-public struct Request {
-}
+public enum Request {
+    case loginCode(phone: String)
+    case login(phoneNumber: String, loginCode: String)
+    case logout
+    case profile(nickName: String, profile: String)
+    
+    case friends
+    case mailList(userhash: String)
+    case deleteMail(mailId: String)
+    case getMail(mailId: String)
+    case writeMail(toUser: String, content: String)
 
-// MARK: - Extension Request
-public extension Request {
-    enum User {
-        case loginCode(phone: String)
-        case login(phoneNumber: String, loginCode: String)
-        case logout
-        case profile(nickName: String, profile: String)
-    }
+
 }
 
 
 // MARK: - Request.User
-extension Request.User: Moya.TargetType {
+extension Request: Moya.TargetType {
     
     public var path: String {
         switch self {
@@ -53,13 +55,26 @@ extension Request.User: Moya.TargetType {
             return "/user/logout"
         case .profile:
             return "/user/profile"
+        
+        case .friends:
+            return "/feed/friends"
+        case .mailList(let userhash):
+            return "/mail/inbox/\(userhash)"
+        case .deleteMail(let mailId):
+            return "/mail/\(mailId)"
+        case .getMail(let mailId):
+            return "/mail/\(mailId)"
+        case .writeMail:
+            return "/mail"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .loginCode, .login, .logout, .profile:
+        case .loginCode, .login, .logout, .profile, .writeMail:
             return .post
+        case .deleteMail:
+            return .patch
         default:
             return .get
         }
@@ -73,6 +88,8 @@ extension Request.User: Moya.TargetType {
             return ["phoneNumber": phone, "loginCode": loginCode]
         case .profile(let nickName, let profile):
             return ["nickName": nickName, "profile": profile]
+        case .writeMail(let toUser, let content):
+            return ["toUser": toUser, "content": content]
         default:
             return nil
         }
@@ -80,7 +97,6 @@ extension Request.User: Moya.TargetType {
     
     public var task: Moya.Task {
         switch self {
-            
         default:
             return .requestPlain
         }

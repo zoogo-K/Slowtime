@@ -190,13 +190,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		6F887C4B1FF48F100097B640 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		6F887C4C1FF48FF80097B640 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,7 +234,6 @@
 				6F887B561FF48E800097B640 /* Extension */,
 				6F887C441FF48F030097B640 /* Controllers */,
 				6F887C451FF48F0A0097B640 /* Model */,
-				6F887C4B1FF48F100097B640 /* Views */,
 				6FB8AECA1FF3B7DE009DA465 /* Assets.xcassets */,
 				6F887C581FF4C4680097B640 /* fzsx.ttf */,
 				6FB8AECC1FF3B7DE009DA465 /* LaunchScreen.storyboard */,

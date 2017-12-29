@@ -46,3 +46,34 @@ extension User: Parseable {
     }
 }
 
+
+
+
+public struct Friend {
+    public var nickname: String?
+    public var userHash: String?
+    public var profile: String?
+    public var hasNewMail: Bool?
+
+    
+    public init(nickname: String? = nil, userHash: String? = nil, profile: String? = nil, hasNewMail: Bool? = false) {
+        self.nickname = nickname
+        self.userHash = userHash
+        self.profile = profile
+        self.hasNewMail = hasNewMail
+    }
+}
+
+extension Friend: Parseable {
+    public static var identifier: String = "users"
+    
+    public init(json: JSON) {
+        nickname    <-      json["nickname"].stringValue
+        userHash    <-      json["userHash"].stringValue
+        profile     <-      json["profile"].stringValue
+        hasNewMail  <-      json["accessToken"].boolValue
+    }
+}
+
+
+

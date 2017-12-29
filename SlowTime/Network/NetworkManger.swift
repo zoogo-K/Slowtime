@@ -64,46 +64,17 @@ final class NetworkManger {
         
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 10
-//        configuration.timeoutIntervalForResource = 10
-        let acceptLanguage = Locale.preferredLanguages
-            .prefix(6)
-            .enumerated()
-            .map { index, languageCode in
-                let quality = 1.0 - (Double(index) * 0.1)
-                return "\(languageCode),q=\(quality)"
-            }
-            .joined(separator: ", ")
         
-        let userAgent: String = {
-            if let info = Bundle.main.infoDictionary {
-                return "HEXA/iOS/" + (info["CFBundleShortVersionString"] as? String ?? "Unknown")
-            }
-            return "HEXA/iOS/Unknown"
-        }()
-        configuration.httpAdditionalHeaders = ["Accept-Encoding": "gzip;q=1.0, compress;q=0.5", "Accept-Language": acceptLanguage, "User-Agent": userAgent]
         var manager: Alamofire.SessionManager
-        #if DEBUG
-            manager = Alamofire.SessionManager(configuration: configuration)
-        #else
-//            manager = Alamofire.SessionManager(configuration: configuration)
-            let serverTrustPolicies: [String: ServerTrustPolicy] = [
-                "api.vincross.com": .performDefaultEvaluation(validateHost: true)
-            ]
-            manager = Alamofire.SessionManager(configuration: configuration, serverTrustPolicyManager: Alamofire.ServerTrustPolicyManager(policies: serverTrustPolicies))
-        #endif
+        manager = Alamofire.SessionManager(configuration: configuration)
         manager.startRequestsImmediately = false
         return manager
     }()
     
+    
     var accessToken: Alamofire.HTTPHeaders {
         var headers = Alamofire.HTTPHeaders()
-        headers["X-App-OSVersion"] = UIDevice.systemVersionName
-        headers["X-App-Device"] = UIDevice.machineModelName
-
-        
+        //        headers["X-User-AccessToken"] = UserDefaults.standard.string(forKey: "accessToken_key")!
         return headers
     }
-    
-
-    
 }

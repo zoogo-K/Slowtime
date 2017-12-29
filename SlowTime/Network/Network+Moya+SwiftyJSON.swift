@@ -96,13 +96,11 @@ fileprivate extension JSON {
     
     
     fileprivate func filterObject<T: Parseable>(to type: T.Type) -> T {
-        DLog(T(json: self["data"][T.identifier]))
         return T(json: self["data"][T.identifier])
     }
     
     
     fileprivate func map<T: Parseable>(to type: T.Type) -> [T] {
-
         return self["data"][T.identifier].arrayValue
             .map { T(json: $0) }
     }

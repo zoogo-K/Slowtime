@@ -95,7 +95,7 @@ class LoginController: LoginBaseViewController {
     func login() {
         
         //网络请求-验证码无误则跳转
-        let provider = MoyaProvider<Request.User>()
+        let provider = MoyaProvider<Request>()
         provider.rx.request(.login(phoneNumber: "13800138000", loginCode: "000000"))
             .asObservable()
             .mapJSON()
@@ -103,12 +103,11 @@ class LoginController: LoginBaseViewController {
             .filterObject(to: User.self)
             .subscribe { [weak self] (event) in
                 if case .next(let user) = event {
-                    
-                    DLog(user)
                     self?.performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
                     
-                    UserDefaults.standard.set("user", forKey: "accessToken_key")
-                    
+                    UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
+                    UserDefaults.standard.set(true, forKey: "isLogin_key")
+
                 }else if case .error = event {
                     DLog("失败")
                 }

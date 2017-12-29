@@ -8,6 +8,7 @@
 
 import UIKit
 import MJRefresh
+import Moya
 
 class UserListController: BaseViewController {
     
@@ -26,18 +27,34 @@ class UserListController: BaseViewController {
         $0.backgroundColor = .clear
         return $0
     }(MJRefreshNormalHeader())
-
+    
+    private var friends: [Friend]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         tableview.mj_header = header
-
-
         
+        let provider = MoyaProvider<Request>()
+        provider.rx.request(.friends)
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .flatMap(to: Friend.self)
+            .subscribe { [weak self] (event) in
+                if case .next(let friends) = event {
+                    self?.friends = friends
+                    DispatchQueue.main.async {
+                        self?.tableview.reloadData()
+                    }
+                }else if case .error = event {
+                    DLog("请求超时")
+                }
+            }
+            .disposed(by: disposeBag)
     }
-
+    
     
     // 顶部刷新
     @objc func headerRefresh(){
@@ -59,26 +76,20 @@ class UserListController: BaseViewController {
 
 // Mark: delagate,datasouce
 extension UserListController: UITableViewDelegate, UITableViewDataSource {
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
-    }
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return friends?.count ?? 0
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "userList", for: indexPath)
-        
-        cell.textLabel!.text = "张三"
+        cell.textLabel!.text = friends![indexPath.row].nickname
         cell.textLabel?.font = .my_systemFont(ofSize: 18)
         return cell
     }
     
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.userListController.showMailList(segue: segue) {
@@ -86,7 +97,7 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
             mailList.destination.title = tableview.cellForRow(at: indexPath)?.textLabel?.text
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: R.segue.userListController.showMailList, sender: indexPath)
     }
