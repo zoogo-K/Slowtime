@@ -10,16 +10,12 @@ import Foundation
 import Moya
 import RxSwift
 import Result
-import RxMoya
-import UIKit
 import SwiftyJSON
 
 public enum HexaError: Swift.Error {
     case statusCode(String, String)
     case dataIsEmpty
-    case noData
     case noNetwork
-    case inDirectMode
 }
 
 extension HexaError: LocalizedError {
@@ -27,12 +23,8 @@ extension HexaError: LocalizedError {
         switch self {
         case .statusCode(let code, let msg):
             return "Status code: \(code)\n Error: \(msg)"
-        case .noData:
-            return "No Data"
         case .noNetwork:
             return "No network"
-        case .inDirectMode:
-            return "Mobile is in the robot's wifi"
         case .dataIsEmpty:
             return "Data is empty"
         }
@@ -60,16 +52,10 @@ public extension Moya.MoyaProvider {
     
     public final class func requestMapping(for endpoint: Endpoint<Target>, closure: RequestResultClosure) {
         guard NetworkReachability.shared.isReachable else {
-
+            DLog("现在没网")
             closure(.failure(MoyaError.underlying(HexaError.noNetwork, nil)))
             return
         }
-        
-//        if MindSDK.md_checkApMode() {
-            //            HexaHUD.show(with: RLS.toast_YouAreInDL())不再弹出当前处于AP模式的toast
-//            closure(.failure(MoyaError.underlying(HexaError.inDirectMode, nil)))
-//            return
-//        }
         
         do {
             let urlRequest = try endpoint.urlRequest()
@@ -92,7 +78,6 @@ extension Moya.Endpoint: CustomDebugStringConvertible {
 }
 
 private let requestSuccessCode = "OK"
-private let tokenInvalidCode = "access_token_not_found"
 
 public typealias ErrorClosure = (String, String) -> Void
 
@@ -100,19 +85,6 @@ fileprivate extension JSON {
     
     fileprivate func filterSuccessfulCode(_ closure: ErrorClosure?) throws -> JSON {
         let code = self["code"].stringValue
-        
-        guard code != tokenInvalidCode else {
-//            (UIApplication.shared.delegate as? AppDelegate)?.needLogin()
-            DispatchQueue.main.async {
-//                if MindSDK.robot?.isConnected == true {
-//                    MindSDK.robot?.md_disconnectRobot()
-//                }
-//                GlobalSkillManager.removeCache()
-            }
-            let message = self["message"].stringValue
-            closure?(code, message)
-            throw HexaError.statusCode(code, message)
-        }
         
         guard code == requestSuccessCode else {
             let message = self["message"].stringValue
@@ -122,20 +94,20 @@ fileprivate extension JSON {
         return self
     }
     
+    
+    fileprivate func filterObject<T: Parseable>(to type: T.Type) -> T {
+        return T(json: self["data"][T.identifier])
+    }
+    
+    
     fileprivate func map<T: Parseable>(to type: T.Type) -> [T] {
-        if type is Country.Type {
-            return self["data"]["config"][T.identifier].arrayValue
-                .map { T(json: $0) }
-        }
+
         return self["data"][T.identifier].arrayValue
             .map { T(json: $0) }
     }
     
     fileprivate func flatMap<T: Parseable>(to type: T.Type) throws -> [T] {
-        var arr = self["data"][T.identifier].arrayValue
-        if type is Country.Type {
-            arr = self["data"]["config"][T.identifier].arrayValue
-        }
+        let arr = self["data"][T.identifier].arrayValue
         guard !arr.isEmpty else {
             throw HexaError.dataIsEmpty
         }
@@ -144,6 +116,13 @@ fileprivate extension JSON {
 }
 
 public extension ObservableType where E == JSON {
+    
+    public func filterObject<T: Parseable>(to type: T.Type) -> Observable<T> {
+        return flatMap { json -> Observable<T> in
+            return Observable.just(json.filterObject(to: type))
+        }
+    }
+    
     
     public func map<T: Parseable>(to type: T.Type) -> Observable<[T]> {
         return flatMap { json -> Observable<[T]> in
@@ -173,6 +152,19 @@ fileprivate extension Moya.Response {
             return json
         } catch {
             throw Moya.MoyaError.jsonMapping(self)
+        }
+    }
+}
+
+public extension ObservableType where E == Moya.Response {
+    
+    public func mapJSON() -> Observable<JSON> {
+        return debug()
+            .do(onError: { (_) in
+                DLog("请求超时")
+            })
+            .flatMap { (response) -> Observable<JSON> in
+                return Observable.just(try response.mapToJSON())
         }
     }
     

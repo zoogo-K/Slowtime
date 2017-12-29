@@ -20,7 +20,7 @@ class LoginController: LoginBaseViewController {
     
     @IBOutlet weak var getCodeButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-
+    
     
     private var timer: Timer?
     
@@ -60,13 +60,6 @@ class LoginController: LoginBaseViewController {
         
         hideOrShowBtn(btnType: .all, hide: true)
         
-//        phoneTextField.rx.text.orEmpty
-//            .map { $0.trimmingCharacters(in: .whitespaces).localizedLowercase =~ Pattern.phone }
-//            .share(replay: 1)
-//            .bind { [unowned self] (valid) in
-//                self.loginButton.isEnabled = valid
-//            }
-//            .disposed(by: disposeBag)
         
         _ = phoneTextField.rx.sentMessage(#selector(becomeFirstResponder))
         
@@ -102,7 +95,25 @@ class LoginController: LoginBaseViewController {
     func login() {
         
         //网络请求-验证码无误则跳转
-        performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
+        let provider = MoyaProvider<Request.User>()
+        provider.rx.request(.login(phoneNumber: "13800138000", loginCode: "000000"))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .filterObject(to: User.self)
+            .subscribe { [weak self] (event) in
+                if case .next(let user) = event {
+                    
+                    DLog(user)
+                    self?.performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
+                    
+                    UserDefaults.standard.set("user", forKey: "accessToken_key")
+                    
+                }else if case .error = event {
+                    DLog("失败")
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     
@@ -116,7 +127,7 @@ extension LoginController: UITextFieldDelegate {
         
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-
+        
     }
 }
 

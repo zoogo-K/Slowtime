@@ -8,14 +8,11 @@
 
 import Foundation
 import Moya
+import RxMoya
 
 extension Moya.TargetType {
     var rootDomain: String {
-        #if DEBUG
-            return "https://api.vincross.com"
-        #else
-            return "https://api.vincross.com"
-        #endif
+        return "http://slowtime.vcrxyz.com"
     }
     
     public var parameters: [String : Any]? { return nil }
@@ -35,87 +32,33 @@ public struct Request {
 // MARK: - Extension Request
 public extension Request {
     enum User {
-        case emailStatus(String)
+        case loginCode(phone: String)
+        case login(phoneNumber: String, loginCode: String)
+        case logout
+        case profile(nickName: String, profile: String)
     }
-    
-    enum Robot {
-        case list
-        case active(with: String)
-        case call(with: String)
-        case change(ownerHash: String, password: String, sn: String)
-    }
-    
 }
 
 
 // MARK: - Request.User
 extension Request.User: Moya.TargetType {
-    public var headers: [String : String]? {
-        return nil
-    }
-    
-    public var baseURL: URL {
-        return URL(string: "\(rootDomain)/user-service/v1")!
-    }
     
     public var path: String {
         switch self {
-        case .emailStatus(let email):
-            return "/users/status?type=email&email=" + email
+        case .loginCode:
+            return "/user/loginCode"
+        case .login:
+            return "/user/login"
+        case .logout:
+            return "/user/logout"
+        case .profile:
+            return "/user/profile"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-            
-        default:
-            return .get
-        }
-    }
-    
-    public var parameters: [String : Any]? {
-        switch self {
-
-        default:
-            return nil
-        }
-    }
-    
-    public var task: Moya.Task {
-        switch self {
-        
-        default:
-            return .requestPlain
-        }
-    }
-}
-
-// MARK: - Request.Robot
-extension Request.Robot: Moya.TargetType {
-    public var headers: [String : String]? {
-        return nil
-    }
-    
-    public var baseURL: URL {
-        return URL(string: "\(rootDomain)/robot-service/v1")!
-    }
-    
-    public var path: String {
-        switch self {
-        case .list:
-            return "/users/me/robots?online=all"
-        case .active(let token):
-            return "/users/me/robots?robotToken=" + token
-        case .call(let sn):
-            return "/videoCallers?robotSN=" + sn
-        case .change:
-            return "/users/me?action=changeRobotOwnerApply"
-        }
-    }
-    
-    public var method: Moya.Method {
-        switch self {
-        case .change:
+        case .loginCode, .login, .logout, .profile:
             return .post
         default:
             return .get
@@ -124,8 +67,12 @@ extension Request.Robot: Moya.TargetType {
     
     public var parameters: [String : Any]? {
         switch self {
-        case .change(let ownerHash, let password, let sn):
-            return ["sn": sn, "newOwnerUserhash": ownerHash, "password": password]
+        case .loginCode(let phone):
+            return ["phoneNumber": phone]
+        case .login(let phone, let loginCode):
+            return ["phoneNumber": phone, "loginCode": loginCode]
+        case .profile(let nickName, let profile):
+            return ["nickName": nickName, "profile": profile]
         default:
             return nil
         }
@@ -133,11 +80,18 @@ extension Request.Robot: Moya.TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .change:
-            return .requestParameters(parameters: parameters!, encoding: parameterEncoding)
+            
         default:
             return .requestPlain
         }
+    }
+    
+    public var headers: [String : String]? {
+        return nil
+    }
+    
+    public var baseURL: URL {
+        return URL(string: "\(rootDomain)/api/v1")!
     }
 }
 
