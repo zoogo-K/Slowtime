@@ -44,6 +44,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="NTf-7D-PmR"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qe-HD-rSb">
+                                <rect key="frame" x="325" y="32" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="4B1-Xy-Dkl"/>
+                                    <constraint firstAttribute="height" constant="30" id="cvJ-cL-gnJ"/>
+                                </constraints>
+                                <state key="normal" image="setting"/>
+                                <connections>
+                                    <segue destination="uv9-Bs-eAA" kind="show" id="kPE-lc-cdF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="92T-YF-2Ql" firstAttribute="leading" secondItem="PTx-OX-zYo" secondAttribute="leading" id="1fS-DA-xuD"/>
@@ -53,6 +64,8 @@
                             <constraint firstItem="bYK-LQ-P8P" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="154" id="dFZ-EL-Xb0"/>
                             <constraint firstItem="PTx-OX-zYo" firstAttribute="trailing" secondItem="bYK-LQ-P8P" secondAttribute="trailing" id="foQ-F2-QSj"/>
                             <constraint firstItem="bYK-LQ-P8P" firstAttribute="leading" secondItem="PTx-OX-zYo" secondAttribute="leading" id="nw6-Mt-h4q"/>
+                            <constraint firstItem="PTx-OX-zYo" firstAttribute="trailing" secondItem="8Qe-HD-rSb" secondAttribute="trailing" constant="20" id="oil-WU-q6H"/>
+                            <constraint firstItem="8Qe-HD-rSb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="32" id="rTv-pP-Zmb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PTx-OX-zYo"/>
                     </view>
@@ -69,16 +82,16 @@
         <!--Navigation Controller-->
         <scene sceneID="fry-Vb-1j1">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6kb-4B-gC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="69O-9o-xJj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="s1i-Lx-cZV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DNu-vB-udw"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="x9F-kf-SCt"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6kb-4B-gC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-828" y="34"/>
         </scene>
@@ -154,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdS-MU-ZEu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.8" y="33.733133433283363"/>
+            <point key="canvasLocation" x="1310" y="-586"/>
         </scene>
         <!--Read Mail Controller-->
         <scene sceneID="8nb-0V-pys">
@@ -219,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQ1-yp-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2016.8" y="33.733133433283363"/>
+            <point key="canvasLocation" x="2254" y="-586"/>
         </scene>
         <!--Write Mail Controller-->
         <scene sceneID="pey-T0-d1V">
@@ -249,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMd-AH-AyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2974" y="34"/>
+            <point key="canvasLocation" x="3210" y="-586"/>
         </scene>
         <!--Pack To Send Controller-->
         <scene sceneID="H03-cV-PTv">
@@ -336,7 +349,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="As0-sh-Ld0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3865" y="34"/>
+            <point key="canvasLocation" x="4102" y="-586"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="rav-xa-dJw">
+            <objects>
+                <viewController id="uv9-Bs-eAA" customClass="SettingsController" customModule="SlowTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ppe-Qv-LXo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iQb-jA-cqm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settings" id="rdJ-I8-Tzs">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rdJ-I8-Tzs" id="Bxw-47-ytr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uv9-Bs-eAA" id="cyS-MC-q16"/>
+                                    <outlet property="delegate" destination="uv9-Bs-eAA" id="z0V-lu-1GQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="iQb-jA-cqm" firstAttribute="leading" secondItem="0QK-GT-Ieh" secondAttribute="leading" id="5pi-Xo-aLD"/>
+                            <constraint firstItem="iQb-jA-cqm" firstAttribute="top" secondItem="ppe-Qv-LXo" secondAttribute="top" id="Vzf-Nz-kzb"/>
+                            <constraint firstItem="0QK-GT-Ieh" firstAttribute="trailing" secondItem="iQb-jA-cqm" secondAttribute="trailing" id="de0-dh-Smd"/>
+                            <constraint firstItem="0QK-GT-Ieh" firstAttribute="bottom" secondItem="iQb-jA-cqm" secondAttribute="bottom" id="qW3-6l-ovS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0QK-GT-Ieh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iZv-Y2-AWM"/>
+                    <connections>
+                        <outlet property="tableview" destination="iQb-jA-cqm" id="GbA-yw-5O3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bT5-WU-Orw" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1310" y="527"/>
         </scene>
     </scenes>
     <resources>
@@ -344,6 +402,7 @@
         <image name="envelope" width="300" height="247"/>
         <image name="long" width="375" height="403"/>
         <image name="mailImg" width="208" height="161"/>
+        <image name="setting" width="22" height="22"/>
         <image name="yinzhang" width="26" height="28"/>
         <image name="youchuo-red" width="60" height="32"/>
     </resources>

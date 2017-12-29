@@ -35,6 +35,7 @@ class UserListController: BaseViewController {
         tableview.mj_header = header
 
 
+        
     }
 
     
@@ -43,6 +44,10 @@ class UserListController: BaseViewController {
         print("下拉刷新")
         // 结束刷新
         self.tableview.mj_header.endRefreshing()
+    }
+    
+    @IBAction func showSettings(_ sender: Any) {
+        disAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -57,7 +57,7 @@ class LoginBaseViewController: UIViewController {
         
         view.addSubview(disButton)
         disButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-20)
+            make.right.equalTo(-16)
             make.top.equalTo(32)
             make.width.height.equalTo(30)
         }
@@ -65,7 +65,7 @@ class LoginBaseViewController: UIViewController {
         
         view.addSubview(popButton)
         popButton.snp.makeConstraints { (make) in
-            make.left.equalTo(20)
+            make.left.equalTo(16)
             make.top.equalTo(32)
             make.width.height.equalTo(30)
         }
