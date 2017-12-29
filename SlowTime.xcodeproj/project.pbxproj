@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F1CF3181FF5F74B00030C81 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1CF3171FF5F74B00030C81 /* SettingsController.swift */; };
+		6F1CF31A1FF5FA9F00030C81 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F1CF3191FF5FA9F00030C81 /* settings.plist */; };
 		6F2940EA1FF4D5DA00873A9A /* ReadMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940E91FF4D5DA00873A9A /* ReadMailController.swift */; };
 		6F2940EC1FF4E4BD00873A9A /* WriteMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */; };
 		6F2940EE1FF4EDBA00873A9A /* PackToSendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		6F1CF3171FF5F74B00030C81 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		6F1CF3191FF5FA9F00030C81 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		6F2940E91FF4D5DA00873A9A /* ReadMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMailController.swift; sourceTree = "<group>"; };
 		6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMailController.swift; sourceTree = "<group>"; };
 		6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackToSendController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		6F1CF3161FF5F69F00030C81 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				6F1CF3191FF5FA9F00030C81 /* settings.plist */,
 				6F1CF3171FF5F74B00030C81 /* SettingsController.swift */,
 			);
 			path = Settings;
@@ -309,6 +312,7 @@
 				6FB8AECE1FF3B7DE009DA465 /* LaunchScreen.storyboard in Resources */,
 				6FB8AECB1FF3B7DE009DA465 /* Assets.xcassets in Resources */,
 				6F2940F91FF5D9C100873A9A /* Login.storyboard in Resources */,
+				6F1CF31A1FF5FA9F00030C81 /* settings.plist in Resources */,
 				6FB8AEC91FF3B7DE009DA465 /* Mail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

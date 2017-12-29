@@ -12,7 +12,10 @@ class SettingsController: BaseViewController {
 
     @IBOutlet weak var tableview: UITableView!
     
-    
+    lazy var groupArr: [[String: Any]] = {
+        let arr = NSArray(contentsOfFile: Bundle.main.path(forResource: "settings", ofType: "plist")!)
+        return arr! as! [[String : Any]]
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +35,26 @@ class SettingsController: BaseViewController {
 extension SettingsController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
+        return 1
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20;
+        return groupArr.count
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "settings", for: indexPath)
-
+        
+        let dataArr = groupArr[indexPath.row]
+        
+        guard let text = dataArr["Title"] as? String else{
+            return UITableViewCell()
+        }
+        cell.textLabel?.font  = UIFont.my_systemFont(ofSize: 15)
+        cell.textLabel?.text = text
+        
         return cell
     }
     
