@@ -36,6 +36,10 @@ class UserListController: BaseViewController {
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         tableview.mj_header = header
         
+        request()
+    }
+    
+    private func request() {
         let provider = MoyaProvider<Request>()
         provider.rx.request(.friends)
             .asObservable()
@@ -43,6 +47,7 @@ class UserListController: BaseViewController {
             .filterSuccessfulCode()
             .flatMap(to: Friend.self)
             .subscribe { [weak self] (event) in
+                self?.tableview.mj_header.endRefreshing()
                 if case .next(let friends) = event {
                     self?.friends = friends
                     DispatchQueue.main.async {
@@ -56,11 +61,12 @@ class UserListController: BaseViewController {
     }
     
     
+    
     // 顶部刷新
     @objc func headerRefresh(){
         print("下拉刷新")
         // 结束刷新
-        self.tableview.mj_header.endRefreshing()
+        request()
     }
     
     @IBAction func showSettings(_ sender: Any) {
