@@ -11,7 +11,12 @@ import MJRefresh
 
 class UserListController: BaseViewController {
     
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var tableview: UITableView! {
+        didSet {
+            tableview.backgroundColor = .clear
+            tableview.tableFooterView = UIView()
+        }
+    }
     // 顶部刷新
     let header: MJRefreshNormalHeader = {
         $0.setTitle("下拉刷新", for: .idle)
@@ -25,13 +30,10 @@ class UserListController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableview.backgroundColor = .clear
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
-        self.tableview.mj_header = header
-        
-        self.tableview.tableFooterView = UIView()
-        
+        tableview.mj_header = header
+
 
     }
 
