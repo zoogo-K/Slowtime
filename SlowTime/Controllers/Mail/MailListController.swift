@@ -7,19 +7,35 @@
 //
 
 import UIKit
+import Moya
 
 class MailListController: BaseViewController {
     
     @IBOutlet weak var tableview: UITableView!
    
-    
+    private var mails: [Mail]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        
-    }
-  
+        let provider = MoyaProvider<Request>()
+        provider.rx.request(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .flatMap(to: Mail.self)
+            .subscribe { [weak self] (event) in
+                if case .next(let mails) = event {
+                    self?.mails = mails
+                    DispatchQueue.main.async {
+                        self?.tableview.reloadData()
+                    }
+                }else if case .error = event {
+                    DLog("请求超时")
+                }
+            }
+            .disposed(by: disposeBag)
+    }  
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,14 +46,9 @@ class MailListController: BaseViewController {
 
 // Mark: delagate,datasouce
 extension MailListController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
-    }
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20;
+        return mails?.count ?? 0
     }
     
     // cell
@@ -47,11 +58,11 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.subviews.forEach { (view) in
             switch view.tag {
             case 2018:
-                (view as! UILabel).text = "小波，你好啊！好久没有联系了。"
+                (view as! UILabel).text = mails![indexPath.row].abstract
             case 2019:
-                (view as! UILabel).text = "2018年1月1号 寄"
+                (view as! UILabel).text = mails![indexPath.row].createTime
             default:
-                view.isHidden = indexPath.row / 2 == 1 ? true : false
+                view.isHidden = mails![indexPath.row].isRead! ? true : false
             }
             
         }
