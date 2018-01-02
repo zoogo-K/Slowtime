@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import Moya
+import PKHUD
 
 class LoginController: LoginBaseViewController {
     
@@ -63,12 +64,21 @@ class LoginController: LoginBaseViewController {
         
         _ = phoneTextField.rx.sentMessage(#selector(becomeFirstResponder))
         
+        phoneTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespaces).localizedLowercase =~ Pattern.phone }
+            .share(replay: 1)
+            .bind { [unowned self] (valid) in
+                DLog(valid)
+                self.getCodeButton.isEnabled = valid
+            }
+            .disposed(by: disposeBag)
+        
+        
         
         getCodeButton.rx.tap
             .throttle(60, scheduler: MainScheduler.instance)
             .bind { [unowned self] in
-                self.remainingSeconds = 59
-                self.isCounting = !self.isCounting
+                self.getCode()
             }
             .disposed(by: disposeBag)
         
@@ -87,18 +97,32 @@ class LoginController: LoginBaseViewController {
             .disposed(by: disposeBag)
     }
     
-    func getCode(_ phone: String) {
+    private func getCode() {
+        self.remainingSeconds = 59
+        self.isCounting = !self.isCounting
         
+        let provider = MoyaProvider<Request>()
+        provider.rx.requestWithLoading(.loginCode(phone: "13800138000"))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode({ (_, mess) in
+                HUD.flash(.label(mess), delay: 1.0)
+            })
+            .bind(onNext: { (json) in
+                DLog(json)
+            })
+            .disposed(by: disposeBag)
     }
     
-    func login() {
+    private func login() {
         
         //网络请求-验证码无误则跳转
         let provider = MoyaProvider<Request>()
-        provider.rx.request(.login(phoneNumber: "13800138000", loginCode: "000000"))
-            .asObservable()
+        provider.rx.requestWithLoading(.login(phoneNumber: "13800138000", loginCode: "000000"))            .asObservable()
             .mapJSON()
-            .filterSuccessfulCode()
+            .filterSuccessfulCode({ (_, mess) in
+                HUD.flash(.label(mess), delay: 1.0)
+            })
             .filterObject(to: User.self)
             .subscribe { [weak self] (event) in
                 if case .next(let user) = event {
@@ -106,26 +130,12 @@ class LoginController: LoginBaseViewController {
                     
                     UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
                     UserDefaults.standard.set(true, forKey: "isLogin_key")
-
+                    
                 }else if case .error = event {
-                    DLog("失败")
+                    HUD.flash(.label("请求失败！"), delay: 1.0)
                 }
             }
             .disposed(by: disposeBag)
-    }
-    
-    
-    
-}
-
-// Mark - TextFieldDelegate
-extension LoginController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
     }
 }
 

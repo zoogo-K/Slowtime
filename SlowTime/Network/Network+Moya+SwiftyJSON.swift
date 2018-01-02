@@ -6,11 +6,12 @@
 //  Copyright © 2017年 vincross. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Moya
 import RxSwift
 import Result
 import SwiftyJSON
+import PKHUD
 
 public enum HexaError: Swift.Error {
     case statusCode(String, String)
@@ -141,6 +142,42 @@ public extension ObservableType where E == JSON {
         }
     }
 }
+
+// MARK: - requestWithLoading
+public extension Reactive where Base: Moya.MoyaProviderType {
+    
+    public func requestWithLoading(_ token: Base.Target) -> Observable<Response> {
+        return base.rxRequestWithLoading(token)
+    }
+}
+
+internal extension MoyaProviderType {
+    
+    internal func rxRequestWithLoading(_ token: Target) -> Observable<Response> {
+        HUD.flash(.rotatingImage(RI.progress()))
+        return Observable.create { observer in
+            let cancellableToken = self.request(token, callbackQueue: nil, progress: nil) { result in
+                HUD.hide()
+                switch result {
+                case let .success(response):
+                    observer.onNext(response)
+                    observer.onCompleted()
+                case let .failure(error):
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create {
+                if !cancellableToken.isCancelled {
+                    HUD.hide()
+                    cancellableToken.cancel()
+                }
+            }
+        }
+    }
+}
+
+
 
 fileprivate extension Moya.Response {
     

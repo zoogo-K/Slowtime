@@ -23,6 +23,8 @@ class UserListController: BaseViewController {
         $0.setTitle("下拉刷新", for: .idle)
         $0.setTitle("释放刷新", for: .pulling)
         $0.setTitle("加载信件", for: .refreshing)
+        $0.stateLabel.font = .my_systemFont(ofSize: 15)
+        $0.stateLabel.textColor = .white
         $0.lastUpdatedTimeLabel.isHidden = true
         $0.backgroundColor = .clear
         return $0
