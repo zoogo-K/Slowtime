@@ -10,16 +10,21 @@ import UIKit
 
 class SettingsController: BaseViewController {
 
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var tableview: UITableView! {
+        didSet {
+            tableview.tableFooterView = UIView()
+        }
+    }
     
-    lazy var groupArr: [[String: Any]] = {
+    lazy var groupArr: [[String: String]] = {
         let arr = NSArray(contentsOfFile: Bundle.main.path(forResource: "settings", ofType: "plist")!)
-        return arr! as! [[String : Any]]
+        return arr! as! [[String : String]]
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "设置"
         
     }
     
@@ -34,11 +39,6 @@ class SettingsController: BaseViewController {
 // Mark: delagate,datasouce
 extension SettingsController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupArr.count
     }
@@ -49,19 +49,34 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
         
         let dataArr = groupArr[indexPath.row]
         
-        guard let text = dataArr["Title"] as? String else{
-            return UITableViewCell()
-        }
-        cell.textLabel?.font  = UIFont.my_systemFont(ofSize: 15)
-        cell.textLabel?.text = text
-        
+        cell.textLabel?.font  = UIFont.my_systemFont(ofSize: 18)
+        cell.textLabel?.text = dataArr["Title"]
+        cell.accessoryType = dataArr["Desc"]! == "1" ? .disclosureIndicator : .none
+        cell.detailTextLabel?.text = dataArr["Desc"]! == "2" ? Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String : ""
         return cell
     }
     
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dataArr = groupArr[indexPath.row]
+        switch dataArr["Target"]! {
+        case "profile":
+            performSegue(withIdentifier: R.segue.settingsController.showProfile, sender: nil)
+            break
+        case "feedback":
+            performSegue(withIdentifier: R.segue.settingsController.showFeedback, sender: nil)
+            break
+        case "useragreement":
+            performSegue(withIdentifier: R.segue.settingsController.showUserAgreement, sender: nil)
+            break
+        case "logout":
+            
         
+            break
+        default:()
+//            HexaHUD.show(with: "切换到\(dataArr["Title"]!)")
+        }
     }
     
 }

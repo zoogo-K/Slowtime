@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		6F1CF3181FF5F74B00030C81 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1CF3171FF5F74B00030C81 /* SettingsController.swift */; };
 		6F1CF31A1FF5FA9F00030C81 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F1CF3191FF5FA9F00030C81 /* settings.plist */; };
-		6F1CF31C1FF632D700030C81 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F1CF31B1FF632D700030C81 /* Default-568h@2x.png */; };
+		6F1D69221FFB5C6000FF5FA7 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D69211FFB5C6000FF5FA7 /* ProfileController.swift */; };
+		6F1D69241FFB5C7D00FF5FA7 /* FeedBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D69231FFB5C7D00FF5FA7 /* FeedBackController.swift */; };
+		6F1D69281FFB5DA000FF5FA7 /* AgreementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D69271FFB5DA000FF5FA7 /* AgreementController.swift */; };
 		6F2940EA1FF4D5DA00873A9A /* ReadMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940E91FF4D5DA00873A9A /* ReadMailController.swift */; };
 		6F2940EC1FF4E4BD00873A9A /* WriteMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */; };
 		6F2940EE1FF4EDBA00873A9A /* PackToSendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */; };
@@ -47,7 +49,9 @@
 /* Begin PBXFileReference section */
 		6F1CF3171FF5F74B00030C81 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		6F1CF3191FF5FA9F00030C81 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
-		6F1CF31B1FF632D700030C81 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6F1D69211FFB5C6000FF5FA7 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		6F1D69231FFB5C7D00FF5FA7 /* FeedBackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackController.swift; sourceTree = "<group>"; };
+		6F1D69271FFB5DA000FF5FA7 /* AgreementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementController.swift; sourceTree = "<group>"; };
 		6F2940E91FF4D5DA00873A9A /* ReadMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMailController.swift; sourceTree = "<group>"; };
 		6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMailController.swift; sourceTree = "<group>"; };
 		6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackToSendController.swift; sourceTree = "<group>"; };
@@ -113,8 +117,26 @@
 			children = (
 				6F1CF3191FF5FA9F00030C81 /* settings.plist */,
 				6F1CF3171FF5F74B00030C81 /* SettingsController.swift */,
+				6F1D69211FFB5C6000FF5FA7 /* ProfileController.swift */,
+				6F1D69231FFB5C7D00FF5FA7 /* FeedBackController.swift */,
+				6F1D69271FFB5DA000FF5FA7 /* AgreementController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		6F1D69051FFB3A9600FF5FA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6F1D690A1FFB3A9600FF5FA7 /* Alert */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6F1D690A1FFB3A9600FF5FA7 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		6F2940EF1FF5D99000873A9A /* Login */ = {
@@ -209,7 +231,6 @@
 		6FB8AEB71FF3B7DE009DA465 = {
 			isa = PBXGroup;
 			children = (
-				6F1CF31B1FF632D700030C81 /* Default-568h@2x.png */,
 				6FB8AEC21FF3B7DE009DA465 /* SlowTime */,
 				6FB8AEC11FF3B7DE009DA465 /* Products */,
 			);
@@ -234,6 +255,7 @@
 				6F887B561FF48E800097B640 /* Extension */,
 				6F887C441FF48F030097B640 /* Controllers */,
 				6F887C451FF48F0A0097B640 /* Model */,
+				6F1D69051FFB3A9600FF5FA7 /* Views */,
 				6FB8AECA1FF3B7DE009DA465 /* Assets.xcassets */,
 				6F887C581FF4C4680097B640 /* fzsx.ttf */,
 				6FB8AECC1FF3B7DE009DA465 /* LaunchScreen.storyboard */,
@@ -308,7 +330,6 @@
 				6FB8AECB1FF3B7DE009DA465 /* Assets.xcassets in Resources */,
 				6F2940F91FF5D9C100873A9A /* Login.storyboard in Resources */,
 				6F1CF31A1FF5FA9F00030C81 /* settings.plist in Resources */,
-				6F1CF31C1FF632D700030C81 /* Default-568h@2x.png in Resources */,
 				6FB8AEC91FF3B7DE009DA465 /* Mail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,14 +397,17 @@
 				6F887B501FF48E550097B640 /* Config.swift in Sources */,
 				6F887C491FF48F0A0097B640 /* RequestModel.swift in Sources */,
 				6F2940FF1FF5DA4500873A9A /* InformationController.swift in Sources */,
+				6F1D69281FFB5DA000FF5FA7 /* AgreementController.swift in Sources */,
 				6F2940EA1FF4D5DA00873A9A /* ReadMailController.swift in Sources */,
 				6F887B6E1FF48E810097B640 /* UIView+hexa.swift in Sources */,
 				6F887C571FF4AAA40097B640 /* WRNavigationBar.swift in Sources */,
 				6F887B481FF48E410097B640 /* Network+Moya+SwiftyJSON.swift in Sources */,
+				6F1D69241FFB5C7D00FF5FA7 /* FeedBackController.swift in Sources */,
 				6F887B6B1FF48E810097B640 /* UIImage+hexa.swift in Sources */,
 				6F887B6D1FF48E810097B640 /* UIDevice+hexa.swift in Sources */,
 				6F2940EC1FF4E4BD00873A9A /* WriteMailController.swift in Sources */,
 				6F887B681FF48E810097B640 /* UIColor+hexa.swift in Sources */,
+				6F1D69221FFB5C6000FF5FA7 /* ProfileController.swift in Sources */,
 				6F887B551FF48E740097B640 /* R.generated.swift in Sources */,
 				6F887C501FF48FF80097B640 /* Parseable.swift in Sources */,
 				6FB8AEC41FF3B7DE009DA465 /* AppDelegate.swift in Sources */,

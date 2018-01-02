@@ -73,10 +73,10 @@ class UserListController: BaseViewController {
         disAction()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.isHidden = true
+//    }
     
 }
 
@@ -94,8 +94,6 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.font = .my_systemFont(ofSize: 18)
         return cell
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.userListController.showMailList(segue: segue) {

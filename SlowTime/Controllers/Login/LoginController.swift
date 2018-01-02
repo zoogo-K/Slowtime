@@ -38,7 +38,7 @@ class LoginController: LoginBaseViewController {
     private var remainingSeconds: Int = 0 {
         willSet(newSeconds) {
             let seconds = newSeconds%60
-            getCodeButton.setTitle("重新发送 \(seconds)s", for: .selected)
+            getCodeButton.setTitle("重新发送 \(seconds)s", for: .normal)
         }
     }
     
@@ -69,7 +69,6 @@ class LoginController: LoginBaseViewController {
             .bind { [unowned self] in
                 self.remainingSeconds = 59
                 self.isCounting = !self.isCounting
-                self.getCodeButton.isSelected = true
             }
             .disposed(by: disposeBag)
         

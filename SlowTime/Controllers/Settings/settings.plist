@@ -6,41 +6,41 @@
 		<key>Title</key>
 		<string>修改资料</string>
 		<key>Desc</key>
-		<string></string>
+		<string>1</string>
 		<key>Target</key>
-		<string></string>
+		<string>profile</string>
 	</dict>
 	<dict>
 		<key>Title</key>
 		<string>意见反馈</string>
 		<key>Desc</key>
-		<string></string>
+		<string>1</string>
 		<key>Target</key>
-		<string></string>
+		<string>feedback</string>
 	</dict>
 	<dict>
 		<key>Title</key>
 		<string>用户协议</string>
 		<key>Desc</key>
-		<string></string>
+		<string>1</string>
 		<key>Target</key>
-		<string></string>
+		<string>useragreement</string>
 	</dict>
 	<dict>
 		<key>Title</key>
 		<string>关于</string>
 		<key>Desc</key>
-		<string></string>
+		<string>2</string>
 		<key>Target</key>
-		<string></string>
+		<string>about</string>
 	</dict>
 	<dict>
 		<key>Title</key>
 		<string>登出</string>
 		<key>Desc</key>
-		<string></string>
+		<string>0</string>
 		<key>Target</key>
-		<string></string>
+		<string>logout</string>
 	</dict>
 </array>
 </plist>

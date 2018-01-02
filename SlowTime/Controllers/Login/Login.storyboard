@@ -45,7 +45,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="TYg-UI-DF7">
                                 <rect key="frame" x="128" y="60" width="119" height="55.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记得早先年少时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KD4-LT-HZP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记得早先年少时" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KD4-LT-HZP">
                                         <rect key="frame" x="0.0" y="0.0" width="119" height="18.5"/>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -57,7 +57,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="说一句 是一句" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCG-2i-ets">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="说一句 是一句" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCG-2i-ets">
                                         <rect key="frame" x="0.0" y="37" width="119" height="18.5"/>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -103,10 +103,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Puh-cI-yCy">
-                                <rect key="frame" x="280" y="305.5" width="75" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Puh-cI-yCy">
+                                <rect key="frame" x="255" y="305.5" width="100" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="mtQ-IY-reF"/>
+                                    <constraint firstAttribute="width" constant="100" id="mtQ-IY-reF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
                                 <state key="normal" title="获取验证码">
@@ -117,7 +117,7 @@
                                 </state>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIS-72-bia">
-                                <rect key="frame" x="20" y="298" width="244" height="44"/>
+                                <rect key="frame" x="20" y="298" width="219" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="19I-xy-xAe"/>
                                 </constraints>
