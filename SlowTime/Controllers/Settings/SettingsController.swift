@@ -24,7 +24,7 @@ class SettingsController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "设置"
+        navBar.title = "设置"
         
     }
     

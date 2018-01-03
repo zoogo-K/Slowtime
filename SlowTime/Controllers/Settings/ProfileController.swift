@@ -13,8 +13,7 @@ class ProfileController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        title = "修改资料"
+        navBar.title = "修改资料"
         // Do any additional setup after loading the view.
     }
 

@@ -37,10 +37,10 @@ class MailListController: BaseViewController {
             .disposed(by: disposeBag)
     }  
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.isHidden = false
+//    }
     
 }
 

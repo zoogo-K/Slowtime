@@ -25,6 +25,7 @@ class UserListController: BaseViewController {
         $0.setTitle("加载信件", for: .refreshing)
         $0.stateLabel.font = .my_systemFont(ofSize: 15)
         $0.stateLabel.textColor = .white
+        $0.activityIndicatorViewStyle = .white
         $0.lastUpdatedTimeLabel.isHidden = true
         $0.backgroundColor = .clear
         return $0
@@ -38,6 +39,13 @@ class UserListController: BaseViewController {
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
         tableview.mj_header = header
         
+        navBar.barBackgroundImage = UIImage(color: .clear)
+        navBar.backgroundColor = .clear
+        
+        navBar.wr_setRightButton(image: RI.setting()!)
+        navBar.onClickRightButton = { [weak self] in
+            self?.performSegue(withIdentifier: R.segue.userListController.showSettings, sender: nil)
+        }
         request()
     }
     
@@ -74,12 +82,6 @@ class UserListController: BaseViewController {
     @IBAction func showSettings(_ sender: Any) {
         disAction()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.isHidden = true
-//    }
-    
 }
 
 // Mark: delagate,datasouce
