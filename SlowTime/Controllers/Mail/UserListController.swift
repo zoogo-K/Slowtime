@@ -110,10 +110,11 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: "userList", for: indexPath)
+        let cell = tableview.dequeueReusableCell(withIdentifier: "userList", for: indexPath) as! UserListCell
+        cell.titleLbl.isHidden = indexPath.row < friends?.count ?? 0 ? false : true
+        cell.youchuoImg.isHidden = indexPath.row < friends?.count ?? 0 ? false : true
         if indexPath.row < friends?.count ?? 0 {
-            cell.textLabel!.text = friends![indexPath.row].nickname
-            cell.textLabel?.font = .my_systemFont(ofSize: 18)
+            cell.friend = friends![indexPath.row]
         }
         return cell
     }
@@ -121,15 +122,14 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.userListController.showMailList(segue: segue) {
             let indexPath = sender as! IndexPath
-            mailList.destination.navBar.title = tableview.cellForRow(at: indexPath)?.textLabel?.text
+            mailList.destination.navBar.title = friends![indexPath.row].nickname
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row < friends?.count ?? 0 {
-
+            performSegue(withIdentifier: R.segue.userListController.showMailList, sender: indexPath)
         }
-        performSegue(withIdentifier: R.segue.userListController.showMailList, sender: indexPath)
     }
 }
 

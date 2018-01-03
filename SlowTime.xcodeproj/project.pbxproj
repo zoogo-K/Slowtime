@@ -48,6 +48,8 @@
 		6FDDF5E11FFC8A4E008D7C1D /* HexaGlobalAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDF5DF1FFC8A4E008D7C1D /* HexaGlobalAlert.swift */; };
 		6FDDF5E21FFC8A4E008D7C1D /* HexaAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDF5E01FFC8A4E008D7C1D /* HexaAlert.swift */; };
 		6FDDF5E41FFC8BE4008D7C1D /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDF5E31FFC8BE3008D7C1D /* AnimatedTextField.swift */; };
+		6FDDF5E71FFCFAC0008D7C1D /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDF5E61FFCFAC0008D7C1D /* UserListCell.swift */; };
+		6FDDF5E91FFD00F3008D7C1D /* MailListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDF5E81FFD00F3008D7C1D /* MailListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		6FDDF5DF1FFC8A4E008D7C1D /* HexaGlobalAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexaGlobalAlert.swift; sourceTree = "<group>"; };
 		6FDDF5E01FFC8A4E008D7C1D /* HexaAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexaAlert.swift; sourceTree = "<group>"; };
 		6FDDF5E31FFC8BE3008D7C1D /* AnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
+		6FDDF5E61FFCFAC0008D7C1D /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
+		6FDDF5E81FFD00F3008D7C1D /* MailListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 		6F1D69051FFB3A9600FF5FA7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6FDDF5E51FFCFA96008D7C1D /* Mail */,
 				6F1D690A1FFB3A9600FF5FA7 /* Alert */,
 			);
 			path = Views;
@@ -274,6 +279,15 @@
 				6FB8AECF1FF3B7DE009DA465 /* Info.plist */,
 			);
 			path = SlowTime;
+			sourceTree = "<group>";
+		};
+		6FDDF5E51FFCFA96008D7C1D /* Mail */ = {
+			isa = PBXGroup;
+			children = (
+				6FDDF5E61FFCFAC0008D7C1D /* UserListCell.swift */,
+				6FDDF5E81FFD00F3008D7C1D /* MailListCell.swift */,
+			);
+			path = Mail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,11 +436,13 @@
 				6F2940EC1FF4E4BD00873A9A /* WriteMailController.swift in Sources */,
 				6FDDF5E11FFC8A4E008D7C1D /* HexaGlobalAlert.swift in Sources */,
 				6F887B681FF48E810097B640 /* UIColor+hexa.swift in Sources */,
+				6FDDF5E71FFCFAC0008D7C1D /* UserListCell.swift in Sources */,
 				6F1D69221FFB5C6000FF5FA7 /* ProfileController.swift in Sources */,
 				6F887B551FF48E740097B640 /* R.generated.swift in Sources */,
 				6F887C501FF48FF80097B640 /* Parseable.swift in Sources */,
 				6FB8AEC41FF3B7DE009DA465 /* AppDelegate.swift in Sources */,
 				6F2940EE1FF4EDBA00873A9A /* PackToSendController.swift in Sources */,
+				6FDDF5E91FFD00F3008D7C1D /* MailListCell.swift in Sources */,
 				6FDDF5E21FFC8A4E008D7C1D /* HexaAlert.swift in Sources */,
 				6F1CF3181FF5F74B00030C81 /* SettingsController.swift in Sources */,
 				6F887B511FF48E550097B640 /* RegexHelper.swift in Sources */,

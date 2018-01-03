@@ -48,19 +48,8 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: "mailList", for: indexPath)
-
-        cell.contentView.subviews.forEach { (view) in
-            switch view.tag {
-            case 2018:
-                (view as! UILabel).text = mails![indexPath.row].abstract
-            case 2019:                
-                (view as! UILabel).text = mails![indexPath.row].createTime
-            default:
-                view.isHidden = mails![indexPath.row].isRead! ? true : false
-            }
-            
-        }
+        let cell = tableview.dequeueReusableCell(withIdentifier: "mailList", for: indexPath) as! MailListCell
+        cell.listMail = mails![indexPath.row]
         
         return cell
     }

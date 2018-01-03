@@ -20,7 +20,12 @@ class ProfileController: BaseViewController {
         }
         
         
-        // Do any additional setup after loading the view.
+        view.rx.sentMessage(#selector(touchesBegan(_:with:)))
+            .bind { [unowned self] (_) in
+                _ = self.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+    
     }
 
     override func didReceiveMemoryWarning() {
