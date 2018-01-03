@@ -41,7 +41,7 @@ class UserListController: BaseViewController {
         
         navBar.barBackgroundImage = UIImage(color: .clear)
         navBar.backgroundColor = .clear
-        
+        navBar.wr_setBottomLineHidden(hidden: true)
         navBar.wr_setRightButton(image: RI.setting()!)
         navBar.onClickRightButton = { [weak self] in
             self?.performSegue(withIdentifier: R.segue.userListController.showSettings, sender: nil)
@@ -70,6 +70,12 @@ class UserListController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        
+    }
     
     
     // 顶部刷新
