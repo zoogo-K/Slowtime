@@ -77,13 +77,15 @@ extension Friend: Parseable {
 
 
 public struct Mail {
+    public var id: String?
     public var abstract: String?
     public var isRead: Bool?
     public var emailType: Int?
     public var createTime: String?
     
     
-    public init(abstract: String? = nil, isRead: Bool? = false, emailType: Int? = 0, createTime: String? = nil) {
+    public init(id: String? = nil, abstract: String? = nil, isRead: Bool? = false, emailType: Int? = 0, createTime: String? = nil) {
+        self.id = id
         self.abstract = abstract
         self.isRead = isRead
         self.emailType = emailType
@@ -95,6 +97,7 @@ extension Mail: Parseable {
     public static var identifier: String = "mails"
     
     public init(json: JSON) {
+        id          <-      json["id"].stringValue
         abstract    <-      json["abstract"].stringValue
         isRead      <-      json["isRead"].boolValue
         emailType   <-      json["emailType"].intValue

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class PackToSendController: BaseViewController {
+class PackToSendController: UIViewController {
     
     @IBOutlet weak var stampCollectionView: UICollectionView!
     
     @IBAction func disAction(_ sender: Any) {
-        disAction()
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

@@ -13,8 +13,12 @@ class WriteMailController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        navigationBarButtonItem(with: .right, selector: #selector(packToSend), title: "装入信封")
+        
+        
+        navBar.wr_setRightButton(title: "装入信封", titleColor: .black)
+        navBar.onClickRightButton = { [weak self] in
+            self?.present(R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController"), animated: true, completion: nil)
+        }
 
     }
 
@@ -23,11 +27,7 @@ class WriteMailController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @objc func packToSend() {
-        present(R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController"), animated: true, completion: nil)
-    }
-    
+
 
     /*
     // MARK: - Navigation

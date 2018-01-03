@@ -70,13 +70,6 @@ class UserListController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        
-    }
-    
     
     // 顶部刷新
     @objc func headerRefresh(){
@@ -115,6 +108,9 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row < friends?.count ?? 0 {
+
+        }
         performSegue(withIdentifier: R.segue.userListController.showMailList, sender: indexPath)
     }
 }

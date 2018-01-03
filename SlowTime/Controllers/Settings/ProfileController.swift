@@ -14,6 +14,12 @@ class ProfileController: BaseViewController {
         super.viewDidLoad()
 
         navBar.title = "修改资料"
+        navBar.wr_setRightButton(title: "修改", titleColor: .black)
+        navBar.onClickRightButton = { [weak self] in
+
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
 

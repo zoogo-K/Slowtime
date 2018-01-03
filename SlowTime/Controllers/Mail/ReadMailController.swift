@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Moya
 
 class ReadMailController: BaseViewController {
     
     var emailType: EmailType = .inBox
     
+    var mailId: String = ""
     
     enum EmailType {
         case inBox
@@ -22,8 +24,29 @@ class ReadMailController: BaseViewController {
         super.viewDidLoad()
 
         if emailType == .inBox {
-            navigationBarButtonItem(with: .right, selector: #selector(showWrite), title: "写回信")
+            navBar.wr_setRightButton(title: "写回信", titleColor: .black)
+            navBar.onClickRightButton = { [weak self] in
+                self?.performSegue(withIdentifier: R.segue.readMailController.showWrite, sender: nil)
+            }
         }
+        
+//        let provider = MoyaProvider<Request>()
+//        provider.rx.request(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
+//            .asObservable()
+//            .mapJSON()
+//            .filterSuccessfulCode()
+//            .flatMap(to: Mail.self)
+//            .subscribe { [weak self] (event) in
+//                if case .next(let mails) = event {
+//                    self?.mails = mails
+//                    DispatchQueue.main.async {
+//                        self?.tableview.reloadData()
+//                    }
+//                }else if case .error = event {
+//                    DLog("请求超时")
+//                }
+//            }
+//            .disposed(by: disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,9 +55,6 @@ class ReadMailController: BaseViewController {
     }
     
 
-    @objc func showWrite() {
-        performSegue(withIdentifier: R.segue.readMailController.showWrite, sender: nil)
-    }
     /*
     // MARK: - Navigation
 

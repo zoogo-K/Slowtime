@@ -37,11 +37,6 @@ class MailListController: BaseViewController {
             .disposed(by: disposeBag)
     }  
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.isHidden = false
-//    }
-    
 }
 
 // Mark: delagate,datasouce
@@ -73,7 +68,13 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: R.segue.mailListController.showGetMail, sender: mails![indexPath.row].id)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let mailList = R.segue.mailListController.showGetMail(segue: segue) {
+            mailList.destination.mailId = sender as! String
+        }
     }
     
     
