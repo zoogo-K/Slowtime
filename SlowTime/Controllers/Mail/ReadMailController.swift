@@ -31,7 +31,7 @@ class ReadMailController: BaseViewController {
         }
         
 //        let provider = MoyaProvider<Request>()
-//        provider.rx.request(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
+//        provider.rx.requestWithLoading(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
 //            .asObservable()
 //            .mapJSON()
 //            .filterSuccessfulCode()

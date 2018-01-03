@@ -27,6 +27,14 @@ class InformationController: LoginBaseViewController {
                 UIApplication.shared.keyWindow?.rootViewController = navigationController
             }
             .disposed(by: disposeBag)
+        
+        
+        view.rx.sentMessage(#selector(touchesBegan(_:with:)))
+            .bind { [unowned self] (_) in
+                _ = self.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
 }

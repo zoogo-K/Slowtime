@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import Moya
+import RxSwift
 
 class PackToSendController: UIViewController {
+    
+    private var stamps: [Stamp]?
+    
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var stampCollectionView: UICollectionView!
     
@@ -19,7 +25,26 @@ class PackToSendController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
+        let provider = MoyaProvider<Request>()
+        provider.rx.requestWithLoading(.friends)
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .flatMap(to: Stamp.self)
+            .subscribe { [weak self] (event) in
+                if case .next(let stamps) = event {
+                    self?.stamps = stamps
+                    DispatchQueue.main.async {
+                        self?.stampCollectionView.reloadData()
+                    }
+                }else if case .error = event {
+                    DLog("请求超时")
+                }
+            }
+            .disposed(by: disposeBag)
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +73,6 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stampCell", for: indexPath)
         
 
-        
         if indexPath.row == 1 {
             cell.contentView.backgroundColor = UIColor(patternImage: RI.add_stamp()!)
         }else {

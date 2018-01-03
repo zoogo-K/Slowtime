@@ -91,8 +91,7 @@ class LoginController: LoginBaseViewController {
         
         view.rx.sentMessage(#selector(touchesBegan(_:with:)))
             .bind { [unowned self] (_) in
-                _ = self.phoneTextField.resignFirstResponder()
-                _ = self.codeTextField.resignFirstResponder()
+                _ = self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
     }

@@ -8,3 +8,4 @@ github "Moya/Moya"
 github "SwiftyJSON/SwiftyJSON"
 github "CoderMJLee/MJRefresh"
 github "pkluz/PKHUD" ~> 4.0
+github "onevcat/Kingfisher"

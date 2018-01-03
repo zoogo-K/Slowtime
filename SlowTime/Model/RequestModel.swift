@@ -106,4 +106,26 @@ extension Mail: Parseable {
 }
 
 
+public struct Stamp {
+    public var stampId: String?
+    public var count: Int?
+    public var icon: String?
+    
+    public init(stampId: String? = nil, count: Int? = 0, icon: String? = nil) {
+        self.stampId = stampId
+        self.count = count
+        self.icon = icon
+    }
+}
+
+extension Stamp: Parseable {
+    public static var identifier: String = "stamps"
+    
+    public init(json: JSON) {
+        stampId         <-      json["stampId"].stringValue
+        count           <-      json["count"].intValue
+        icon            <-      json["icon"].stringValue
+    }
+}
+
 

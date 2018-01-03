@@ -51,7 +51,7 @@ class UserListController: BaseViewController {
     
     private func request() {
         let provider = MoyaProvider<Request>()
-        provider.rx.request(.friends)
+        provider.rx.requestWithLoading(.friends)
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
@@ -103,7 +103,7 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.userListController.showMailList(segue: segue) {
             let indexPath = sender as! IndexPath
-            mailList.destination.title = tableview.cellForRow(at: indexPath)?.textLabel?.text
+            mailList.destination.navBar.title = tableview.cellForRow(at: indexPath)?.textLabel?.text
         }
     }
     

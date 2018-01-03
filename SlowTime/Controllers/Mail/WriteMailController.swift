@@ -7,36 +7,60 @@
 //
 
 import UIKit
+import Moya
 
 class WriteMailController: BaseViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         
         navBar.wr_setRightButton(title: "装入信封", titleColor: .black)
-        navBar.onClickRightButton = { [weak self] in
-            self?.present(R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController"), animated: true, completion: nil)
+        navBar.onClickLeftButton = { [weak self] in
+            self?.saveMail()
         }
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        navBar.onClickRightButton = { [weak self] in
+            self?.saveMail(isPop: false)
+        }
+        
+        
+        
+        view.rx.sentMessage(#selector(touchesBegan(_:with:)))
+            .bind { [unowned self] (_) in
+                _ = self.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //离开此页则算保存邮件
+    fileprivate func saveMail(isPop: Bool? = true) {
+        let provider = MoyaProvider<Request>()
+        provider.rx.request(.writeMail(toUser: "08c1d80272c14f8ba619e41e54285", content: "content"))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .bind(onNext: { [weak self] (json) in
+                DLog(json)
+                if isPop! {
+                    self?.popAction()
+                }else {
+                    self?.present(R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController"), animated: true, completion: nil)
+                }
+            })
+            .disposed(by: disposeBag)
     }
-    */
-
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

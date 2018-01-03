@@ -19,7 +19,7 @@ class MailListController: BaseViewController {
         super.viewDidLoad()
       
         let provider = MoyaProvider<Request>()
-        provider.rx.request(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
+        provider.rx.requestWithLoading(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
@@ -54,7 +54,7 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
             switch view.tag {
             case 2018:
                 (view as! UILabel).text = mails![indexPath.row].abstract
-            case 2019:
+            case 2019:                
                 (view as! UILabel).text = mails![indexPath.row].createTime
             default:
                 view.isHidden = mails![indexPath.row].isRead! ? true : false
@@ -74,6 +74,7 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.mailListController.showGetMail(segue: segue) {
             mailList.destination.mailId = sender as! String
+            mailList.destination.navBar.title = navBar.title
         }
     }
     
@@ -83,8 +84,16 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-
-        
+        if editingStyle == .delete {
+            let alert = HexaGlobalAlert(title: "删除后将无法再恢复,少年要想好~")
+            let confirmAction = AlertOption(title: "我想好了", type: .normal, action: { [weak self] in
+                self?.disAction()
+                //删除 并刷新。
+            })
+            let cancelAction = AlertOption(title: "我再想想", type: .cancel, action: nil)
+            alert.addAlertOptions([confirmAction, cancelAction])
+            alert.show()
+        }
     }
     
 }
