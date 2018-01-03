@@ -88,14 +88,16 @@ class UserListController: BaseViewController {
 extension UserListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends?.count ?? 0
+        return max(friends?.count ?? 0, 9)
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "userList", for: indexPath)
-        cell.textLabel!.text = friends![indexPath.row].nickname
-        cell.textLabel?.font = .my_systemFont(ofSize: 18)
+        if indexPath.row < friends?.count ?? 0 {
+            cell.textLabel!.text = friends![indexPath.row].nickname
+            cell.textLabel?.font = .my_systemFont(ofSize: 18)
+        }
         return cell
     }
     
