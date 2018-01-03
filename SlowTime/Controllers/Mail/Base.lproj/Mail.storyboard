@@ -45,22 +45,52 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov3-WZ-wD2">
-                                <rect key="frame" x="0.0" y="459" width="375" height="208"/>
+                                <rect key="frame" x="0.0" y="634" width="375" height="220"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted_line" translatesAutoresizingMaskIntoConstraints="NO" id="FuO-nd-goX">
-                                        <rect key="frame" x="12" y="0.0" width="350" height="208"/>
+                                        <rect key="frame" x="12" y="12" width="350" height="208"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-V2-aYH">
-                                        <rect key="frame" x="176" y="6" width="22" height="12"/>
-                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="js4-ym-Pee">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="H67-5x-2zZ"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_arrow_up"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M40-0I-cZh">
+                                        <rect key="frame" x="147" y="172" width="81" height="34"/>
+                                        <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="SGr-1z-1rr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
+                                        <state key="normal" title="写封信给TA">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj2-it-3tG">
+                                        <rect key="frame" x="22" y="42" width="331" height="122"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="FuO-nd-goX" firstAttribute="centerX" secondItem="ov3-WZ-wD2" secondAttribute="centerX" id="0yo-gt-p7g"/>
-                                    <constraint firstItem="2GJ-V2-aYH" firstAttribute="centerX" secondItem="FuO-nd-goX" secondAttribute="centerX" id="Gvw-FS-cMg"/>
-                                    <constraint firstAttribute="height" constant="208" id="HZV-gh-teb"/>
-                                    <constraint firstItem="2GJ-V2-aYH" firstAttribute="top" secondItem="ov3-WZ-wD2" secondAttribute="top" constant="6" id="SFh-hK-gtX"/>
+                                    <constraint firstItem="js4-ym-Pee" firstAttribute="top" secondItem="ov3-WZ-wD2" secondAttribute="top" id="62f-NE-NWI"/>
+                                    <constraint firstItem="uj2-it-3tG" firstAttribute="leading" secondItem="ov3-WZ-wD2" secondAttribute="leading" constant="22" id="CDQ-60-JQ5"/>
+                                    <constraint firstItem="uj2-it-3tG" firstAttribute="top" secondItem="ov3-WZ-wD2" secondAttribute="top" constant="42" id="EP9-d0-jmZ"/>
+                                    <constraint firstAttribute="height" constant="220" id="HZV-gh-teb"/>
+                                    <constraint firstAttribute="bottom" secondItem="M40-0I-cZh" secondAttribute="bottom" constant="14" id="Jz2-1J-yHy"/>
+                                    <constraint firstItem="M40-0I-cZh" firstAttribute="top" secondItem="uj2-it-3tG" secondAttribute="bottom" constant="8" symbolic="YES" id="fPf-rn-KiM"/>
+                                    <constraint firstItem="uj2-it-3tG" firstAttribute="centerX" secondItem="ov3-WZ-wD2" secondAttribute="centerX" id="jUP-H9-meP"/>
+                                    <constraint firstItem="js4-ym-Pee" firstAttribute="leading" secondItem="ov3-WZ-wD2" secondAttribute="leading" id="mWB-Z1-H7d"/>
+                                    <constraint firstItem="M40-0I-cZh" firstAttribute="centerX" secondItem="ov3-WZ-wD2" secondAttribute="centerX" id="o2V-Yr-XbI"/>
                                     <constraint firstAttribute="bottom" secondItem="FuO-nd-goX" secondAttribute="bottom" id="o7Y-MZ-7C2"/>
+                                    <constraint firstAttribute="trailing" secondItem="js4-ym-Pee" secondAttribute="trailing" id="zhx-XS-evM"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -72,7 +102,7 @@
                             <constraint firstItem="bYK-LQ-P8P" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="154" id="dFZ-EL-Xb0"/>
                             <constraint firstItem="PTx-OX-zYo" firstAttribute="trailing" secondItem="bYK-LQ-P8P" secondAttribute="trailing" id="foQ-F2-QSj"/>
                             <constraint firstItem="bYK-LQ-P8P" firstAttribute="leading" secondItem="PTx-OX-zYo" secondAttribute="leading" id="nw6-Mt-h4q"/>
-                            <constraint firstItem="PTx-OX-zYo" firstAttribute="bottom" secondItem="ov3-WZ-wD2" secondAttribute="bottom" id="t9M-Oy-8aG"/>
+                            <constraint firstItem="PTx-OX-zYo" firstAttribute="bottom" secondItem="ov3-WZ-wD2" secondAttribute="bottom" constant="-187" id="t9M-Oy-8aG"/>
                             <constraint firstItem="ov3-WZ-wD2" firstAttribute="trailing" secondItem="PTx-OX-zYo" secondAttribute="trailing" id="uSS-So-GYC"/>
                             <constraint firstItem="ov3-WZ-wD2" firstAttribute="leading" secondItem="PTx-OX-zYo" secondAttribute="leading" id="xGN-WV-eIv"/>
                         </constraints>
@@ -80,7 +110,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="iwf-nu-5Qf"/>
                     <connections>
+                        <outlet property="dottBtn" destination="js4-ym-Pee" id="k4G-k6-2LI"/>
                         <outlet property="tableview" destination="bYK-LQ-P8P" id="lky-8y-ZOx"/>
+                        <outlet property="viewbottomCon" destination="t9M-Oy-8aG" id="bfN-bR-meW"/>
                         <segue destination="4dM-wL-GPg" kind="show" identifier="showMailList" id="WeU-I9-x5Y"/>
                         <segue destination="uv9-Bs-eAA" kind="show" identifier="showSettings" id="3A1-Zd-YxP"/>
                     </connections>
@@ -280,20 +312,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YND-wr-Tq9">
-                                <rect key="frame" x="15" y="123" width="345" height="449"/>
+                                <rect key="frame" x="15" y="132" width="345" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AA：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4W-mY-CgI">
-                                <rect key="frame" x="15" y="70" width="41.5" height="18.5"/>
+                                <rect key="frame" x="15" y="79" width="41.5" height="18.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你好！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veg-uK-sOD">
-                                <rect key="frame" x="15" y="96.5" width="51" height="18.5"/>
+                                <rect key="frame" x="15" y="105.5" width="51" height="18.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -324,7 +356,7 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="M4W-mY-CgI" secondAttribute="trailing" constant="20" symbolic="YES" id="cXc-AA-NRS"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Veg-uK-sOD" secondAttribute="trailing" constant="20" symbolic="YES" id="dRI-1y-xqm"/>
                             <constraint firstItem="cXN-n2-1ZY" firstAttribute="top" secondItem="oXt-qV-fvm" secondAttribute="bottom" constant="8" id="edR-ub-tc0"/>
-                            <constraint firstItem="M4W-mY-CgI" firstAttribute="top" secondItem="3fH-9r-7zj" secondAttribute="top" constant="50" id="iFe-0K-KUs"/>
+                            <constraint firstItem="M4W-mY-CgI" firstAttribute="top" secondItem="3fH-9r-7zj" secondAttribute="top" constant="59" id="iFe-0K-KUs"/>
                             <constraint firstItem="Veg-uK-sOD" firstAttribute="leading" secondItem="M4W-mY-CgI" secondAttribute="leading" id="nxI-eg-JYk"/>
                             <constraint firstItem="YND-wr-Tq9" firstAttribute="leading" secondItem="3fH-9r-7zj" secondAttribute="leading" constant="15" id="oKg-p0-Xf3"/>
                             <constraint firstItem="oXt-qV-fvm" firstAttribute="top" secondItem="YND-wr-Tq9" secondAttribute="bottom" constant="30" id="v7m-Ze-oTu"/>
@@ -670,7 +702,7 @@
         <image name="cha" width="15" height="15"/>
         <image name="dotted_line" width="350" height="208"/>
         <image name="envelope" width="300" height="247"/>
-        <image name="icon_arrow_down" width="22" height="12"/>
+        <image name="icon_arrow_up" width="22" height="12"/>
         <image name="long" width="375" height="403"/>
         <image name="mailImg" width="208" height="161"/>
         <image name="yinzhang" width="26" height="28"/>

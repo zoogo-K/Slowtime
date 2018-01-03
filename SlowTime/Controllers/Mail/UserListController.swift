@@ -9,8 +9,15 @@
 import UIKit
 import MJRefresh
 import Moya
+import RxSwift
 
 class UserListController: BaseViewController {
+    
+    @IBOutlet weak var dottBtn: UIButton!
+    
+    private var dottOpen: Bool = false
+    
+    @IBOutlet weak var viewbottomCon: NSLayoutConstraint!
     
     @IBOutlet weak var tableview: UITableView! {
         didSet {
@@ -46,6 +53,21 @@ class UserListController: BaseViewController {
         navBar.onClickRightButton = { [weak self] in
             self?.performSegue(withIdentifier: R.segue.userListController.showSettings, sender: nil)
         }
+        
+        
+        dottBtn.rx.tap
+            .throttle(1, scheduler: MainScheduler.instance)
+            .bind { [unowned self] in
+                self.viewbottomCon.constant = self.dottOpen ? -187 : 0
+                self.dottBtn.setImage(self.dottOpen ? RI.icon_arrow_up() : RI.icon_arrow_down(), for: .normal)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: { (b) in
+                    self.dottOpen = !self.dottOpen
+                })
+            }
+            .disposed(by: disposeBag)
+        
         request()
     }
     
@@ -76,10 +98,6 @@ class UserListController: BaseViewController {
         print("下拉刷新")
         // 结束刷新
         request()
-    }
-    
-    @IBAction func showSettings(_ sender: Any) {
-        disAction()
     }
 }
 

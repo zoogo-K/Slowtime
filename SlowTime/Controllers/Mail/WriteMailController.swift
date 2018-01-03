@@ -44,6 +44,7 @@ class WriteMailController: BaseViewController {
             .subscribe { [weak self] (event) in
                 if isPop! {
                     // 为何animated为true 就会pop两次
+//                    self?.wr_toLastViewController(animated: true)
                     self?.navigationController?.popViewController(animated: false)
                 }else {
                     self?.present(R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController"), animated: true, completion: nil)
