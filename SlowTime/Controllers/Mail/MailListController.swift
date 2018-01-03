@@ -13,7 +13,7 @@ class MailListController: BaseViewController {
     
     @IBOutlet weak var tableview: UITableView!
    
-    private var mails: [Mail]?
+    private var mails: [ListMail]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class MailListController: BaseViewController {
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
-            .flatMap(to: Mail.self)
+            .flatMap(to: ListMail.self)
             .subscribe { [weak self] (event) in
                 if case .next(let mails) = event {
                     self?.mails = mails

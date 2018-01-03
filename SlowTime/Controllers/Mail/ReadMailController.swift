@@ -8,8 +8,17 @@
 
 import UIKit
 import Moya
+import PKHUD
 
 class ReadMailController: BaseViewController {
+    
+    @IBOutlet weak var toUserName: UILabel!
+    
+    @IBOutlet weak var createTime: UILabel!
+    
+    @IBOutlet weak var fromUserName: UILabel!
+    
+    @IBOutlet weak var mailContent: UILabel!
     
     var emailType: EmailType = .inBox
     
@@ -30,23 +39,23 @@ class ReadMailController: BaseViewController {
             }
         }
         
-//        let provider = MoyaProvider<Request>()
-//        provider.rx.requestWithLoading(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
-//            .asObservable()
-//            .mapJSON()
-//            .filterSuccessfulCode()
-//            .flatMap(to: Mail.self)
-//            .subscribe { [weak self] (event) in
-//                if case .next(let mails) = event {
-//                    self?.mails = mails
-//                    DispatchQueue.main.async {
-//                        self?.tableview.reloadData()
-//                    }
-//                }else if case .error = event {
-//                    DLog("请求超时")
-//                }
-//            }
-//            .disposed(by: disposeBag)
+        let provider = MoyaProvider<Request>()
+        provider.rx.requestWithLoading(.getMail(mailId: mailId))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .filterObject(to: Mail.self)
+            .subscribe { [weak self] (event) in
+                if case .next(let mail) = event {
+                    self?.toUserName.text = mail.toUser?.nickname
+                    self?.fromUserName.text = mail.fromUser?.nickname
+                    self?.mailContent.text = mail.content
+                    self?.createTime.text = mail.createTime
+                }else if case .error = event {
+                    HUD.flash(.label("请求失败！"), delay: 1.0)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-public struct User {
+public struct User: Parseable {
     public var id: Int?
     public var nickname: String?
     public var phoneNumber: String?
@@ -19,19 +19,7 @@ public struct User {
     public var createTime: String?
     public var updateTime: String?
     
-    public init(id: Int? = 0, nickname: String? = nil, phoneNumber: String? = nil, userHash: String? = nil, profile: String? = nil, accessToken: String? = nil, createTime: String? = nil, updateTime: String? = nil) {
-        self.id = id
-        self.nickname = nickname
-        self.phoneNumber = phoneNumber
-        self.userHash = userHash
-        self.profile = profile
-        self.accessToken = accessToken
-        self.createTime = createTime
-        self.updateTime = updateTime
-    }
-}
 
-extension User: Parseable {
     public static var identifier: String = "user"
     
     public init(json: JSON) {
@@ -49,22 +37,12 @@ extension User: Parseable {
 
 
 
-public struct Friend {
+public struct Friend: Parseable {
     public var nickname: String?
     public var userHash: String?
     public var profile: String?
     public var hasNewMail: Bool?
 
-    
-    public init(nickname: String? = nil, userHash: String? = nil, profile: String? = nil, hasNewMail: Bool? = false) {
-        self.nickname = nickname
-        self.userHash = userHash
-        self.profile = profile
-        self.hasNewMail = hasNewMail
-    }
-}
-
-extension Friend: Parseable {
     public static var identifier: String = "users"
     
     public init(json: JSON) {
@@ -76,24 +54,13 @@ extension Friend: Parseable {
 }
 
 
-public struct Mail {
+public struct ListMail: Parseable {
     public var id: String?
     public var abstract: String?
     public var isRead: Bool?
     public var emailType: Int?
     public var createTime: String?
     
-    
-    public init(id: String? = nil, abstract: String? = nil, isRead: Bool? = false, emailType: Int? = 0, createTime: String? = nil) {
-        self.id = id
-        self.abstract = abstract
-        self.isRead = isRead
-        self.emailType = emailType
-        self.createTime = createTime
-    }
-}
-
-extension Mail: Parseable {
     public static var identifier: String = "mails"
     
     public init(json: JSON) {
@@ -106,19 +73,37 @@ extension Mail: Parseable {
 }
 
 
-public struct Stamp {
+
+
+public struct Mail: Parseable {
+    public var isRead: Bool?
+    public var content: String?
+    public var emailType: Int?
+    public var createTime: String?
+
+    public var fromUser: User?
+    public var toUser: User?
+
+    public static var identifier: String = "mail"
+
+    public init(json: JSON) {
+        isRead      <-      json["isRead"].boolValue
+        content     <-      json["content"].stringValue
+        emailType   <-      json["emailType"].intValue
+        createTime  <-      json["createTime"].stringValue
+        
+        fromUser    <-      User(json: json["fromUser"])
+        toUser      <-      User(json: json["toUser"])
+    }
+}
+
+
+
+public struct Stamp: Parseable {
     public var stampId: String?
     public var count: Int?
     public var icon: String?
     
-    public init(stampId: String? = nil, count: Int? = 0, icon: String? = nil) {
-        self.stampId = stampId
-        self.count = count
-        self.icon = icon
-    }
-}
-
-extension Stamp: Parseable {
     public static var identifier: String = "stamps"
     
     public init(json: JSON) {

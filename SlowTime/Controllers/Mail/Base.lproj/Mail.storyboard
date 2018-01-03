@@ -182,26 +182,62 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1m-40-e34">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="487"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoA-Kh-yTm">
-                                                <rect key="frame" x="25" y="15" width="325" height="258.5"/>
-                                                <string key="text">清晨:\n你好！\n    我们虽然没有见过面，但常言说：有朋自\n远方来，不亦乐乎。朋友是人生必不可少的\n一部分。俗话说：在家靠父母，出门靠朋友。\n希望这薄薄的纸带着厚厚友谊的交友信能架\n起我和你之间的友谊之桥！\n    在我们山西，醋是赫赫有名的。吃饺子的\n时候蘸上醋，口感非常好。在清徐清都广场还\n有罗贯中的雕像，我为山西出了这么好的作家\n而高兴，骄傲，自豪！人生最美好的时光就是\n青春的年华，最珍贵的典藏就是情谊，即使岁\n月不停的流逝，友情的背景却永远是春天！\n    祝你：生活愉快！</string>
+                                                <rect key="frame" x="25" y="67.5" width="325" height="240"/>
+                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你的朋友：CC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATf-F0-ns8">
+                                                <rect key="frame" x="250.5" y="337.5" width="109.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年3月28日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heW-ut-QZk">
+                                                <rect key="frame" x="237.5" y="364.5" width="122.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AA：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lY-Fl-KGZ">
+                                                <rect key="frame" x="15" y="15" width="41.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你好！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTu-aA-AnS">
+                                                <rect key="frame" x="15" y="41" width="51" height="18.5"/>
                                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yinzhang" translatesAutoresizingMaskIntoConstraints="NO" id="QcN-PU-i9r">
-                                                <rect key="frame" x="15" y="333.5" width="26" height="28"/>
+                                                <rect key="frame" x="15" y="443" width="26" height="28"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="KoA-Kh-yTm" firstAttribute="top" secondItem="w1m-40-e34" secondAttribute="top" constant="15" id="84j-pi-dil"/>
+                                            <constraint firstAttribute="bottom" secondItem="QcN-PU-i9r" secondAttribute="bottom" constant="16" id="1d7-gC-beW"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jTu-aA-AnS" secondAttribute="trailing" constant="20" symbolic="YES" id="6H5-eN-oIm"/>
+                                            <constraint firstItem="8lY-Fl-KGZ" firstAttribute="top" secondItem="w1m-40-e34" secondAttribute="top" constant="15" id="BYZ-TM-VWg"/>
                                             <constraint firstItem="KoA-Kh-yTm" firstAttribute="leading" secondItem="w1m-40-e34" secondAttribute="leading" constant="25" id="IJd-Hl-crz"/>
+                                            <constraint firstItem="jTu-aA-AnS" firstAttribute="top" secondItem="8lY-Fl-KGZ" secondAttribute="bottom" constant="8" id="JLY-bo-5ws"/>
+                                            <constraint firstItem="ATf-F0-ns8" firstAttribute="top" secondItem="KoA-Kh-yTm" secondAttribute="bottom" constant="30" id="JgV-yC-xdy"/>
                                             <constraint firstAttribute="trailing" secondItem="KoA-Kh-yTm" secondAttribute="trailing" constant="25" id="LlY-8A-h8A"/>
-                                            <constraint firstItem="QcN-PU-i9r" firstAttribute="top" secondItem="KoA-Kh-yTm" secondAttribute="bottom" constant="60" id="Who-sd-iF4"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8lY-Fl-KGZ" secondAttribute="trailing" constant="20" symbolic="YES" id="SJh-Jw-QGg"/>
+                                            <constraint firstItem="8lY-Fl-KGZ" firstAttribute="leading" secondItem="w1m-40-e34" secondAttribute="leading" constant="15" id="TLT-Wg-pDh"/>
+                                            <constraint firstItem="heW-ut-QZk" firstAttribute="top" secondItem="ATf-F0-ns8" secondAttribute="bottom" constant="8" id="VoN-ML-9sN"/>
+                                            <constraint firstItem="ATf-F0-ns8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w1m-40-e34" secondAttribute="leading" constant="20" symbolic="YES" id="aAo-kD-Xul"/>
+                                            <constraint firstItem="jTu-aA-AnS" firstAttribute="leading" secondItem="8lY-Fl-KGZ" secondAttribute="leading" id="dNv-fh-O1N"/>
+                                            <constraint firstItem="KoA-Kh-yTm" firstAttribute="top" secondItem="jTu-aA-AnS" secondAttribute="bottom" constant="8" id="h5M-8m-gaL"/>
+                                            <constraint firstItem="QcN-PU-i9r" firstAttribute="top" secondItem="heW-ut-QZk" secondAttribute="bottom" constant="60" id="jqc-3K-rEG"/>
+                                            <constraint firstItem="ATf-F0-ns8" firstAttribute="trailing" secondItem="heW-ut-QZk" secondAttribute="trailing" id="l7C-rN-foO"/>
+                                            <constraint firstItem="heW-ut-QZk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w1m-40-e34" secondAttribute="leading" constant="20" symbolic="YES" id="mIt-85-kDg"/>
                                             <constraint firstItem="QcN-PU-i9r" firstAttribute="leading" secondItem="w1m-40-e34" secondAttribute="leading" constant="15" id="pNu-hJ-wUH"/>
-                                            <constraint firstAttribute="height" constant="667" id="ytr-Uz-JQa"/>
+                                            <constraint firstAttribute="trailing" secondItem="ATf-F0-ns8" secondAttribute="trailing" constant="15" id="s3P-qK-13e"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -224,12 +260,16 @@
                         <viewLayoutGuide key="safeArea" id="iXP-oP-uRr"/>
                     </view>
                     <connections>
+                        <outlet property="createTime" destination="heW-ut-QZk" id="CzY-uz-Y5u"/>
+                        <outlet property="fromUserName" destination="ATf-F0-ns8" id="WXu-BR-JWO"/>
+                        <outlet property="mailContent" destination="KoA-Kh-yTm" id="fbM-H6-cii"/>
+                        <outlet property="toUserName" destination="8lY-Fl-KGZ" id="GFn-zE-5Jy"/>
                         <segue destination="BPC-BJ-dEe" kind="show" identifier="showWrite" id="6a2-AH-6mC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQ1-yp-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2602" y="-586"/>
+            <point key="canvasLocation" x="2600.8000000000002" y="-586.05697151424295"/>
         </scene>
         <!--Write Mail Controller-->
         <scene sceneID="pey-T0-d1V">

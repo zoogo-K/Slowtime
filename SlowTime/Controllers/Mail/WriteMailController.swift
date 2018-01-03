@@ -36,18 +36,19 @@ class WriteMailController: BaseViewController {
     //离开此页则算保存邮件
     fileprivate func saveMail(isPop: Bool? = true) {
         let provider = MoyaProvider<Request>()
-        provider.rx.request(.writeMail(toUser: "08c1d80272c14f8ba619e41e54285", content: "content"))
+        provider.rx.requestWithLoading(.writeMail(toUser: "08c1d80272c14f8ba619e41e54285", content: "content"))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
-            .bind(onNext: { [weak self] (json) in
-                DLog(json)
+            .filterObject(to: Mail.self)
+            .subscribe { [weak self] (event) in
                 if isPop! {
-                    self?.popAction()
+                    // 为何animated为true 就会pop两次
+                    self?.navigationController?.popViewController(animated: false)
                 }else {
                     self?.present(R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController"), animated: true, completion: nil)
                 }
-            })
+            }
             .disposed(by: disposeBag)
     }
     

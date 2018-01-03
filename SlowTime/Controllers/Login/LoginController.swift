@@ -117,7 +117,8 @@ class LoginController: LoginBaseViewController {
         
         //网络请求-验证码无误则跳转
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.login(phoneNumber: "13800138000", loginCode: "000000"))            .asObservable()
+        provider.rx.requestWithLoading(.login(phoneNumber: "13800138000", loginCode: "000000"))
+            .asObservable()
             .mapJSON()
             .filterSuccessfulCode({ (_, mess) in
                 HUD.flash(.label(mess), delay: 1.0)
