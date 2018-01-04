@@ -27,7 +27,7 @@ class PackToSendController: UIViewController {
 
 
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.friends)
+        provider.rx.requestWithLoading(.userStamp)
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
@@ -46,40 +46,16 @@ class PackToSendController: UIViewController {
     
     
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return stamps?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stampCell", for: indexPath)
-        
-
-        if indexPath.row == 1 {
-            cell.contentView.backgroundColor = UIColor(patternImage: RI.add_stamp()!)
-        }else {
-            cell.contentView.backgroundColor = UIColor(patternImage: RI.stamp()!)
-        }
-        
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stampCell", for: indexPath) as! MyStampCell
+        cell.stamp = stamps?[indexPath.row]
         return cell
     }
     

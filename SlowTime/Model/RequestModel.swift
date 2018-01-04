@@ -100,14 +100,14 @@ public struct Mail: Parseable {
 
 
 public struct Stamp: Parseable {
-    public var stampId: String?
+    public var id: String?
     public var count: Int?
     public var icon: String?
     
     public static var identifier: String = "stamps"
     
     public init(json: JSON) {
-        stampId         <-      json["stampId"].stringValue
+        id              <-      json["id"].stringValue
         count           <-      json["count"].intValue
         icon            <-      json["icon"].stringValue
     }

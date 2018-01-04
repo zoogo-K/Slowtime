@@ -72,7 +72,7 @@ extension Request: Moya.TargetType {
         case .stamps:
             return "/stamps"
         case .userStamp:
-            return "/stamp/user"
+            return "/stamps/user"
         }
     }
     
