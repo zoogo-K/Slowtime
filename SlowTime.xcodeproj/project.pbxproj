@@ -42,6 +42,8 @@
 		6F9FF5FA1FFDD886007D6DA8 /* MyStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FF5F91FFDD886007D6DA8 /* MyStampCell.swift */; };
 		6F9FF5FC1FFDE4F5007D6DA8 /* StampListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FF5FB1FFDE4F5007D6DA8 /* StampListController.swift */; };
 		6F9FF5FE1FFE0777007D6DA8 /* StampListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FF5FD1FFE0777007D6DA8 /* StampListCell.swift */; };
+		6F9FF6011FFE3071007D6DA8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9FF6001FFE3071007D6DA8 /* StoreKit.framework */; };
+		6F9FF6031FFF3798007D6DA8 /* MailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FF6021FFF3798007D6DA8 /* MailImageView.swift */; };
 		6FB8AEC41FF3B7DE009DA465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC31FF3B7DE009DA465 /* AppDelegate.swift */; };
 		6FB8AEC61FF3B7DE009DA465 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC51FF3B7DE009DA465 /* UserListController.swift */; };
 		6FB8AEC91FF3B7DE009DA465 /* Mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC71FF3B7DE009DA465 /* Mail.storyboard */; };
@@ -91,6 +93,8 @@
 		6F9FF5F91FFDD886007D6DA8 /* MyStampCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStampCell.swift; sourceTree = "<group>"; };
 		6F9FF5FB1FFDE4F5007D6DA8 /* StampListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampListController.swift; sourceTree = "<group>"; };
 		6F9FF5FD1FFE0777007D6DA8 /* StampListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampListCell.swift; sourceTree = "<group>"; };
+		6F9FF6001FFE3071007D6DA8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6F9FF6021FFF3798007D6DA8 /* MailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailImageView.swift; sourceTree = "<group>"; };
 		6FB8AEC01FF3B7DE009DA465 /* SlowTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlowTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB8AEC31FF3B7DE009DA465 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FB8AEC51FF3B7DE009DA465 /* UserListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F9FF6011FFE3071007D6DA8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,11 +257,20 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		6F9FF5FF1FFE3071007D6DA8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F9FF6001FFE3071007D6DA8 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6FB8AEB71FF3B7DE009DA465 = {
 			isa = PBXGroup;
 			children = (
 				6FB8AEC21FF3B7DE009DA465 /* SlowTime */,
 				6FB8AEC11FF3B7DE009DA465 /* Products */,
+				6F9FF5FF1FFE3071007D6DA8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -292,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				6FDDF5E61FFCFAC0008D7C1D /* UserListCell.swift */,
+				6F9FF6021FFF3798007D6DA8 /* MailImageView.swift */,
 				6FDDF5E81FFD00F3008D7C1D /* MailListCell.swift */,
 				6F9FF5F91FFDD886007D6DA8 /* MyStampCell.swift */,
 				6F9FF5FD1FFE0777007D6DA8 /* StampListCell.swift */,
@@ -334,6 +349,11 @@
 					6FB8AEBF1FF3B7DE009DA465 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -449,6 +469,7 @@
 				6FDDF5E11FFC8A4E008D7C1D /* HexaGlobalAlert.swift in Sources */,
 				6F887B681FF48E810097B640 /* UIColor+hexa.swift in Sources */,
 				6FDDF5E71FFCFAC0008D7C1D /* UserListCell.swift in Sources */,
+				6F9FF6031FFF3798007D6DA8 /* MailImageView.swift in Sources */,
 				6F1D69221FFB5C6000FF5FA7 /* ProfileController.swift in Sources */,
 				6F887B551FF48E740097B640 /* R.generated.swift in Sources */,
 				6F887C501FF48FF80097B640 /* Parseable.swift in Sources */,
@@ -607,7 +628,7 @@
 				INFOPLIST_FILE = SlowTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = a.SlowTime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqmapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -627,7 +648,7 @@
 				INFOPLIST_FILE = SlowTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = a.SlowTime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqmapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

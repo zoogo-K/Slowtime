@@ -9,8 +9,11 @@
 import UIKit
 import Moya
 import RxSwift
+import StoreKit
 
 class StampListController: UIViewController {
+    
+    @IBOutlet weak var payBtn: UIButton!
     
     private var stamps: [Stamp]?
     
@@ -24,6 +27,21 @@ class StampListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+//        let request = SKProductsRequest(productIdentifiers: ["1111"])
+//        request.delegate = self
+//        request.start()
+        
+        
+        
+        payBtn.rx.tap
+            .throttle(1, scheduler: MainScheduler.instance)
+            .bind { [unowned self] in
+                self.calculate()
+            }
+            .disposed(by: disposeBag)
         
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.stamps)
@@ -44,9 +62,21 @@ class StampListController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func calculate() {
+        
+        
+        for (i) in self.stamps! {
+            
+            DLog(i)
+            
+        }
+        
+        
+        let cell = stampListCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! StampListCell
+        
+        DLog(cell.stampCount.value)
+        
+        
     }
 }
 
@@ -58,11 +88,18 @@ extension StampListController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stampListCell", for: indexPath) as! StampListCell
         cell.stamp = stamps?[indexPath.row]
-        
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+}
+
+
+extension StampListController: SKProductsRequestDelegate {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        DLog(response.products)
+        DLog(response.invalidProductIdentifiers)
     }
+    
+    
+    
 }

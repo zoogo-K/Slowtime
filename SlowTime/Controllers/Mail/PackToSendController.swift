@@ -12,6 +12,15 @@ import RxSwift
 
 class PackToSendController: UIViewController {
     
+    @IBOutlet weak var mailImage: UIImageView!
+    @IBOutlet weak var enevlopeTopImg: UIImageView! {
+        didSet {
+            enevlopeTopImg.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
+        }
+    }
+    @IBOutlet weak var enevlopeBottomImg: UIImageView!
+
+    @IBOutlet weak var enevlopBTopCons: NSLayoutConstraint!
     private var stamps: [Stamp]?
     
     let disposeBag = DisposeBag()
@@ -24,7 +33,6 @@ class PackToSendController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.userStamp)
@@ -45,6 +53,18 @@ class PackToSendController: UIViewController {
             .disposed(by: disposeBag)
     
     
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.enevlopeTopImg.layer.transform = CATransform3DMakeRotation(CGFloat.pi/2, 1, 0, 0)
+        }){(finished) in
+            self.enevlopeTopImg.isHidden = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.enevlopBTopCons.constant = 190
+                self.view.layoutIfNeeded()
+            })
+        }
     }
 }
 

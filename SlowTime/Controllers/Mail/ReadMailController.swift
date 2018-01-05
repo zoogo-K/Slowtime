@@ -20,19 +20,15 @@ class ReadMailController: BaseViewController {
     
     @IBOutlet weak var mailContent: UILabel!
     
-    var emailType: EmailType = .inBox
+    var emailType: Int = 1
     
     var mailId: String = ""
     
-    enum EmailType {
-        case inBox
-        case outBox
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if emailType == .inBox {
+        if emailType == 1 {
             navBar.wr_setRightButton(title: "写回信", titleColor: .black)
             navBar.onClickRightButton = { [weak self] in
                 self?.performSegue(withIdentifier: R.segue.readMailController.showWrite, sender: nil)

@@ -413,6 +413,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailImg" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-A3-LYq">
+                                <rect key="frame" x="83" y="0.0" width="208" height="161"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXH-9O-Rav">
                                 <rect key="frame" x="325" y="32" width="30" height="30"/>
                                 <constraints>
@@ -424,11 +427,11 @@
                                     <action selector="disAction:" destination="d66-sx-b8k" eventType="touchUpInside" id="Ozl-QT-Xva"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-vE-fV4">
-                                <rect key="frame" x="37.5" y="200" width="300" height="247"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope_top" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-vE-fV4">
+                                <rect key="frame" x="37" y="241" width="300" height="81"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailImg" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-A3-LYq">
-                                <rect key="frame" x="83" y="0.0" width="208" height="161"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-a6-ef6">
+                                <rect key="frame" x="37" y="281" width="300" height="165"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2q-N2-bAW">
                                 <rect key="frame" x="0.0" y="527" width="375" height="140"/>
@@ -503,13 +506,19 @@
                             <constraint firstItem="eIr-vE-fV4" firstAttribute="centerX" secondItem="OQi-5c-h3E" secondAttribute="centerX" id="Gu5-X0-tc3"/>
                             <constraint firstAttribute="trailing" secondItem="BXH-9O-Rav" secondAttribute="trailing" constant="20" id="L2Q-sm-tuv"/>
                             <constraint firstItem="BXH-9O-Rav" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="32" id="MME-2K-ylW"/>
-                            <constraint firstItem="eIr-vE-fV4" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="200" id="Nh7-ZP-Zbp"/>
+                            <constraint firstItem="eIr-vE-fV4" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="241" id="Nh7-ZP-Zbp"/>
                             <constraint firstItem="ffo-A3-LYq" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" id="Vn9-3T-AqR"/>
                             <constraint firstItem="j2q-N2-bAW" firstAttribute="leading" secondItem="iZB-lp-Ec1" secondAttribute="leading" id="W0U-cf-Oew"/>
+                            <constraint firstItem="gyL-a6-ef6" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="281" id="WoG-yI-ahG"/>
+                            <constraint firstItem="gyL-a6-ef6" firstAttribute="centerX" secondItem="eIr-vE-fV4" secondAttribute="centerX" id="qt0-T9-a3W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OQi-5c-h3E"/>
                     </view>
                     <connections>
+                        <outlet property="enevlopBTopCons" destination="WoG-yI-ahG" id="I2W-6x-ur5"/>
+                        <outlet property="enevlopeBottomImg" destination="gyL-a6-ef6" id="aQO-qE-TmB"/>
+                        <outlet property="enevlopeTopImg" destination="eIr-vE-fV4" id="kUL-Ri-vpa"/>
+                        <outlet property="mailImage" destination="ffo-A3-LYq" id="sZn-05-Oph"/>
                         <outlet property="stampCollectionView" destination="F2o-xq-bpk" id="Jrx-e4-SVP"/>
                     </connections>
                 </viewController>
@@ -778,7 +787,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pPa-TA-dPa">
                                 <rect key="frame" x="0.0" y="64" width="375" height="515"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.98817294836044312" green="0.98828381299972534" blue="0.98810917139053345" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="15" id="7HV-9y-eDx">
                                     <size key="itemSize" width="90" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -812,13 +821,16 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2I-ga-mAL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="22"/>
-                                                            <state key="normal" image="-"/>
-                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2N6-VW-li1">
                                                             <rect key="frame" x="58" y="0.0" width="32" height="22"/>
                                                             <state key="normal" image="+"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2I-ga-mAL">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="32" id="Pu5-LU-4bH"/>
+                                                            </constraints>
+                                                            <state key="normal" image="-"/>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -827,13 +839,12 @@
                                                         <constraint firstAttribute="bottom" secondItem="2N6-VW-li1" secondAttribute="bottom" id="AOQ-eu-M3Q"/>
                                                         <constraint firstItem="2mL-Is-cQ5" firstAttribute="centerX" secondItem="e4y-zp-DYy" secondAttribute="centerX" id="G3E-X9-nKL"/>
                                                         <constraint firstItem="2N6-VW-li1" firstAttribute="centerY" secondItem="2mL-Is-cQ5" secondAttribute="centerY" id="G6e-u2-bE1"/>
-                                                        <constraint firstItem="2N6-VW-li1" firstAttribute="leading" secondItem="2mL-Is-cQ5" secondAttribute="trailing" constant="8" id="IC0-So-1iQ"/>
                                                         <constraint firstItem="i2I-ga-mAL" firstAttribute="top" secondItem="e4y-zp-DYy" secondAttribute="top" id="NgF-ch-cm4"/>
                                                         <constraint firstItem="2mL-Is-cQ5" firstAttribute="centerY" secondItem="e4y-zp-DYy" secondAttribute="centerY" id="Wd7-II-YIa"/>
-                                                        <constraint firstItem="2mL-Is-cQ5" firstAttribute="leading" secondItem="i2I-ga-mAL" secondAttribute="trailing" constant="8" id="ejK-Hm-ApF"/>
                                                         <constraint firstItem="i2I-ga-mAL" firstAttribute="centerY" secondItem="2mL-Is-cQ5" secondAttribute="centerY" id="faR-p5-Y5H"/>
                                                         <constraint firstItem="2N6-VW-li1" firstAttribute="top" secondItem="e4y-zp-DYy" secondAttribute="top" id="lFs-B5-whd"/>
                                                         <constraint firstAttribute="bottom" secondItem="i2I-ga-mAL" secondAttribute="bottom" id="o0Q-Qn-YTo"/>
+                                                        <constraint firstItem="2N6-VW-li1" firstAttribute="width" secondItem="i2I-ga-mAL" secondAttribute="width" id="sHX-fG-9oc"/>
                                                         <constraint firstAttribute="trailing" secondItem="2N6-VW-li1" secondAttribute="trailing" id="ulm-Vb-LQb"/>
                                                     </constraints>
                                                 </view>
@@ -867,29 +878,31 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhN-I8-gJ6">
                                 <rect key="frame" x="0.0" y="579" width="375" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTO-av-DWk">
+                                        <rect key="frame" x="128" y="26" width="118" height="36"/>
+                                        <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="eqE-3e-5rz"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="hmR-V9-a2M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
+                                        <state key="normal" title="去支付">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="bVn-IT-1Jk"/>
+                                    <constraint firstItem="YTO-av-DWk" firstAttribute="centerX" secondItem="GhN-I8-gJ6" secondAttribute="centerX" id="eY7-Oc-Wbm"/>
+                                    <constraint firstItem="YTO-av-DWk" firstAttribute="centerY" secondItem="GhN-I8-gJ6" secondAttribute="centerY" id="uXn-Rz-kPO"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTO-av-DWk">
-                                <rect key="frame" x="128.5" y="605" width="118" height="36"/>
-                                <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="eqE-3e-5rz"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="hmR-V9-a2M"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
-                                <state key="normal" title="去支付">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="g3U-tF-wql" firstAttribute="trailing" secondItem="pPa-TA-dPa" secondAttribute="trailing" id="AoP-eH-WGl"/>
-                            <constraint firstItem="YTO-av-DWk" firstAttribute="centerX" secondItem="GhN-I8-gJ6" secondAttribute="centerX" id="BIc-9C-sJm"/>
-                            <constraint firstItem="YTO-av-DWk" firstAttribute="centerY" secondItem="GhN-I8-gJ6" secondAttribute="centerY" id="TgZ-QB-3h5"/>
                             <constraint firstItem="g3U-tF-wql" firstAttribute="trailing" secondItem="GhN-I8-gJ6" secondAttribute="trailing" id="UYb-8l-0cz"/>
                             <constraint firstItem="GhN-I8-gJ6" firstAttribute="leading" secondItem="g3U-tF-wql" secondAttribute="leading" id="Xpk-F4-AJg"/>
                             <constraint firstItem="Z7B-me-HAJ" firstAttribute="top" secondItem="eaf-m2-6qi" secondAttribute="top" constant="32" id="p0w-OL-erD"/>
@@ -902,6 +915,7 @@
                         <viewLayoutGuide key="safeArea" id="g3U-tF-wql"/>
                     </view>
                     <connections>
+                        <outlet property="payBtn" destination="YTO-av-DWk" id="prM-CJ-7oL"/>
                         <outlet property="stampListCollectionView" destination="pPa-TA-dPa" id="KFX-7z-jVP"/>
                     </connections>
                 </viewController>
@@ -916,7 +930,8 @@
         <image name="Line" width="375" height="1"/>
         <image name="cha" width="15" height="15"/>
         <image name="dotted_line" width="350" height="208"/>
-        <image name="envelope" width="300" height="247"/>
+        <image name="envelope_bottom" width="300" height="165"/>
+        <image name="envelope_top" width="300" height="81"/>
         <image name="icon_arrow_up" width="22" height="12"/>
         <image name="long" width="375" height="403"/>
         <image name="mailImg" width="208" height="161"/>

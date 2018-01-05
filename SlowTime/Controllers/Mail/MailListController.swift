@@ -57,12 +57,16 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: R.segue.mailListController.showGetMail, sender: mails![indexPath.row].id)
+        performSegue(withIdentifier: R.segue.mailListController.showGetMail, sender: mails![indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let mail = sender as? ListMail else { return }
+        
         if let mailList = R.segue.mailListController.showGetMail(segue: segue) {
-            mailList.destination.mailId = sender as! String
+            mailList.destination.mailId = mail.id!
+            mailList.destination.emailType = mail.emailType!
             mailList.destination.navBar.title = navBar.title
         }
     }
