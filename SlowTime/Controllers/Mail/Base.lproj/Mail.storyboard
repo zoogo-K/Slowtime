@@ -413,9 +413,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailImg" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-A3-LYq">
-                                <rect key="frame" x="83" y="0.0" width="208" height="161"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXH-9O-Rav">
                                 <rect key="frame" x="325" y="32" width="30" height="30"/>
                                 <constraints>
@@ -497,6 +494,15 @@
                                     <constraint firstItem="F2o-xq-bpk" firstAttribute="centerY" secondItem="j2q-N2-bAW" secondAttribute="centerY" id="iGx-aB-NES"/>
                                 </constraints>
                             </view>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailImg" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-A3-LYq">
+                                <rect key="frame" x="83" y="0.0" width="208" height="161"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请将信纸拖入信封" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiR-a3-DNd">
+                                <rect key="frame" x="127" y="485" width="120" height="16.5"/>
+                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -504,9 +510,11 @@
                             <constraint firstAttribute="trailing" secondItem="j2q-N2-bAW" secondAttribute="trailing" id="BuB-hf-WNc"/>
                             <constraint firstAttribute="bottom" secondItem="j2q-N2-bAW" secondAttribute="bottom" id="Cxa-Uz-xuW"/>
                             <constraint firstItem="eIr-vE-fV4" firstAttribute="centerX" secondItem="OQi-5c-h3E" secondAttribute="centerX" id="Gu5-X0-tc3"/>
+                            <constraint firstItem="OiR-a3-DNd" firstAttribute="centerX" secondItem="gyL-a6-ef6" secondAttribute="centerX" id="Jun-CE-jD8"/>
                             <constraint firstAttribute="trailing" secondItem="BXH-9O-Rav" secondAttribute="trailing" constant="20" id="L2Q-sm-tuv"/>
                             <constraint firstItem="BXH-9O-Rav" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="32" id="MME-2K-ylW"/>
                             <constraint firstItem="eIr-vE-fV4" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="241" id="Nh7-ZP-Zbp"/>
+                            <constraint firstItem="j2q-N2-bAW" firstAttribute="top" secondItem="OiR-a3-DNd" secondAttribute="bottom" constant="25" id="U16-Br-2Up"/>
                             <constraint firstItem="ffo-A3-LYq" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" id="Vn9-3T-AqR"/>
                             <constraint firstItem="j2q-N2-bAW" firstAttribute="leading" secondItem="iZB-lp-Ec1" secondAttribute="leading" id="W0U-cf-Oew"/>
                             <constraint firstItem="gyL-a6-ef6" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="281" id="WoG-yI-ahG"/>
@@ -520,6 +528,7 @@
                         <outlet property="enevlopeTopImg" destination="eIr-vE-fV4" id="kUL-Ri-vpa"/>
                         <outlet property="mailImage" destination="ffo-A3-LYq" id="sZn-05-Oph"/>
                         <outlet property="stampCollectionView" destination="F2o-xq-bpk" id="Jrx-e4-SVP"/>
+                        <outlet property="statusLbl" destination="OiR-a3-DNd" id="00l-Yo-imM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="As0-sh-Ld0" userLabel="First Responder" sceneMemberID="firstResponder"/>

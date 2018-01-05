@@ -13,6 +13,11 @@ import RxSwift
 class PackToSendController: UIViewController {
     
     @IBOutlet weak var mailImage: UIImageView!
+    
+    private var mailImagePointY: CGFloat = 0
+    private var mailImageIdentyY: CGFloat = 0
+
+    
     @IBOutlet weak var enevlopeTopImg: UIImageView! {
         didSet {
             enevlopeTopImg.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
@@ -21,6 +26,7 @@ class PackToSendController: UIViewController {
     @IBOutlet weak var enevlopeBottomImg: UIImageView!
 
     @IBOutlet weak var enevlopBTopCons: NSLayoutConstraint!
+    
     private var stamps: [Stamp]?
     
     let disposeBag = DisposeBag()
@@ -30,6 +36,7 @@ class PackToSendController: UIViewController {
     @IBAction func disAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBOutlet weak var statusLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +58,58 @@ class PackToSendController: UIViewController {
                 }
             }
             .disposed(by: disposeBag)
-    
-    
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mailImageIdentyY = mailImage.y
+    }
+    
+    
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let point = touch.location(in: view)
+            if mailImage.frame.contains(point) {
+                mailImagePointY = point.y
+            }
+        }
+    }
+    
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let point = touch.location(in: view)
+            if mailImage.frame.contains(point) {
+                mailImage.y = point.y - mailImagePointY
+            }
+        }
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let point = touch.location(in: view)
+            
+            if enevlopeBottomImg.frame.contains(point) {
+                mailImage.isHidden = true
+                enevlopeAnimation()
+            } else {
+                mailImage.y = mailImageIdentyY
+            }
+        }
+    }
+    
+    
+    
+    private func enevlopeAnimation() {
         UIView.animate(withDuration: 0.5, animations: {
             self.enevlopeTopImg.layer.transform = CATransform3DMakeRotation(CGFloat.pi/2, 1, 0, 0)
         }){(finished) in
             self.enevlopeTopImg.isHidden = true
+            self.statusLbl.text = "请选择邮票"
             UIView.animate(withDuration: 0.5, animations: {
                 self.enevlopBTopCons.constant = 190
                 self.view.layoutIfNeeded()
