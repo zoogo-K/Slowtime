@@ -74,7 +74,7 @@ final class NetworkManger {
     
     var accessToken: Alamofire.HTTPHeaders {
         var headers = Alamofire.HTTPHeaders()
-        //        headers["X-User-AccessToken"] = UserDefaults.standard.string(forKey: "accessToken_key")!
+        headers["X-User-AccessToken"] = UserDefaults.standard.string(forKey: "accessToken_key")
         return headers
     }
 }

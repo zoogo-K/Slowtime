@@ -122,14 +122,14 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.userListController.showMailList(segue: segue) {
             let indexPath = sender as! IndexPath
-//            mailList.destination.navBar.title = friends![indexPath.row].nickname
+            mailList.destination.navBar.title = friends![indexPath.row].nickname
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.row < friends?.count ?? 0 {
+        if indexPath.row < friends?.count ?? 0 {
             performSegue(withIdentifier: R.segue.userListController.showMailList, sender: indexPath)
-//        }
+        }
     }
 }
 

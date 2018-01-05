@@ -96,12 +96,19 @@ class LoginController: LoginBaseViewController {
             .disposed(by: disposeBag)
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        phoneTextField.text = "18801302830"
+        codeTextField.text = "123456"
+    }
+    
     private func getCode() {
         self.remainingSeconds = 59
         self.isCounting = !self.isCounting
         
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.loginCode(phone: "13800138000"))
+        provider.rx.requestWithLoading(.loginCode(phone: phoneTextField.text!))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode({ (_, mess) in
@@ -117,7 +124,7 @@ class LoginController: LoginBaseViewController {
         
         //网络请求-验证码无误则跳转
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.login(phoneNumber: "13800138000", loginCode: "000000"))
+        provider.rx.requestWithLoading(.login(phoneNumber: phoneTextField.text!, loginCode: codeTextField.text!))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode({ (_, mess) in
