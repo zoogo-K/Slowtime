@@ -413,6 +413,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailImg" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-A3-LYq">
+                                <rect key="frame" x="83" y="0.0" width="208" height="161"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXH-9O-Rav">
                                 <rect key="frame" x="325" y="32" width="30" height="30"/>
                                 <constraints>
@@ -494,9 +497,6 @@
                                     <constraint firstItem="F2o-xq-bpk" firstAttribute="centerY" secondItem="j2q-N2-bAW" secondAttribute="centerY" id="iGx-aB-NES"/>
                                 </constraints>
                             </view>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailImg" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-A3-LYq">
-                                <rect key="frame" x="83" y="0.0" width="208" height="161"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请将信纸拖入信封" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiR-a3-DNd">
                                 <rect key="frame" x="127" y="485" width="120" height="16.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>

@@ -74,6 +74,8 @@ class PackToSendController: UIViewController {
             let point = touch.location(in: view)
             if mailImage.frame.contains(point) {
                 mailImagePointY = point.y
+            } else if stampCollectionView.frame.contains(point) {
+                DLog(point)
             }
         }
     }
@@ -134,6 +136,11 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        
+        
+        
         present(R.storyboard.mail().instantiateViewController(withIdentifier: "StampListController"), animated: true, completion: nil)
     }
     

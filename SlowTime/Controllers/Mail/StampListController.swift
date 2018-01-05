@@ -35,7 +35,6 @@ class StampListController: UIViewController {
 //        request.start()
         
         
-        
         payBtn.rx.tap
             .throttle(1, scheduler: MainScheduler.instance)
             .bind { [unowned self] in
@@ -70,7 +69,6 @@ class StampListController: UIViewController {
             DLog(i)
             
         }
-        
         
         let cell = stampListCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! StampListCell
         

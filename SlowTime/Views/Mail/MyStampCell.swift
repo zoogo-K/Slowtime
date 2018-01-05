@@ -20,4 +20,6 @@ class MyStampCell: UICollectionViewCell {
             iconImg.kf.setImage(with: ImageResource(downloadURL: URL(string: (stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.add_stamp())
         }
     }
+    
+
 }
