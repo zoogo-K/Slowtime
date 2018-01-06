@@ -74,9 +74,19 @@ class PackToSendController: UIViewController {
             let point = touch.location(in: view)
             if mailImage.frame.contains(point) {
                 mailImagePointY = point.y
-            } else if stampCollectionView.frame.contains(point) {
+            } else if (stampCollectionView.superview?.frame.contains(point))! {
                 DLog(point)
+                DLog(view.convert(point, to: stampCollectionView))
+                
+                stampCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))?.center = point
             }
+            
+            
+            
+            
+            
+            
+            
         }
     }
     
@@ -86,6 +96,8 @@ class PackToSendController: UIViewController {
             let point = touch.location(in: view)
             if mailImage.frame.contains(point) {
                 mailImage.y = point.y - mailImagePointY
+            } else if stampCollectionView.frame.contains(point) {
+                stampCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))?.center = point
             }
         }
     }
