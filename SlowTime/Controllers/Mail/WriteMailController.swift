@@ -47,13 +47,26 @@ class WriteMailController: BaseViewController {
 //                    self?.wr_toLastViewController(animated: true)
                     self?.navigationController?.popViewController(animated: false)
                 }else {
-                    self?.present(R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController"), animated: true, completion: nil)
+                   
+                    
+                    let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
+                    packToSend.image = (self?.screenshot())!
+                    self?.present(packToSend, animated: true, completion: nil)
                 }
             }
             .disposed(by: disposeBag)
     }
     
-    
+    private func screenshot() -> UIImage {
+        UIGraphicsBeginImageContext(view.size)
+        let ctx = UIGraphicsGetCurrentContext();
+        view.layer.render(in: ctx!)
+        //获取图片
+        let newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return newImage!
+    }
     
     /*
      // MARK: - Navigation

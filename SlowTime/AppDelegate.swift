@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
         
         if UserDefaults.standard.bool(forKey: "isLogin_key"){
-            let navigationController = R.storyboard.mail().instantiateInitialViewController()! as? UINavigationController
-//            let navigationController =
-//            R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController")
+//            let navigationController = R.storyboard.mail().instantiateInitialViewController()! as? UINavigationController
+            let navigationController =
+            R.storyboard.mail().instantiateViewController(withIdentifier: "WriteMailController")
             window?.rootViewController = navigationController
         }else {
             let navigationController = R.storyboard.login().instantiateInitialViewController()! as? UINavigationController

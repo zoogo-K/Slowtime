@@ -13,6 +13,8 @@ class FeedBackController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navBar.title = "意见反馈"
+
         // Do any additional setup after loading the view.
     }
 

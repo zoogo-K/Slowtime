@@ -12,6 +12,8 @@ class AgreementController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.title = "用户协议"
 
         // Do any additional setup after loading the view.
     }

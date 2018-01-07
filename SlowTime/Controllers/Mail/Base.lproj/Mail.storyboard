@@ -342,7 +342,7 @@
         <!--Write Mail Controller-->
         <scene sceneID="pey-T0-d1V">
             <objects>
-                <viewController id="BPC-BJ-dEe" customClass="WriteMailController" customModule="SlowTime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteMailController" id="BPC-BJ-dEe" customClass="WriteMailController" customModule="SlowTime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lmc-85-Gnk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -415,6 +415,10 @@
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mailImg" translatesAutoresizingMaskIntoConstraints="NO" id="ffo-A3-LYq">
                                 <rect key="frame" x="83" y="0.0" width="208" height="161"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="hLG-zu-J0c"/>
+                                    <constraint firstAttribute="height" constant="161" id="sTP-v2-Z4e"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXH-9O-Rav">
                                 <rect key="frame" x="325" y="32" width="30" height="30"/>
@@ -632,14 +636,6 @@
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia.</string>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zac-Rc-ala">
                                 <rect key="frame" x="20" y="141.5" width="335" height="44"/>
@@ -687,6 +683,9 @@
                         <viewLayoutGuide key="safeArea" id="0IG-S7-WC8"/>
                     </view>
                     <navigationItem key="navigationItem" id="FmF-cc-2fV"/>
+                    <connections>
+                        <outlet property="profileTextView" destination="8a7-UO-Dq4" id="Xbd-be-qZc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWe-xD-9Ck" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -767,14 +766,14 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2N6-VW-li1">
                                                             <rect key="frame" x="58" y="0.0" width="32" height="22"/>
-                                                            <state key="normal" image="+"/>
+                                                            <state key="normal" image="add"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2I-ga-mAL">
                                                             <rect key="frame" x="0.0" y="0.0" width="32" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="32" id="Pu5-LU-4bH"/>
                                                             </constraints>
-                                                            <state key="normal" image="-"/>
+                                                            <state key="normal" image="cut"/>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -992,10 +991,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="+" width="15" height="15"/>
-        <image name="-" width="15" height="15"/>
         <image name="Line" width="375" height="1"/>
+        <image name="add" width="15" height="15"/>
         <image name="cha" width="15" height="15"/>
+        <image name="cut" width="15" height="15"/>
         <image name="dotted_line" width="350" height="208"/>
         <image name="envelope_bottom" width="300" height="165"/>
         <image name="envelope_top" width="300" height="81"/>

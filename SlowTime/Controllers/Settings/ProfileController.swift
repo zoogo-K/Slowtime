@@ -9,6 +9,15 @@
 import UIKit
 
 class ProfileController: BaseViewController {
+    
+    @IBOutlet weak var profileTextView: UITextView! {
+        didSet {
+            profileTextView.layer.borderColor = UIColor.black.cgColor
+            profileTextView.layer.borderWidth = 1
+            profileTextView.layer.masksToBounds = true
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +25,7 @@ class ProfileController: BaseViewController {
         navBar.title = "修改资料"
         navBar.wr_setRightButton(title: "修改", titleColor: .black)
         navBar.onClickRightButton = { [weak self] in
-
+            
         }
         
         

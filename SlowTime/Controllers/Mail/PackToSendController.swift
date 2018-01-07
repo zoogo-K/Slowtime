@@ -12,6 +12,8 @@ import RxSwift
 
 class PackToSendController: UIViewController {
     
+    var image = UIImage()
+    
     @IBOutlet weak var mailImage: UIImageView!
     
     private var mailImagePointY: CGFloat = 0
@@ -40,7 +42,7 @@ class PackToSendController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.userStamp)
             .asObservable()
@@ -64,6 +66,7 @@ class PackToSendController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         mailImageIdentyY = mailImage.y
+        mailImage.image = image
     }
     
     
