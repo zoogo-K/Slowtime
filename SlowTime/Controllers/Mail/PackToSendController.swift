@@ -149,11 +149,20 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let stampImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 108))
+        stampImageView.image = RI.stamp()
+        view.addSubview(stampImageView)
         
         
         
         
-        present(R.storyboard.mail().instantiateViewController(withIdentifier: "StampListController"), animated: true, completion: nil)
+        UIView.animate(withDuration: 1) {
+            stampImageView.transform = CGAffineTransform(translationX: 280, y: 180)
+        }
+        
+        
+        
+//        present(R.storyboard.mail().instantiateViewController(withIdentifier: "StampListController"), animated: true, completion: nil)
     }
     
     

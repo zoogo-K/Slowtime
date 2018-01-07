@@ -27,12 +27,7 @@ class SettingsController: BaseViewController {
         navBar.title = "设置"
         
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        navigationController?.navigationBar.isHidden = false
-    }
+
     
 }
 
