@@ -16,7 +16,7 @@ class PackToSendController: UIViewController {
     
     private var mailImagePointY: CGFloat = 0
     private var mailImageIdentyY: CGFloat = 0
-
+    
     
     @IBOutlet weak var enevlopeTopImg: UIImageView! {
         didSet {
@@ -24,7 +24,7 @@ class PackToSendController: UIViewController {
         }
     }
     @IBOutlet weak var enevlopeBottomView: UIView!
-
+    
     @IBOutlet weak var enevlopBTopCons: NSLayoutConstraint!
     
     private var stamps: [Stamp]?
@@ -142,8 +142,12 @@ class PackToSendController: UIViewController {
             .mapJSON()
             .filterSuccessfulCode()
             .bind(onNext: { [weak self] (json) in
-                DLog(json)
-                self?.dismiss(animated: true, completion: nil)
+                self?.enevlopBTopCons.constant = 0
+                UIView.animate(withDuration: 1, animations: {
+                    self?.view.layoutIfNeeded()
+                }, completion: { (fin) in
+                    self?.dismiss(animated: true, completion: nil)
+                })
             })
             .disposed(by: disposeBag)
     }
@@ -151,36 +155,33 @@ class PackToSendController: UIViewController {
 
 extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return stamps?.count ?? 0 + 1
+        return stamps?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stampCell", for: indexPath) as! MyStampCell
-        if indexPath.row < stamps?.count ?? 0 {
-            cell.stamp = stamps?[indexPath.row]
-        }else {
-            cell.iconImg.image = RI.add_stamp()
-        }
+        cell.stamp = stamps?[indexPath.row]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let stampImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 108))
-        stampImageView.image = RI.stamp()
-        view.addSubview(stampImageView)
-        
-        UIView.animate(withDuration: 1) {
-            stampImageView.transform = CGAffineTransform(translationX: 280, y: 180)
+        if indexPath.row == (stamps?.count)! - 1 {
+            present(R.storyboard.mail().instantiateViewController(withIdentifier: "StampListController"), animated: true, completion: nil)
+        }else {
+            let stampImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 108))
+            stampImageView.image = RI.stamp()
+            view.addSubview(stampImageView)
+            
+            collectionView.isHidden = true
+            statusLbl.isHidden = true
+            
+            
+            UIView.animate(withDuration: 1, animations: {
+                stampImageView.transform = CGAffineTransform(translationX: 280, y: 180)
+            }) { (fin) in
+                self.sendMailRequest(stampId: self.stamps![indexPath.row].id!, mailID: self.mailId)
+            }
         }
-        collectionView.isHidden = true
-
-        self.sendMailRequest(stampId: stamps![indexPath.row].id!, mailID: mailId)
-        
-        
-        
-//        present(R.storyboard.mail().instantiateViewController(withIdentifier: "StampListController"), animated: true, completion: nil)
     }
-    
-    
 }

@@ -19,7 +19,7 @@ class MailListCell: UITableViewCell {
         didSet {
             titleLbl.text = listMail?.abstract
             
-            youchuoImg.isHidden = (listMail?.isRead)! ? true : false
+            youchuoImg.isHidden = !(listMail?.isRead)! && listMail?.emailType == 1 ? false : true
             
             switch listMail?.emailType {
             case 1?:
