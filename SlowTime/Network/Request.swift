@@ -104,7 +104,7 @@ extension Request: Moya.TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .loginCode, .login, .logout, .profile, .writeMail:
+        case .loginCode, .login, .profile, .writeMail:
             return .requestParameters(parameters: parameters!, encoding: parameterEncoding)
         default:
             return .requestPlain

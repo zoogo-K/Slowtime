@@ -99,7 +99,7 @@ class LoginController: LoginBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        phoneTextField.text = "18801302830"
+        phoneTextField.text = "13120231088"
         codeTextField.text = "123456"
     }
     
@@ -133,9 +133,17 @@ class LoginController: LoginBaseViewController {
             .filterObject(to: User.self)
             .subscribe { [weak self] (event) in
                 if case .next(let user) = event {
-                    self?.performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
+                    if user.nickname != "" {
+                        let navigationController = R.storyboard.mail().instantiateInitialViewController()! as? UINavigationController
+                        UIApplication.shared.keyWindow?.rootViewController = navigationController
+                    } else {
+                        self?.performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
+                    }
                     
                     UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
+                    UserDefaults.standard.set(user.userHash!, forKey: "userHash_key")
+                    UserDefaults.standard.set(user.nickname!, forKey: "nickname_key")
+                    UserDefaults.standard.set(user.profile!, forKey: "profile_key")
                     UserDefaults.standard.set(true, forKey: "isLogin_key")
                     
                 }else if case .error = event {

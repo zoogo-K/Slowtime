@@ -19,7 +19,7 @@ class MailListController: BaseViewController {
         super.viewDidLoad()
       
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.mailList(userhash: "08c1d80272c14f8ba619e41e54285"))
+        provider.rx.requestWithLoading(.mailList(userhash: UserDefaults.standard.string(forKey: "userHash_key")!))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()

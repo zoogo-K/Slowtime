@@ -684,6 +684,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="FmF-cc-2fV"/>
                     <connections>
+                        <outlet property="nickName" destination="zac-Rc-ala" id="5lp-xN-2Zz"/>
                         <outlet property="profileTextView" destination="8a7-UO-Dq4" id="Xbd-be-qZc"/>
                     </connections>
                 </viewController>

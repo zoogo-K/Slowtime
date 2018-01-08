@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Moya
+import PKHUD
 
 class SettingsController: BaseViewController {
-
+    
     @IBOutlet weak var tableview: UITableView! {
         didSet {
             tableview.tableFooterView = UIView()
@@ -27,7 +29,7 @@ class SettingsController: BaseViewController {
         navBar.title = "设置"
         
     }
-
+    
     
 }
 
@@ -66,12 +68,33 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
             performSegue(withIdentifier: R.segue.settingsController.showUserAgreement, sender: nil)
             break
         case "logout":
-            
-        
+            logOut()
             break
         default:()
-//            HexaHUD.show(with: "切换到\(dataArr["Title"]!)")
+            //            HexaHUD.show(with: "切换到\(dataArr["Title"]!)")
         }
     }
     
+    
+    private func logOut() {
+        let provider = MoyaProvider<Request>()
+        provider.rx.request(.logout)
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .bind { (response) in
+                HUD.flash(.label(response.string), delay: 1.0)
+                
+                
+                let navigationController = R.storyboard.login().instantiateInitialViewController()! as? UINavigationController
+                UIApplication.shared.keyWindow?.rootViewController = navigationController
+                
+                UserDefaults.standard.set(nil, forKey: "accessToken_key")
+                UserDefaults.standard.set(nil, forKey: "userHash_key")
+                UserDefaults.standard.set(nil, forKey: "nickname_key")
+                UserDefaults.standard.set(nil, forKey: "profile_key")
+                UserDefaults.standard.set(false, forKey: "isLogin_key")
+            }
+            .disposed(by: disposeBag)
+    }
 }
