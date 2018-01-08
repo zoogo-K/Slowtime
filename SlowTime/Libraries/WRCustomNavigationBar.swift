@@ -45,7 +45,7 @@ extension UIViewController
             return UIViewController()
         }
     }
-
+    
     class func wr_currentViewController(from fromVC:UIViewController) -> UIViewController
     {
         if fromVC.isKind(of: UINavigationController.self) {
@@ -251,11 +251,21 @@ extension WRCustomNavigationBar
     }
     private func wr_setRightButton(normal:UIImage?, highlighted:UIImage?, title:String?, titleColor:UIColor?) {
         rightButton.isHidden = false
-        rightButton.setImage(normal, for: .normal)
-        rightButton.setImage(highlighted, for: .highlighted)
-        rightButton.setTitle(title, for: .normal)
-        rightButton.setTitleColor(titleColor, for: .normal)
-        rightButton.titleLabel?.font = .my_systemFont(ofSize: 16)
+        if let title = title {
+            rightButton.setTitle(title, for: .normal)
+            let size = title.stringRect(with: .my_systemFont(ofSize: 16))
+            let btnWidth = size.width
+            let top:CGFloat = WRCustomNavigationBar.isIphoneX ? 44 : 20
+            rightButton.frame = CGRect(x: WRScreenWidth-btnWidth-8, y: top, width: btnWidth, height: 44)
+            rightButton.setTitleColor(titleColor, for: .normal)
+            rightButton.titleLabel?.font = .my_systemFont(ofSize: 16)
+        }else {
+            rightButton.setImage(normal, for: .normal)
+            rightButton.setImage(highlighted, for: .highlighted)
+            rightButton.setTitle(title, for: .normal)
+            rightButton.setTitleColor(titleColor, for: .normal)
+            rightButton.titleLabel?.font = .my_systemFont(ofSize: 16)            
+        }
     }
 }
 
