@@ -559,15 +559,31 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-a6-ef6">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AAA 收" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToR-yc-i48">
+                                        <rect key="frame" x="124" y="62" width="52" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AAA 寄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ku-s4-fgg">
+                                        <rect key="frame" x="136" y="94.5" width="28" height="9"/>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="8"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="gyL-a6-ef6" firstAttribute="top" secondItem="c0V-y5-fq1" secondAttribute="top" id="0rx-C9-2bV"/>
                                     <constraint firstAttribute="height" constant="165" id="80d-j2-ekj"/>
+                                    <constraint firstItem="ToR-yc-i48" firstAttribute="centerX" secondItem="c0V-y5-fq1" secondAttribute="centerX" id="9AA-c7-OIQ"/>
                                     <constraint firstAttribute="bottom" secondItem="gyL-a6-ef6" secondAttribute="bottom" id="9w8-Cl-Far"/>
                                     <constraint firstItem="gyL-a6-ef6" firstAttribute="leading" secondItem="c0V-y5-fq1" secondAttribute="leading" id="Bzg-Ou-vLE"/>
                                     <constraint firstAttribute="width" constant="300" id="CqP-MB-51Q"/>
+                                    <constraint firstItem="2Ku-s4-fgg" firstAttribute="top" secondItem="ToR-yc-i48" secondAttribute="bottom" constant="16" id="Cry-Yb-v6d"/>
                                     <constraint firstAttribute="trailing" secondItem="gyL-a6-ef6" secondAttribute="trailing" id="QOb-ky-ioX"/>
+                                    <constraint firstItem="ToR-yc-i48" firstAttribute="top" secondItem="c0V-y5-fq1" secondAttribute="top" constant="62" id="TJV-iL-zeo"/>
+                                    <constraint firstItem="2Ku-s4-fgg" firstAttribute="centerX" secondItem="ToR-yc-i48" secondAttribute="centerX" id="c81-UT-jJ2"/>
                                 </constraints>
                             </view>
                         </subviews>
