@@ -12,9 +12,7 @@ import RxSwift
 
 class PackToSendController: UIViewController {
     
-    var image = UIImage()
-    
-    @IBOutlet weak var mailImage: UIImageView!
+    @IBOutlet weak var mailView: UIView!
     
     private var mailImagePointY: CGFloat = 0
     private var mailImageIdentyY: CGFloat = 0
@@ -25,7 +23,7 @@ class PackToSendController: UIViewController {
             enevlopeTopImg.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
         }
     }
-    @IBOutlet weak var enevlopeBottomImg: UIImageView!
+    @IBOutlet weak var enevlopeBottomView: UIView!
 
     @IBOutlet weak var enevlopBTopCons: NSLayoutConstraint!
     
@@ -65,8 +63,7 @@ class PackToSendController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        mailImageIdentyY = mailImage.y
-        mailImage.image = image
+        mailImageIdentyY = mailView.y
     }
     
     
@@ -75,7 +72,7 @@ class PackToSendController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let point = touch.location(in: view)
-            if mailImage.frame.contains(point) {
+            if mailView.frame.contains(point) {
                 mailImagePointY = point.y
             } else if (stampCollectionView.superview?.frame.contains(point))! {
                 DLog(point)
@@ -97,8 +94,8 @@ class PackToSendController: UIViewController {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let point = touch.location(in: view)
-            if mailImage.frame.contains(point) {
-                mailImage.y = point.y - mailImagePointY
+            if mailView.frame.contains(point) {
+                mailView.y = point.y - mailImagePointY
             } else if stampCollectionView.frame.contains(point) {
                 stampCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))?.center = point
             }
@@ -110,11 +107,11 @@ class PackToSendController: UIViewController {
         if let touch = touches.first {
             let point = touch.location(in: view)
             
-            if enevlopeBottomImg.frame.contains(point) {
-                mailImage.isHidden = true
+            if enevlopeBottomView.frame.contains(point) {
+                mailView.isHidden = true
                 enevlopeAnimation()
             } else {
-                mailImage.y = mailImageIdentyY
+                mailView.y = mailImageIdentyY
             }
         }
     }

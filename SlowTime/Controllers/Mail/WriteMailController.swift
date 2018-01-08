@@ -26,7 +26,7 @@ class WriteMailController: BaseViewController {
         
         navBar.title = "写给" + (friend?.nickname)!
         
-        toUserLabel.text = friend?.nickname
+        toUserLabel.text = (friend?.nickname)! + ":"
         formUserLabel.text = UserDefaults.standard.string(forKey: "nickname_key")
         createTimelbl.text = "测试时间"
         
@@ -64,7 +64,7 @@ class WriteMailController: BaseViewController {
                 }else {
                    
                     let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
-                    packToSend.image = (self?.screenshot())!
+//                    packToSend.image = (self?.screenshot())!
                     self?.present(packToSend, animated: true, completion: nil)
                 }
             }
