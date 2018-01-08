@@ -400,6 +400,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3fH-9r-7zj"/>
                     </view>
+                    <connections>
+                        <outlet property="createTimelbl" destination="cXN-n2-1ZY" id="2QD-4M-HlJ"/>
+                        <outlet property="formUserLabel" destination="oXt-qV-fvm" id="6mz-VA-cY5"/>
+                        <outlet property="mailContentTextView" destination="YND-wr-Tq9" id="YMq-zG-zdE"/>
+                        <outlet property="toUserLabel" destination="M4W-mY-CgI" id="a4J-y2-6C9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMd-AH-AyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

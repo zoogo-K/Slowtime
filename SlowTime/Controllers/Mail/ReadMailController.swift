@@ -12,6 +12,8 @@ import PKHUD
 
 class ReadMailController: BaseViewController {
     
+    var friend: Friend?
+    
     @IBOutlet weak var toUserName: UILabel!
     
     @IBOutlet weak var createTime: UILabel!
@@ -52,6 +54,12 @@ class ReadMailController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let mailList = R.segue.readMailController.showWrite(segue: segue) {
+            mailList.destination.friend = friend
+        }
     }
 
     override func didReceiveMemoryWarning() {

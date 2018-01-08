@@ -67,7 +67,10 @@ class UserListController: BaseViewController {
                 })
             }
             .disposed(by: disposeBag)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         request()
     }
     
@@ -122,7 +125,7 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.userListController.showMailList(segue: segue) {
             let indexPath = sender as! IndexPath
-            mailList.destination.navBar.title = friends![indexPath.row].nickname
+            mailList.destination.friend = friends![indexPath.row]
         }
     }
     

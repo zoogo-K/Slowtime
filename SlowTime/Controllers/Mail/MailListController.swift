@@ -12,14 +12,28 @@ import Moya
 class MailListController: BaseViewController {
     
     @IBOutlet weak var tableview: UITableView!
+    
+    var friend: Friend?
    
     private var mails: [ListMail]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.title = friend?.nickname
       
+
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        request()
+    }
+    
+    private func request() {
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.mailList(userhash: UserDefaults.standard.string(forKey: "userHash_key")!))
+        provider.rx.requestWithLoading(.mailList(userhash: (friend?.userHash)!))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
@@ -35,7 +49,7 @@ class MailListController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
-    }  
+    }
     
 }
 
@@ -68,6 +82,7 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
             mailList.destination.mailId = mail.id!
             mailList.destination.emailType = mail.emailType!
             mailList.destination.navBar.title = navBar.title
+            mailList.destination.friend = friend
         }
     }
     

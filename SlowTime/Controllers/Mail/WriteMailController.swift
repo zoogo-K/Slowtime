@@ -11,9 +11,24 @@ import Moya
 
 class WriteMailController: BaseViewController {
     
+    var friend: Friend?
+    
+    @IBOutlet weak var toUserLabel: UILabel!
+    
+    @IBOutlet weak var formUserLabel: UILabel!
+    
+    @IBOutlet weak var createTimelbl: UILabel!
+    
+    @IBOutlet weak var mailContentTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navBar.title = "写给" + (friend?.nickname)!
+        
+        toUserLabel.text = friend?.nickname
+        formUserLabel.text = UserDefaults.standard.string(forKey: "nickname_key")
+        createTimelbl.text = "测试时间"
         
         navBar.wr_setRightButton(title: "装入信封", titleColor: .black)
         navBar.onClickLeftButton = { [weak self] in
@@ -36,7 +51,7 @@ class WriteMailController: BaseViewController {
     //离开此页则算保存邮件
     fileprivate func saveMail(isPop: Bool? = true) {
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.writeMail(toUser: "08c1d80272c14f8ba619e41e54285", content: "content"))
+        provider.rx.requestWithLoading(.writeMail(toUser: (friend?.userHash)!, content: mailContentTextView.text))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
@@ -48,7 +63,6 @@ class WriteMailController: BaseViewController {
                     self?.navigationController?.popViewController(animated: false)
                 }else {
                    
-                    
                     let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
                     packToSend.image = (self?.screenshot())!
                     self?.present(packToSend, animated: true, completion: nil)

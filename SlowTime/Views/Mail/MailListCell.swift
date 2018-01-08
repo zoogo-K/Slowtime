@@ -18,8 +18,17 @@ class MailListCell: UITableViewCell {
     var listMail: ListMail? {
         didSet {
             titleLbl.text = listMail?.abstract
-            createTimeLbl.text = listMail?.createTime
+            
             youchuoImg.isHidden = (listMail?.isRead)! ? true : false
+            
+            switch listMail?.emailType {
+            case 1?:
+                createTimeLbl.text = (listMail?.createTime)! + " 收"
+            case 2?:
+                createTimeLbl.text = (listMail?.createTime)! + " 寄"
+            default:
+                createTimeLbl.text = (listMail?.createTime)! + " 草稿"
+            }
         }
     }
     
