@@ -95,14 +95,27 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             let alert = HexaGlobalAlert(title: "删除后将无法再恢复,少年要想好~")
             let confirmAction = AlertOption(title: "我想好了", type: .normal, action: { [weak self] in
-                self?.disAction()
+                self?.deleteMailRequest(mailId: (self?.mails![indexPath.row].id!)!)
                 //删除 并刷新。
             })
             let cancelAction = AlertOption(title: "我再想想", type: .cancel, action: nil)
-            alert.addAlertOptions([confirmAction, cancelAction])
+            alert.addAlertOptions([cancelAction, confirmAction])
             alert.show()
         }
     }
+    
+    private func deleteMailRequest(mailId: String) {
+        let provider = MoyaProvider<Request>()
+        provider.rx.request(.deleteMail(mailId: mailId))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .bind(onNext: { [weak self] (json) in
+                self?.request()
+            })
+            .disposed(by: disposeBag)
+    }
+    
     
 }
 

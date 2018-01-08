@@ -76,6 +76,7 @@ public struct ListMail: Parseable {
 
 
 public struct Mail: Parseable {
+    public var id: String?
     public var isRead: Bool?
     public var content: String?
     public var emailType: Int?
@@ -87,6 +88,7 @@ public struct Mail: Parseable {
     public static var identifier: String = "mail"
 
     public init(json: JSON) {
+        id          <-      json["id"].stringValue
         isRead      <-      json["isRead"].boolValue
         content     <-      json["content"].stringValue
         emailType   <-      json["emailType"].intValue

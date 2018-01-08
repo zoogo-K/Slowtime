@@ -51,7 +51,7 @@ class WriteMailController: BaseViewController {
     //离开此页则算保存邮件
     fileprivate func saveMail(isPop: Bool? = true) {
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.writeMail(toUser: (friend?.userHash)!, content: mailContentTextView.text))
+        provider.rx.request(.writeMail(toUser: (friend?.userHash)!, content: mailContentTextView.text))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
@@ -63,9 +63,13 @@ class WriteMailController: BaseViewController {
                     self?.navigationController?.popViewController(animated: false)
                 }else {
                    
-                    let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
-//                    packToSend.image = (self?.screenshot())!
-                    self?.present(packToSend, animated: true, completion: nil)
+                    if case .next(let mail) = event {
+                        let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
+                        packToSend.mailId = mail.id!
+                        self?.present(packToSend, animated: true, completion: nil)
+                    }
+                    
+                    
                 }
             }
             .disposed(by: disposeBag)

@@ -21,7 +21,7 @@ public class HexaGlobalAlert: UIView {
     
     public struct ButtonAction {
         public enum ActionType: Int {
-            case normal, `continue`, cancel
+            case normal, cancel
         }
         
         public static let cancelAlertOption = ButtonAction(title: "取消", type: .cancel)
@@ -188,9 +188,6 @@ public class HexaGlobalAlert: UIView {
                 button.rx.tap
                     .bind { [weak self] in
                         a.action?()
-                        guard a.type != .`continue` else {
-                            return
-                        }
                         self?.hideAction()
                     }
                     .disposed(by: disposeBag)
@@ -317,9 +314,6 @@ public class HexaGlobalAlert: UIView {
             rightButton.rx.tap
                 .bind { [weak self] in
                     options[1].action?()
-                    guard options[1].type != .`continue` else {
-                        return
-                    }
                     self?.hideAction()
                 }
                 .disposed(by: disposeBag)
@@ -339,15 +333,12 @@ public class HexaGlobalAlert: UIView {
         switch actionType{
         case .cancel:
             button.setTitleColor(.black, for: .normal)
-            button.titleLabel?.font = .my_systemFont(ofSize: 15)
+            button.titleLabel?.font = .my_systemFont(ofSize: 13)
         case .normal:
-            button.setTitleColor(.black, for: .normal)
-            button.titleLabel?.font = .my_systemFont(ofSize: 15)
-            button.setTitleColor(UIColor(hexString: "#c4c4c4"), for: .disabled)
+            button.setTitleColor(.white, for: .normal)
+            button.titleLabel?.font = .my_systemFont(ofSize: 13)
+            button.backgroundColor = UIColor(hexString: "#C90000")
             confirmButton = button
-        case .`continue`:
-            button.setTitleColor(.black, for: .normal)
-            button.titleLabel?.font = .my_systemFont(ofSize: 15)
         }
         return button
     }

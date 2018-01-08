@@ -141,11 +141,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="iwf-nu-5Qf"/>
                     <connections>
+                        <outlet property="commendUserInfo" destination="uj2-it-3tG" id="lfI-Nv-kTY"/>
                         <outlet property="dottBtn" destination="js4-ym-Pee" id="k4G-k6-2LI"/>
                         <outlet property="tableview" destination="bYK-LQ-P8P" id="lky-8y-ZOx"/>
                         <outlet property="viewbottomCon" destination="t9M-Oy-8aG" id="bfN-bR-meW"/>
+                        <outlet property="writeMailToCommendUser" destination="M40-0I-cZh" id="khy-rb-Gan"/>
                         <segue destination="4dM-wL-GPg" kind="show" identifier="showMailList" id="WeU-I9-x5Y"/>
                         <segue destination="uv9-Bs-eAA" kind="show" identifier="showSettings" id="3A1-Zd-YxP"/>
+                        <segue destination="BPC-BJ-dEe" kind="show" identifier="writeCommend" id="ftG-we-VqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -233,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdS-MU-ZEu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1648.8" y="-586.05697151424295"/>
+            <point key="canvasLocation" x="1649" y="-877"/>
         </scene>
         <!--Read Mail Controller-->
         <scene sceneID="8nb-0V-pys">
@@ -338,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQ1-yp-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2600.8000000000002" y="-586.05697151424295"/>
+            <point key="canvasLocation" x="2817" y="-876"/>
         </scene>
         <!--Write Mail Controller-->
         <scene sceneID="pey-T0-d1V">
@@ -410,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMd-AH-AyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3548" y="-586.05697151424295"/>
+            <point key="canvasLocation" x="3802" y="34"/>
         </scene>
         <!--Pack To Send Controller-->
         <scene sceneID="H03-cV-PTv">
@@ -617,7 +620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="As0-sh-Ld0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4440.8000000000002" y="-586.05697151424295"/>
+            <point key="canvasLocation" x="4695" y="34"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="rav-xa-dJw">
@@ -945,7 +948,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZe-Xo-cRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5325.6000000000004" y="-586.05697151424295"/>
+            <point key="canvasLocation" x="5580" y="34"/>
         </scene>
         <!--Agreement Controller-->
         <scene sceneID="Do6-35-p2p">
@@ -1085,4 +1088,7 @@
         <image name="youchuo-black" width="35" height="23"/>
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ftG-we-VqN"/>
+    </inferredMetricsTieBreakers>
 </document>

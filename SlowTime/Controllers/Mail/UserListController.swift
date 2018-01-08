@@ -10,10 +10,15 @@ import UIKit
 import MJRefresh
 import Moya
 import RxSwift
+import SwiftyJSON
 
 class UserListController: BaseViewController {
     
     @IBOutlet weak var dottBtn: UIButton!
+    
+    @IBOutlet weak var commendUserInfo: UILabel!
+    @IBOutlet weak var writeMailToCommendUser: UIButton!
+    
     
     private var dottOpen: Bool = false
     
@@ -39,6 +44,8 @@ class UserListController: BaseViewController {
     }(MJRefreshNormalHeader())
     
     private var friends: [Friend]?
+    
+    private var commendFriend: Friend = Friend(json: JSON())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +75,13 @@ class UserListController: BaseViewController {
                 })
             }
             .disposed(by: disposeBag)
+        
+        
+        writeMailToCommendUser.rx.tap
+            .bind { [unowned self] in
+                self.performSegue(withIdentifier: R.segue.userListController.writeCommend, sender: nil)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +89,7 @@ class UserListController: BaseViewController {
         statusBarStyle = .lightContent
         request()
     }
-    
+
     private func request() {
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.friends)
@@ -86,9 +100,12 @@ class UserListController: BaseViewController {
             .subscribe { [weak self] (event) in
                 self?.tableview.mj_header.endRefreshing()
                 if case .next(let friends) = event {
+                    self?.commendFriend = friends.last!
                     self?.friends = friends
+                    self?.friends?.removeLast()
                     DispatchQueue.main.async {
                         self?.tableview.reloadData()
+                        self?.commendUserInfo.text = friends.last?.profile
                     }
                 }else if case .error = event {
                     DLog("请求超时")
@@ -128,6 +145,8 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
         if let mailList = R.segue.userListController.showMailList(segue: segue) {
             let indexPath = sender as! IndexPath
             mailList.destination.friend = friends![indexPath.row]
+        }else if let mailList = R.segue.userListController.writeCommend(segue: segue) {
+            mailList.destination.friend = commendFriend
         }
     }
     

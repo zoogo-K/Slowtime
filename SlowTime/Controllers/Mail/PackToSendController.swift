@@ -29,6 +29,8 @@ class PackToSendController: UIViewController {
     
     private var stamps: [Stamp]?
     
+    var mailId: String = ""
+    
     let disposeBag = DisposeBag()
     
     @IBOutlet weak var stampCollectionView: UICollectionView!
@@ -130,6 +132,21 @@ class PackToSendController: UIViewController {
             })
         }
     }
+    
+    
+    
+    private func sendMailRequest(stampId: String, mailID: String) {
+        let provider = MoyaProvider<Request>()
+        provider.rx.requestWithLoading(.sendMail(stampId: stampId, mailID: mailID))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .bind(onNext: { [weak self] (json) in
+                DLog(json)
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -153,12 +170,12 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
         stampImageView.image = RI.stamp()
         view.addSubview(stampImageView)
         
-        
-        
-        
         UIView.animate(withDuration: 1) {
             stampImageView.transform = CGAffineTransform(translationX: 280, y: 180)
         }
+        collectionView.isHidden = true
+
+        self.sendMailRequest(stampId: stamps![indexPath.row].id!, mailID: mailId)
         
         
         
