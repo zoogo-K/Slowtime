@@ -55,6 +55,7 @@ class UserListController: BaseViewController {
         }
         
         
+        
         dottBtn.rx.tap
             .throttle(1, scheduler: MainScheduler.instance)
             .bind { [unowned self] in
@@ -71,6 +72,7 @@ class UserListController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        statusBarStyle = .lightContent
         request()
     }
     
