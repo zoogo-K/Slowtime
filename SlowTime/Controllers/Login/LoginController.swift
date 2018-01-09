@@ -16,8 +16,19 @@ class LoginController: LoginBaseViewController {
     @IBOutlet weak var phoneLbl: UILabel!
     @IBOutlet weak var codeLbl: UILabel!
     
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField! {
+        didSet {
+            phoneTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+            phoneTextField.leftViewMode = .always
+        }
+    }
+    
+    @IBOutlet weak var codeTextField: UITextField! {
+        didSet {
+            codeTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+            codeTextField.leftViewMode = .always
+        }
+    }
     
     @IBOutlet weak var getCodeButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -94,13 +105,6 @@ class LoginController: LoginBaseViewController {
                 _ = self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        phoneTextField.text = "13120231088"
-        codeTextField.text = "123456"
     }
     
     private func getCode() {

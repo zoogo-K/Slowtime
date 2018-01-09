@@ -13,10 +13,16 @@ import PKHUD
 
 class ProfileController: BaseViewController {
     
+    @IBOutlet weak var nickNameVerifylbl: UILabel!
+    @IBOutlet weak var textViewVerifylbl: UILabel!
+
+    
     
     @IBOutlet weak var nickName: UITextField! {
         didSet {
             nickName.text = UserDefaults.standard.string(forKey: "nickname_key")
+            nickName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
+            nickName.leftViewMode = .always
         }
     }
 
@@ -32,7 +38,18 @@ class ProfileController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        nickName.rx.text.orEmpty.asObservable().bind { [weak self] in
+            self?.nickNameVerifylbl.text = String(describing: $0.count) + " / 5"
+        }
+        .disposed(by: disposeBag)
+        
+        profileTextView.rx.text.orEmpty.asObservable().bind { [weak self] in
+            self?.textViewVerifylbl.text = String(describing: $0.count) + " / 50"
+            }
+            .disposed(by: disposeBag)
+        
+        
         navBar.title = "修改资料"
         navBar.wr_setRightButton(title: "修改", titleColor: .black)
         navBar.onClickRightButton = { [weak self] in
@@ -78,15 +95,5 @@ class ProfileController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

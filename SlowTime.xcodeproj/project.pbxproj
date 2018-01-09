@@ -42,7 +42,6 @@
 		6F9FF5FA1FFDD886007D6DA8 /* MyStampCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FF5F91FFDD886007D6DA8 /* MyStampCell.swift */; };
 		6F9FF5FC1FFDE4F5007D6DA8 /* StampListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FF5FB1FFDE4F5007D6DA8 /* StampListController.swift */; };
 		6F9FF5FE1FFE0777007D6DA8 /* StampListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FF5FD1FFE0777007D6DA8 /* StampListCell.swift */; };
-		6F9FF6011FFE3071007D6DA8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9FF6001FFE3071007D6DA8 /* StoreKit.framework */; };
 		6FB8AEC41FF3B7DE009DA465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC31FF3B7DE009DA465 /* AppDelegate.swift */; };
 		6FB8AEC61FF3B7DE009DA465 /* UserListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC51FF3B7DE009DA465 /* UserListController.swift */; };
 		6FB8AEC91FF3B7DE009DA465 /* Mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8AEC71FF3B7DE009DA465 /* Mail.storyboard */; };
@@ -113,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F9FF6011FFE3071007D6DA8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +346,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

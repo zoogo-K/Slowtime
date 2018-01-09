@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 import RxSwift
-import StoreKit
+//import StoreKit
 
 class StampListController: UIViewController {
     
@@ -92,12 +92,13 @@ extension StampListController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 
-extension StampListController: SKProductsRequestDelegate {
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        DLog(response.products)
-        DLog(response.invalidProductIdentifiers)
-    }
-    
-    
-    
-}
+//extension StampListController: SKProductsRequestDelegate {
+//    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+//        DLog(response.products)
+//        DLog(response.invalidProductIdentifiers)
+//    }
+//    
+//    
+//    
+//}
+
