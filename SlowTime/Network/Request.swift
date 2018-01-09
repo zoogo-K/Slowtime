@@ -37,8 +37,9 @@ public enum Request {
     case deleteMail(mailId: String)
     case getMail(mailId: String)
     case writeMail(toUser: String, content: String)
-    case sendMail(stampId: String, mailID: String)
-
+    case editMail(mailId: String, toUser: String, content: String)
+    case sendMail(stampId: String, mailId: String)
+    
 
     case stamps
     case userStamp
@@ -70,6 +71,9 @@ extension Request: Moya.TargetType {
             return "/mail/\(mailId)"
         case .writeMail:
             return "/mail"
+        case .editMail(let mailId, _, _):
+            return "/mail/\(mailId)"
+
         case .sendMail(_, let mailId):
             return "/mail/send/\(mailId)"
             
@@ -86,7 +90,7 @@ extension Request: Moya.TargetType {
             return .post
         case .deleteMail:
             return .delete
-        case .sendMail:
+        case .editMail, .sendMail:
             return .patch
         default:
             return .get
@@ -103,6 +107,8 @@ extension Request: Moya.TargetType {
             return ["nickName": nickName, "profile": profile]
         case .writeMail(let toUser, let content):
             return ["toUser": toUser, "content": content]
+        case .editMail(_, let toUser, let content):
+            return ["toUser": toUser, "content": content]
         case .sendMail(let stampId, _):
             return ["stampId": stampId]
         default:
@@ -112,7 +118,7 @@ extension Request: Moya.TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .loginCode, .login, .profile, .writeMail, .sendMail:
+        case .loginCode, .login, .profile, .writeMail, .editMail, .sendMail:
             return .requestParameters(parameters: parameters!, encoding: parameterEncoding)
         default:
             return .requestPlain

@@ -8,10 +8,15 @@
 
 import UIKit
 import Moya
+import PKHUD
 
 class WriteMailController: BaseViewController {
     
     var friend: Friend?
+    
+    var ifEdit = false
+    var mailId = ""
+    
     
     @IBOutlet weak var toUserLabel: UILabel!
     
@@ -46,12 +51,34 @@ class WriteMailController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        if ifEdit {
+            let provider = MoyaProvider<Request>()
+            provider.rx.requestWithLoading(.getMail(mailId: mailId))
+                .asObservable()
+                .mapJSON()
+                .filterSuccessfulCode()
+                .filterObject(to: Mail.self)
+                .subscribe { [weak self] (event) in
+                    if case .next(let mail) = event {
+                        self?.mailContentTextView.text = mail.content
+                    }else if case .error = event {
+                        HUD.flash(.label("请求失败！"), delay: 1.0)
+                    }
+                }
+                .disposed(by: disposeBag)
+        }
     }
     
     //离开此页则算保存邮件
     fileprivate func saveMail(isPop: Bool? = true) {
+        var target: Request
+        if ifEdit {
+            target = .editMail(mailId: mailId, toUser: (friend?.userHash)!, content: mailContentTextView.text)
+        }else {
+            target = .writeMail(toUser: (friend?.userHash)!, content: mailContentTextView.text)
+        }
         let provider = MoyaProvider<Request>()
-        provider.rx.request(.writeMail(toUser: (friend?.userHash)!, content: mailContentTextView.text))
+        provider.rx.request(target)
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()

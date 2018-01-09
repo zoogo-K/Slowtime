@@ -14,15 +14,15 @@ class MailListController: BaseViewController {
     @IBOutlet weak var tableview: UITableView!
     
     var friend: Friend?
-   
+    
     private var mails: [ListMail]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navBar.title = friend?.nickname
-      
-
+        
+        
     }
     
     
@@ -55,7 +55,7 @@ class MailListController: BaseViewController {
 
 // Mark: delagate,datasouce
 extension MailListController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mails?.count ?? 0
     }
@@ -71,7 +71,11 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: R.segue.mailListController.showGetMail, sender: mails![indexPath.row])
+        if mails![indexPath.row].emailType == 3 {
+            performSegue(withIdentifier: R.segue.mailListController.showdraft, sender: mails![indexPath.row])
+        }else {
+            performSegue(withIdentifier: R.segue.mailListController.showGetMail, sender: mails![indexPath.row])
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -83,6 +87,10 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
             mailList.destination.emailType = mail.emailType!
             mailList.destination.navBar.title = navBar.title
             mailList.destination.friend = friend
+        }else if let editMail = R.segue.mailListController.showdraft(segue: segue) {
+            editMail.destination.friend = friend
+            editMail.destination.ifEdit = true
+            editMail.destination.mailId = mail.id!
         }
     }
     

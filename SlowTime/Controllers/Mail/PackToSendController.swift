@@ -137,7 +137,7 @@ class PackToSendController: UIViewController {
     
     private func sendMailRequest(stampId: String, mailID: String) {
         let provider = MoyaProvider<Request>()
-        provider.rx.requestWithLoading(.sendMail(stampId: stampId, mailID: mailID))
+        provider.rx.requestWithLoading(.sendMail(stampId: stampId, mailId: mailID))
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
