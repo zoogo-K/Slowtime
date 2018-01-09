@@ -105,13 +105,15 @@ public struct Stamp: Parseable {
     public var id: String?
     public var count: Int?
     public var icon: String?
-    
+    public var price: Int?
+
     public static var identifier: String = "stamps"
     
     public init(json: JSON) {
         id              <-      json["id"].stringValue
         count           <-      json["count"].intValue
         icon            <-      json["icon"].stringValue
+        price           <-      json["price"].intValue
     }
 }
 

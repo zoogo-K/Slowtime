@@ -43,7 +43,7 @@ public enum Request {
 
     case stamps
     case userStamp
-    
+    case orderStamp(stamps: [[String:String]])
 }
 
 
@@ -81,12 +81,15 @@ extension Request: Moya.TargetType {
             return "/stamps"
         case .userStamp:
             return "/stamps/user"
+        case .orderStamp:
+            return "/order"
+
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .loginCode, .login, .logout, .profile, .writeMail:
+        case .loginCode, .login, .logout, .profile, .writeMail, .orderStamp:
             return .post
         case .deleteMail:
             return .delete
@@ -111,6 +114,8 @@ extension Request: Moya.TargetType {
             return ["toUser": toUser, "content": content]
         case .sendMail(let stampId, _):
             return ["stampId": stampId]
+        case .orderStamp(let stamps):
+            return ["stamps": stamps]
         default:
             return nil
         }
@@ -118,7 +123,7 @@ extension Request: Moya.TargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .loginCode, .login, .profile, .writeMail, .editMail, .sendMail:
+        case .loginCode, .login, .profile, .writeMail, .editMail, .sendMail, .orderStamp:
             return .requestParameters(parameters: parameters!, encoding: parameterEncoding)
         default:
             return .requestPlain

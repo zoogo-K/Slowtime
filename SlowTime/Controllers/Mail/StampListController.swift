@@ -9,6 +9,7 @@
 import UIKit
 import Moya
 import RxSwift
+import PKHUD
 //import StoreKit
 
 class StampListController: UIViewController {
@@ -62,19 +63,17 @@ class StampListController: UIViewController {
     }
     
     private func calculate() {
-        
-        
-        for (i) in self.stamps! {
-            
-            DLog(i)
-            
+        var totalPrice: Int = 0
+        for i in 0..<stamps!.count {
+            let cell = stampListCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! StampListCell
+            if cell.stampCount.value > 0 {
+                totalPrice += cell.stampCount.value * (cell.stamp?.price!)!
+            }
         }
-        
-        let cell = stampListCollectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as! StampListCell
-        
-        DLog(cell.stampCount.value)
-        
-        
+        HUD.show(.label("正在支付\(totalPrice)元？"))
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            HUD.flash(.success, delay: 1.0)
+        }
     }
 }
 
