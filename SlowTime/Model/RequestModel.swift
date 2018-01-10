@@ -60,6 +60,7 @@ public struct ListMail: Parseable {
     public var isRead: Bool?
     public var emailType: Int?
     public var createTime: String?
+    public var updateTime: String?
     
     public static var identifier: String = "mails"
     
@@ -69,6 +70,7 @@ public struct ListMail: Parseable {
         isRead      <-      json["isRead"].boolValue
         emailType   <-      json["emailType"].intValue
         createTime  <-      json["createTime"].stringValue
+        updateTime  <-      json["updateTime"].stringValue
     }
 }
 
@@ -81,6 +83,7 @@ public struct Mail: Parseable {
     public var content: String?
     public var emailType: Int?
     public var createTime: String?
+    public var updateTime: String?
 
     public var fromUser: User?
     public var toUser: User?
@@ -93,7 +96,8 @@ public struct Mail: Parseable {
         content     <-      json["content"].stringValue
         emailType   <-      json["emailType"].intValue
         createTime  <-      json["createTime"].stringValue
-        
+        updateTime  <-      json["updateTime"].stringValue
+
         fromUser    <-      User(json: json["fromUser"])
         toUser      <-      User(json: json["toUser"])
     }

@@ -48,7 +48,7 @@ class ReadMailController: BaseViewController {
                     self?.toUserName.text = mail.toUser?.nickname
                     self?.fromUserName.text = mail.fromUser?.nickname
                     self?.mailContent.text = mail.content
-                    self?.createTime.text = mail.createTime
+                    self?.createTime.text = mail.updateTime
                 }else if case .error = event {
                     HUD.flash(.label("请求失败！"), delay: 1.0)
                 }

@@ -64,16 +64,26 @@ class StampListController: UIViewController {
     
     private func calculate() {
         var totalPrice: Int = 0
+        var stampOrders: [[String: String]] = [[String: String]]()
         for i in 0..<stamps!.count {
             let cell = stampListCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! StampListCell
             if cell.stampCount.value > 0 {
                 totalPrice += cell.stampCount.value * (cell.stamp?.price!)!
+                stampOrders.append(["stampId": (cell.stamp?.id)!, "count": "\(cell.stampCount.value)"])
             }
         }
         HUD.show(.label("正在支付\(totalPrice)元？"))
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            HUD.flash(.success, delay: 1.0)
-        }
+        
+        let provider = MoyaProvider<Request>()
+        provider.rx.request(.orderStamp(stamps: stampOrders))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .bind(onNext: { [weak self] (json) in
+                HUD.flash(.success, delay: 1.0)
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
