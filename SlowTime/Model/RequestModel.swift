@@ -49,7 +49,7 @@ public struct Friend: Parseable {
         nickname    <-      json["nickname"].stringValue
         userHash    <-      json["userHash"].stringValue
         profile     <-      json["profile"].stringValue
-        hasNewMail  <-      json["accessToken"].boolValue
+        hasNewMail  <-      json["hasNewMail"].boolValue
     }
 }
 

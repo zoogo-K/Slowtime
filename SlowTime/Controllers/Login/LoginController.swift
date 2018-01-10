@@ -79,7 +79,6 @@ class LoginController: LoginBaseViewController {
             .map { $0.trimmingCharacters(in: .whitespaces).localizedLowercase =~ Pattern.phone }
             .share(replay: 1)
             .bind { [unowned self] (valid) in
-                DLog(valid)
                 self.getCodeButton.isEnabled = valid
             }
             .disposed(by: disposeBag)

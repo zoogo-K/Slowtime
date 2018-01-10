@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bYK-LQ-P8P">
-                                <rect key="frame" x="0.0" y="154" width="375" height="513"/>
+                                <rect key="frame" x="0.0" y="154" width="375" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="userList" id="s4b-M4-sKJ" customClass="UserListCell" customModule="SlowTime" customModuleProvider="target">
@@ -131,7 +131,7 @@
                         <constraints>
                             <constraint firstItem="92T-YF-2Ql" firstAttribute="leading" secondItem="PTx-OX-zYo" secondAttribute="leading" id="1fS-DA-xuD"/>
                             <constraint firstItem="PTx-OX-zYo" firstAttribute="trailing" secondItem="92T-YF-2Ql" secondAttribute="trailing" id="AGC-CK-Ewy"/>
-                            <constraint firstItem="PTx-OX-zYo" firstAttribute="bottom" secondItem="bYK-LQ-P8P" secondAttribute="bottom" id="CCB-jO-uFc"/>
+                            <constraint firstItem="PTx-OX-zYo" firstAttribute="bottom" secondItem="bYK-LQ-P8P" secondAttribute="bottom" constant="33" id="CCB-jO-uFc"/>
                             <constraint firstItem="92T-YF-2Ql" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Urw-Ij-FND"/>
                             <constraint firstItem="bYK-LQ-P8P" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="154" id="dFZ-EL-Xb0"/>
                             <constraint firstItem="PTx-OX-zYo" firstAttribute="trailing" secondItem="bYK-LQ-P8P" secondAttribute="trailing" id="foQ-F2-QSj"/>
@@ -429,7 +429,7 @@
                                 <rect key="frame" x="84" y="0.0" width="207" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1p-sN-6qW">
-                                        <rect key="frame" x="179" y="134" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="195" y="134" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="8"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -451,7 +451,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9B-2V-wYm">
-                                        <rect key="frame" x="179" y="126" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="195" y="126" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="8"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -462,7 +462,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Jzm-Sv-nVo" secondAttribute="bottom" constant="12" id="3Te-SF-Jd3"/>
                                     <constraint firstAttribute="height" constant="180" id="86t-Yk-xET"/>
                                     <constraint firstItem="Pbz-Qz-cxn" firstAttribute="leading" secondItem="AgY-4X-NDx" secondAttribute="leading" constant="12" id="FE7-ZS-QHd"/>
-                                    <constraint firstAttribute="trailing" secondItem="y9B-2V-wYm" secondAttribute="trailing" constant="28" id="Iiu-kE-SQI"/>
+                                    <constraint firstAttribute="trailing" secondItem="y9B-2V-wYm" secondAttribute="trailing" constant="12" id="Iiu-kE-SQI"/>
                                     <constraint firstItem="Z1p-sN-6qW" firstAttribute="trailing" secondItem="y9B-2V-wYm" secondAttribute="trailing" id="LYf-Ht-q6f"/>
                                     <constraint firstItem="Jzm-Sv-nVo" firstAttribute="leading" secondItem="AgY-4X-NDx" secondAttribute="leading" constant="10" id="Ouf-bc-wje"/>
                                     <constraint firstItem="y9B-2V-wYm" firstAttribute="top" secondItem="Pbz-Qz-cxn" secondAttribute="bottom" constant="8" id="WVX-Rm-cUc"/>
@@ -613,8 +613,13 @@
                     <connections>
                         <outlet property="enevlopBTopCons" destination="UKn-th-Zy7" id="V8Z-8O-TOy"/>
                         <outlet property="enevlopeBottomView" destination="c0V-y5-fq1" id="LdA-fi-Y6E"/>
+                        <outlet property="enevlopeBottomViewTouserlbl" destination="ToR-yc-i48" id="aVX-9b-Mi4"/>
+                        <outlet property="enevlopeBottomViewfromuserlbl" destination="2Ku-s4-fgg" id="CcU-Lu-fef"/>
                         <outlet property="enevlopeTopImg" destination="eIr-vE-fV4" id="kUL-Ri-vpa"/>
                         <outlet property="mailView" destination="AgY-4X-NDx" id="yeG-a7-jB1"/>
+                        <outlet property="mailViewFromUserlbl" destination="y9B-2V-wYm" id="lS2-MG-yf1"/>
+                        <outlet property="mailViewMaillbl" destination="Pbz-Qz-cxn" id="AUN-6V-SVw"/>
+                        <outlet property="mailViewTimeLbl" destination="Z1p-sN-6qW" id="OTs-Yc-e5b"/>
                         <outlet property="stampCollectionView" destination="F2o-xq-bpk" id="Jrx-e4-SVP"/>
                         <outlet property="statusLbl" destination="OiR-a3-DNd" id="00l-Yo-imM"/>
                     </connections>
@@ -1041,7 +1046,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="意见反馈" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="is9-z9-CP7">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="is9-z9-CP7">
                                 <rect key="frame" x="15" y="176" width="345" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
@@ -1090,6 +1095,6 @@
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6a2-AH-6mC"/>
+        <segue reference="ftG-we-VqN"/>
     </inferredMetricsTieBreakers>
 </document>

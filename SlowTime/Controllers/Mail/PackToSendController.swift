@@ -9,27 +9,36 @@
 import UIKit
 import Moya
 import RxSwift
+import Kingfisher
 
 class PackToSendController: UIViewController {
     
+    
+    @IBOutlet weak var mailViewTimeLbl: UILabel!
+    @IBOutlet weak var mailViewFromUserlbl: UILabel!
+    @IBOutlet weak var mailViewMaillbl: UILabel!
+    
     @IBOutlet weak var mailView: UIView!
-    
-    private var mailImagePointY: CGFloat = 0
-    private var mailImageIdentyY: CGFloat = 0
-    
     
     @IBOutlet weak var enevlopeTopImg: UIImageView! {
         didSet {
             enevlopeTopImg.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
         }
     }
+    
+    @IBOutlet weak var enevlopeBottomViewTouserlbl: UILabel!
+    @IBOutlet weak var enevlopeBottomViewfromuserlbl: UILabel!
     @IBOutlet weak var enevlopeBottomView: UIView!
     
     @IBOutlet weak var enevlopBTopCons: NSLayoutConstraint!
     
     private var stamps: [Stamp] = [Stamp]()
+    private var hasDrag: Bool = false
     
-    var mailId: String = ""
+    private var mailImagePointY: CGFloat = 0
+    private var mailImageIdentyY: CGFloat = 0
+    
+    var mail: Mail?
     
     let disposeBag = DisposeBag()
     
@@ -40,10 +49,21 @@ class PackToSendController: UIViewController {
     }
     @IBOutlet weak var statusLbl: UILabel!
     
+    private var stampImageView: UIImageView = UIImageView()
+    private var postmarkImgView: UIImageView = UIImageView()
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        mailViewMaillbl.text = mail?.content
+        mailViewTimeLbl.text = mail?.updateTime
+        mailViewFromUserlbl.text = mail?.fromUser?.nickname
+        
+        enevlopeBottomViewTouserlbl.text = "\(String(describing: mail?.toUser?.nickname ?? "")) 收"
+        enevlopeBottomViewfromuserlbl.text = "\(String(describing: mail?.fromUser?.nickname ?? "")) 寄"
+        
     }
     
     
@@ -79,19 +99,7 @@ class PackToSendController: UIViewController {
             let point = touch.location(in: view)
             if mailView.frame.contains(point) {
                 mailImagePointY = point.y
-            } else if (stampCollectionView.superview?.frame.contains(point))! {
-                DLog(point)
-                DLog(view.convert(point, to: stampCollectionView))
-                
-                stampCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))?.center = point
             }
-            
-            
-            
-            
-            
-            
-            
         }
     }
     
@@ -101,8 +109,6 @@ class PackToSendController: UIViewController {
             let point = touch.location(in: view)
             if mailView.frame.contains(point) {
                 mailView.y = point.y - mailImagePointY
-            } else if stampCollectionView.frame.contains(point) {
-                stampCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))?.center = point
             }
         }
     }
@@ -129,9 +135,12 @@ class PackToSendController: UIViewController {
         }){(finished) in
             self.enevlopeTopImg.isHidden = true
             self.statusLbl.text = "请选择邮票"
+            
             UIView.animate(withDuration: 0.5, animations: {
                 self.enevlopBTopCons.constant = 190
                 self.view.layoutIfNeeded()
+            }, completion: { (fin) in
+                self.hasDrag = true
             })
         }
     }
@@ -145,9 +154,11 @@ class PackToSendController: UIViewController {
             .mapJSON()
             .filterSuccessfulCode()
             .bind(onNext: { [weak self] (json) in
-                self?.enevlopBTopCons.constant = 0
+                self?.enevlopBTopCons.constant = 0                
                 UIView.animate(withDuration: 1, animations: {
                     self?.view.layoutIfNeeded()
+                    self?.stampImageView.y = 0
+                    self?.postmarkImgView.y = 0
                 }, completion: { (fin) in
                     self?.dismiss(animated: true, completion: nil)
                 })
@@ -174,22 +185,59 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         guard indexPath.item < stamps.count else {
             present(R.storyboard.mail().instantiateViewController(withIdentifier: "StampListController"), animated: true, completion: nil)
             return
         }
-        let stampImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 108))
-        stampImageView.image = RI.stamp()
+        
+        if !hasDrag {
+            return
+        }
+        
+        
+        // 获取当前点击的cell
+        let cell = collectionView.cellForItem(at: indexPath) as! MyStampCell
+        
+        // 坐标系转换，获得cell相对于view的坐标
+        let point = collectionView.convert(cell.frame.origin, to: view)
+        
+        // 创建一个新的imageView
+        let stampImageView = UIImageView()
+        
+        // 设置图片
+        stampImageView.kf.setImage(with: ImageResource(downloadURL: URL(string: (cell.stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.add_stamp())
+        
+        // 设置其frame
+        stampImageView.frame = CGRect(x: point.x, y: point.y, width: 52, height: 70)
+        
+        // 添加到view上
         view.addSubview(stampImageView)
+        self.stampImageView = stampImageView
         
         collectionView.isHidden = true
         statusLbl.isHidden = true
         
+        
+        // 获得enevlopeBottomView相对于view的坐标
+        let eneFrame = enevlopeBottomView.frame
+        
         UIView.animate(withDuration: 1, animations: {
-            stampImageView.transform = CGAffineTransform(translationX: 280, y: 180)
+            // 邮票移动动画
+            stampImageView.transform = CGAffineTransform(translationX: eneFrame.maxX - stampImageView.width - stampImageView.x - 15, y: eneFrame.minY - stampImageView.y + 6)
         }) { (fin) in
-            self.sendMailRequest(stampId: self.stamps[indexPath.row].id!, mailID: self.mailId)
+            // 邮戳动画
+            // 创建一个新的imageView
+            let postmarkImgView = UIImageView()
+            postmarkImgView.image = RI.youchuoBlack()
+            postmarkImgView.frame = CGRect(x: eneFrame.maxX - 105 - 40, y: eneFrame.minY - 30, width: 189, height: 124)
+            self.view.addSubview(postmarkImgView)
+            self.postmarkImgView = postmarkImgView
+
+            UIView.animate(withDuration: 1, animations: {
+                postmarkImgView.transform = CGAffineTransform(scaleX: 0.56, y: 0.56)
+            }, completion: { (fin) in
+                self.sendMailRequest(stampId: self.stamps[indexPath.row].id!, mailID: (self.mail?.id)!)
+            })
         }
     }
 }

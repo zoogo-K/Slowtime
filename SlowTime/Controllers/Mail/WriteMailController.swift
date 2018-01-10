@@ -92,7 +92,7 @@ class WriteMailController: BaseViewController {
                    
                     if case .next(let mail) = event {
                         let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
-                        packToSend.mailId = mail.id!
+                        packToSend.mail = mail
                         self?.present(packToSend, animated: true, completion: nil)
                     }
                     
