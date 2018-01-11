@@ -44,12 +44,13 @@ class WriteMailController: BaseViewController {
         }
         
         
-        
         view.rx.sentMessage(#selector(touchesBegan(_:with:)))
             .bind { [unowned self] (_) in
                 _ = self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
+        
+        mailContentTextView.becomeFirstResponder()
         
         if ifEdit {
             let provider = MoyaProvider<Request>()
@@ -93,10 +94,11 @@ class WriteMailController: BaseViewController {
                     if case .next(let mail) = event {
                         let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
                         packToSend.mail = mail
+                        packToSend.popRoot = {
+                            self?.navigationController?.popToRootViewController(animated: false)
+                        }
                         self?.present(packToSend, animated: true, completion: nil)
                     }
-                    
-                    
                 }
             }
             .disposed(by: disposeBag)

@@ -72,9 +72,6 @@ class LoginController: LoginBaseViewController {
         
         hideOrShowBtn(btnType: .all, hide: true)
         
-        
-        _ = phoneTextField.rx.sentMessage(#selector(becomeFirstResponder))
-        
         phoneTextField.rx.text.orEmpty
             .map { $0.trimmingCharacters(in: .whitespaces).localizedLowercase =~ Pattern.phone }
             .share(replay: 1)
@@ -98,6 +95,8 @@ class LoginController: LoginBaseViewController {
                 self.login()
             }
             .disposed(by: disposeBag)
+        
+        _ = phoneTextField.rx.sentMessage(#selector(becomeFirstResponder))
         
         view.rx.sentMessage(#selector(touchesBegan(_:with:)))
             .bind { [unowned self] (_) in

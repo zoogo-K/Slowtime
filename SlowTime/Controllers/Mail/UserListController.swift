@@ -28,6 +28,7 @@ class UserListController: BaseViewController {
     @IBOutlet weak var tableview: UITableView! {
         didSet {
             tableview.backgroundColor = .clear
+            tableview.bouncesZoom = false
             tableview.tableFooterView = UIView()
         }
     }
@@ -65,11 +66,12 @@ class UserListController: BaseViewController {
         
         
         
+        
         dottBtn.rx.tap
             .throttle(1, scheduler: MainScheduler.instance)
             .bind { [unowned self] in
                 self.viewbottomCon.constant = self.dottOpen ? -187 : 0
-                self.dottBtn.setImage(self.dottOpen ? RI.icon_arrow_down() : RI.icon_arrow_up(), for: .normal)
+                self.dottBtn.setImage(self.dottOpen ? RI.icon_arrow_up() : RI.icon_arrow_down(), for: .normal)
                 UIView.animate(withDuration: 0.3, animations: {
                     self.view.layoutIfNeeded()
                 }, completion: { (b) in

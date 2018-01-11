@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "long@2x.png",
+      "filename" : "bg.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "平常要的图2.png",
+      "filename" : "bg_1080.png",
       "scale" : "3x"
     }
   ],

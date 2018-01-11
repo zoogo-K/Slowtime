@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="long" translatesAutoresizingMaskIntoConstraints="NO" id="92T-YF-2Ql">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bYK-LQ-P8P">
                                 <rect key="frame" x="0.0" y="154" width="375" height="480"/>
@@ -85,7 +85,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="H67-5x-2zZ"/>
                                         </constraints>
-                                        <state key="normal" image="icon_arrow_up"/>
+                                        <state key="normal" image="icon_arrow_down"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M40-0I-cZh">
                                         <rect key="frame" x="134.5" y="172" width="106" height="34"/>
@@ -1088,8 +1088,8 @@
         <image name="dotted_line" width="350" height="208"/>
         <image name="envelope_bottom" width="300" height="165"/>
         <image name="envelope_top" width="300" height="81"/>
-        <image name="icon_arrow_up" width="22" height="12"/>
-        <image name="long" width="375" height="403"/>
+        <image name="icon_arrow_down" width="22" height="12"/>
+        <image name="long" width="375" height="667"/>
         <image name="yinzhang" width="26" height="28"/>
         <image name="youchuo-black" width="35" height="23"/>
         <image name="youchuo-red" width="60" height="32"/>

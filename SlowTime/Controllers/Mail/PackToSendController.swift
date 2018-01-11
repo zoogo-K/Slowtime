@@ -13,7 +13,6 @@ import Kingfisher
 
 class PackToSendController: UIViewController {
     
-    
     @IBOutlet weak var mailViewTimeLbl: UILabel!
     @IBOutlet weak var mailViewFromUserlbl: UILabel!
     @IBOutlet weak var mailViewMaillbl: UILabel!
@@ -32,8 +31,13 @@ class PackToSendController: UIViewController {
     
     @IBOutlet weak var enevlopBTopCons: NSLayoutConstraint!
     
+    var popRoot: (()-> Void)?
+    
     private var stamps: [Stamp] = [Stamp]()
     private var hasDrag: Bool = false
+    
+    private var canAnimation: Bool = false
+    
     
     private var mailImagePointY: CGFloat = 0
     private var mailImageIdentyY: CGFloat = 0
@@ -51,7 +55,7 @@ class PackToSendController: UIViewController {
     
     private var stampImageView: UIImageView = UIImageView()
     private var postmarkImgView: UIImageView = UIImageView()
-
+    
     
     
     override func viewDidLoad() {
@@ -108,29 +112,33 @@ class PackToSendController: UIViewController {
         if let touch = touches.first {
             let point = touch.location(in: view)
             if mailView.frame.contains(point) {
-                mailView.y = point.y - mailImagePointY
+                if mailView.frame.maxY < enevlopeBottomView.frame.maxY - 20 {
+                    mailView.y = point.y - mailImagePointY
+                } else {
+                    canAnimation = true
+                }
+                
+                
+                //                if point.y > enevlopeBottomView.center.y {
+                //                    canAnimation = true
+                //                }
             }
         }
     }
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let point = touch.location(in: view)
-            
-            if enevlopeBottomView.frame.contains(point) {
-                mailView.isHidden = true
-                enevlopeAnimation()
-            } else {
-                mailView.y = mailImageIdentyY
-            }
+        if canAnimation {
+            enevlopeAnimation()
+        }else {
+            mailView.y = mailImageIdentyY
         }
     }
     
     
-    
     private func enevlopeAnimation() {
         UIView.animate(withDuration: 0.5, animations: {
+            self.mailView.isHidden = true
             self.enevlopeTopImg.layer.transform = CATransform3DMakeRotation(CGFloat.pi/2, 1, 0, 0)
         }){(finished) in
             self.enevlopeTopImg.isHidden = true
@@ -160,7 +168,9 @@ class PackToSendController: UIViewController {
                     self?.stampImageView.y = 0
                     self?.postmarkImgView.y = 0
                 }, completion: { (fin) in
-                    self?.dismiss(animated: false, completion: nil)
+                    self?.dismiss(animated: true, completion: {
+                        self?.popRoot!()
+                    })
                 })
             })
             .disposed(by: disposeBag)
@@ -232,7 +242,7 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
             postmarkImgView.frame = CGRect(x: eneFrame.maxX - 105 - 40, y: eneFrame.minY - 30, width: 189, height: 124)
             self.view.addSubview(postmarkImgView)
             self.postmarkImgView = postmarkImgView
-
+            
             UIView.animate(withDuration: 1, animations: {
                 postmarkImgView.transform = CGAffineTransform(scaleX: 0.56, y: 0.56)
             }, completion: { (fin) in

@@ -45,6 +45,10 @@ class MailListController: BaseViewController {
                         self?.tableview.reloadData()
                     }
                 }else if case .error = event {
+                    self?.mails = [ListMail]()
+                    DispatchQueue.main.async {
+                        self?.tableview.reloadData()
+                    }
                     DLog("请求超时")
                 }
             }
