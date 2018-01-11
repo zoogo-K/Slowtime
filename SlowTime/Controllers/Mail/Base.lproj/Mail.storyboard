@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -145,6 +144,7 @@
                     <navigationItem key="navigationItem" id="iwf-nu-5Qf"/>
                     <connections>
                         <outlet property="commendUserInfo" destination="uj2-it-3tG" id="lfI-Nv-kTY"/>
+                        <outlet property="commendView" destination="ov3-WZ-wD2" id="tQJ-3B-AcC"/>
                         <outlet property="dottBtn" destination="js4-ym-Pee" id="k4G-k6-2LI"/>
                         <outlet property="tableview" destination="bYK-LQ-P8P" id="lky-8y-ZOx"/>
                         <outlet property="viewbottomCon" destination="t9M-Oy-8aG" id="bfN-bR-meW"/>
@@ -557,7 +557,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-y5-fq1">
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-y5-fq1">
                                 <rect key="frame" x="37.5" y="281" width="300" height="165"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-a6-ef6">
@@ -600,10 +600,10 @@
                             <constraint firstAttribute="trailing" secondItem="BXH-9O-Rav" secondAttribute="trailing" constant="20" id="L2Q-sm-tuv"/>
                             <constraint firstItem="AgY-4X-NDx" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" id="MFG-Df-7Cc"/>
                             <constraint firstItem="BXH-9O-Rav" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="32" id="MME-2K-ylW"/>
-                            <constraint firstItem="eIr-vE-fV4" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="241" id="Nh7-ZP-Zbp"/>
+                            <constraint firstItem="eIr-vE-fV4" firstAttribute="top" secondItem="OQi-5c-h3E" secondAttribute="top" constant="221" id="Nh7-ZP-Zbp"/>
                             <constraint firstItem="c0V-y5-fq1" firstAttribute="centerX" secondItem="eIr-vE-fV4" secondAttribute="centerX" id="O40-vO-hOc"/>
                             <constraint firstItem="j2q-N2-bAW" firstAttribute="top" secondItem="OiR-a3-DNd" secondAttribute="bottom" constant="25" id="U16-Br-2Up"/>
-                            <constraint firstItem="c0V-y5-fq1" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="topMargin" constant="261" id="UKn-th-Zy7"/>
+                            <constraint firstItem="c0V-y5-fq1" firstAttribute="top" secondItem="OQi-5c-h3E" secondAttribute="top" constant="261" id="UKn-th-Zy7"/>
                             <constraint firstItem="j2q-N2-bAW" firstAttribute="leading" secondItem="iZB-lp-Ec1" secondAttribute="leading" id="W0U-cf-Oew"/>
                             <constraint firstItem="OQi-5c-h3E" firstAttribute="trailing" secondItem="AgY-4X-NDx" secondAttribute="trailing" constant="84" id="XR3-jj-6RU"/>
                             <constraint firstItem="OiR-a3-DNd" firstAttribute="centerX" secondItem="eIr-vE-fV4" secondAttribute="centerX" id="kFF-qA-UxR"/>

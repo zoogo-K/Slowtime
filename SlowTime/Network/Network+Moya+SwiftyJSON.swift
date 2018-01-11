@@ -79,6 +79,8 @@ extension Moya.Endpoint: CustomDebugStringConvertible {
 }
 
 private let requestSuccessCode = "OK"
+private let tokenInvalidCode = "access_token_not_found"
+
 
 public typealias ErrorClosure = (String, String) -> Void
 
@@ -86,6 +88,23 @@ fileprivate extension JSON {
     
     fileprivate func filterSuccessfulCode(_ closure: ErrorClosure?) throws -> JSON {
         let code = self["code"].stringValue
+        
+        guard code != tokenInvalidCode else {
+            
+            let navigationController = R.storyboard.login().instantiateInitialViewController()! as? UINavigationController
+            UIApplication.shared.keyWindow?.rootViewController = navigationController
+            
+            UserDefaults.standard.set(nil, forKey: "accessToken_key")
+            UserDefaults.standard.set(nil, forKey: "userHash_key")
+            UserDefaults.standard.set(nil, forKey: "nickname_key")
+            UserDefaults.standard.set(nil, forKey: "profile_key")
+            UserDefaults.standard.set(false, forKey: "isLogin_key")
+            
+            let message = self["message"].stringValue
+            closure?(code, message)
+            throw HexaError.statusCode(code, message)
+        }
+        
         
         guard code == requestSuccessCode else {
             let message = self["message"].stringValue

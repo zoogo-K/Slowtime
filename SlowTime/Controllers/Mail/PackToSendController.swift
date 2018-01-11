@@ -154,13 +154,13 @@ class PackToSendController: UIViewController {
             .mapJSON()
             .filterSuccessfulCode()
             .bind(onNext: { [weak self] (json) in
-                self?.enevlopBTopCons.constant = 0                
+                self?.enevlopBTopCons.constant = -20
                 UIView.animate(withDuration: 1, animations: {
                     self?.view.layoutIfNeeded()
                     self?.stampImageView.y = 0
                     self?.postmarkImgView.y = 0
                 }, completion: { (fin) in
-                    self?.dismiss(animated: true, completion: nil)
+                    self?.dismiss(animated: false, completion: nil)
                 })
             })
             .disposed(by: disposeBag)

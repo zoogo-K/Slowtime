@@ -19,6 +19,7 @@ class UserListController: BaseViewController {
     @IBOutlet weak var commendUserInfo: UILabel!
     @IBOutlet weak var writeMailToCommendUser: UIButton!
     
+    @IBOutlet weak var commendView: UIView!
     
     private var dottOpen: Bool = true
     
@@ -46,6 +47,7 @@ class UserListController: BaseViewController {
     private var friends: [Friend]?
     
     private var commendFriend: Friend = Friend(json: JSON())
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +91,7 @@ class UserListController: BaseViewController {
         statusBarStyle = .lightContent
         request()
     }
-
+    
     private func request() {
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.friends)
@@ -100,19 +102,42 @@ class UserListController: BaseViewController {
             .subscribe { [weak self] (event) in
                 self?.tableview.mj_header.endRefreshing()
                 if case .next(let friends) = event {
-                    self?.commendFriend = friends.last!
                     self?.friends = friends
-                    self?.friends?.removeLast()
                     DispatchQueue.main.async {
                         self?.tableview.reloadData()
-                        self?.commendUserInfo.text = friends.last?.profile
                     }
                 }else if case .error = event {
                     DLog("请求超时")
                 }
             }
             .disposed(by: disposeBag)
+        
+        
+        let providerRecommends = MoyaProvider<Request>()
+        providerRecommends.rx.requestWithLoading(.recommends)
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .flatMap(to: Friend.self)
+            .subscribe { [weak self] (event) in
+                self?.tableview.mj_header.endRefreshing()
+                if case .next(let friends) = event {
+                    DispatchQueue.main.async {
+                        self?.commendView.isHidden = false
+                        self?.commendUserInfo.text = friends.first!.profile
+                        self?.commendFriend = friends.first!
+                    }
+                }else if case .error = event {
+                    self?.commendView.isHidden = true
+                }
+            }
+            .disposed(by: disposeBag)
     }
+    
+    
+    
+    
+    
     
     
     // 顶部刷新

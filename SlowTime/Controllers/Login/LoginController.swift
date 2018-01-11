@@ -118,7 +118,8 @@ class LoginController: LoginBaseViewController {
                 HUD.flash(.label(mess), delay: 1.0)
             })
             .bind(onNext: { (json) in
-                DLog(json)
+//                DLog(json)
+                HUD.flash(.label(json["message"].stringValue), delay: 1.0)
             })
             .disposed(by: disposeBag)
     }

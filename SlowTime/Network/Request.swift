@@ -33,6 +33,8 @@ public enum Request {
     case profile(nickName: String, profile: String)
     
     case friends
+    case recommends
+    
     case mailList(userhash: String)
     case deleteMail(mailId: String)
     case getMail(mailId: String)
@@ -40,7 +42,6 @@ public enum Request {
     case editMail(mailId: String, toUser: String, content: String)
     case sendMail(stampId: String, mailId: String)
     
-
     case stamps
     case userStamp
     case orderStamp(stamps: [[String:String]])
@@ -63,6 +64,9 @@ extension Request: Moya.TargetType {
         
         case .friends:
             return "/feed/friends"
+        case .recommends:
+            return "/feed/recommends"
+            
         case .mailList(let userhash):
             return "/mail/inbox/\(userhash)"
         case .deleteMail(let mailId):
