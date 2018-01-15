@@ -68,7 +68,13 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
             performSegue(withIdentifier: R.segue.settingsController.showUserAgreement, sender: nil)
             break
         case "logout":
-            logOut()
+            let alert = HexaGlobalAlert(title: "退出登录")
+            let confirmAction = AlertOption(title: "我要退出", type: .normal, action: { [weak self] in
+                self?.logOut()
+            })
+            let cancelAction = AlertOption(title: "我再想想", type: .cancel, action: nil)
+            alert.addAlertOptions([cancelAction, confirmAction])
+            alert.show()
             break
         default:()
             //            HexaHUD.show(with: "切换到\(dataArr["Title"]!)")

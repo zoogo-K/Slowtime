@@ -13,16 +13,16 @@ import PKHUD
 
 class ProfileController: BaseViewController {
     
-    @IBOutlet weak var nickNameVerifylbl: UILabel!
-    @IBOutlet weak var textViewVerifylbl: UILabel!
-
-    
-    
     @IBOutlet weak var nickName: UITextField! {
         didSet {
             nickName.text = UserDefaults.standard.string(forKey: "nickname_key")
             nickName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
             nickName.leftViewMode = .always
+            
+            nickName.layer.borderColor = UIColor.black.cgColor
+            nickName.layer.borderWidth = 1
+            nickName.layer.masksToBounds = true
+            nickName.delegate = self
         }
     }
 
@@ -32,23 +32,14 @@ class ProfileController: BaseViewController {
             profileTextView.layer.borderWidth = 1
             profileTextView.layer.masksToBounds = true
             profileTextView.text = UserDefaults.standard.string(forKey: "profile_key")
+            
+            profileTextView.delegate = self
         }
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nickName.rx.text.orEmpty.asObservable().bind { [weak self] in
-            self?.nickNameVerifylbl.text = String(describing: $0.count) + " / 5"
-        }
-        .disposed(by: disposeBag)
-        
-        profileTextView.rx.text.orEmpty.asObservable().bind { [weak self] in
-            self?.textViewVerifylbl.text = String(describing: $0.count) + " / 50"
-            }
-            .disposed(by: disposeBag)
-        
         
         navBar.title = "修改资料"
         navBar.wr_setRightButton(title: "修改", titleColor: .black)
@@ -66,12 +57,27 @@ class ProfileController: BaseViewController {
     }
     
     private func changeProfileRequest() {
+        view.endEditing(true)
+
+        if (nickName.text?.count)! > 12 {
+            nickName.layer.borderColor = UIColor.red.cgColor
+            HUD.flash(.label("昵称超限"), delay: 1)
+            return
+        }
+        
+        if profileTextView.text.count > 50 {
+            profileTextView.layer.borderColor = UIColor.red.cgColor
+            HUD.flash(.label("个人介绍超限"), delay: 1)
+            return
+        }
+        
+        
         let provider = MoyaProvider<Request>()
         provider.rx.request(.profile(nickName: nickName.text!, profile: profileTextView.text!))
             .asObservable()
             .mapJSON()
-            .filterSuccessfulCode({ (_, mess) in
-                HUD.flash(.label(mess), delay: 1.0)
+            .filterSuccessfulCode({ (code, mess) in
+                HUD.flash(.label(code), delay: 1.0)
             })
             .filterObject(to: User.self)
             .subscribe { [weak self] (event) in
@@ -83,8 +89,6 @@ class ProfileController: BaseViewController {
                     UserDefaults.standard.set(user.profile!, forKey: "profile_key")
                     self?.popAction()
                     
-                }else if case .error = event {
-                    HUD.flash(.label("请求失败！"), delay: 1.0)
                 }
             }
             .disposed(by: disposeBag)
@@ -95,5 +99,16 @@ class ProfileController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+
+extension ProfileController: UITextFieldDelegate, UITextViewDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        nickName.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        profileTextView.layer.borderColor = UIColor.black.cgColor
+    }
 }
 

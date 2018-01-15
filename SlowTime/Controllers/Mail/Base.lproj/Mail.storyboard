@@ -725,7 +725,7 @@
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zac-Rc-ala">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zac-Rc-ala">
                                 <rect key="frame" x="20" y="141.5" width="335" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="rf9-hG-Q5s"/>
@@ -734,37 +734,19 @@
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mt9-9v-ilJ">
-                                <rect key="frame" x="352" y="182.5" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLa-fs-RGv">
-                                <rect key="frame" x="352" y="365" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gs3-Br-Hry" firstAttribute="leading" secondItem="d9p-Qa-P0Z" secondAttribute="leading" constant="20" id="1uE-fl-K74"/>
-                            <constraint firstItem="pLa-fs-RGv" firstAttribute="bottom" secondItem="8a7-UO-Dq4" secondAttribute="bottom" constant="-3" id="3pd-RT-js0"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gs3-Br-Hry" secondAttribute="trailing" constant="20" symbolic="YES" id="40d-cv-Hyb"/>
                             <constraint firstItem="pSF-tA-v1J" firstAttribute="leading" secondItem="Gs3-Br-Hry" secondAttribute="leading" id="BRz-uX-z6K"/>
-                            <constraint firstItem="Mt9-9v-ilJ" firstAttribute="trailing" secondItem="zac-Rc-ala" secondAttribute="trailing" constant="-3" id="Ecy-Gk-weg"/>
                             <constraint firstItem="Gs3-Br-Hry" firstAttribute="top" secondItem="0IG-S7-WC8" secondAttribute="top" constant="50" id="G67-RC-87h"/>
-                            <constraint firstItem="Mt9-9v-ilJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d9p-Qa-P0Z" secondAttribute="leading" constant="20" symbolic="YES" id="Gqn-I0-v2Q"/>
-                            <constraint firstItem="pLa-fs-RGv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d9p-Qa-P0Z" secondAttribute="leading" constant="20" symbolic="YES" id="ODP-fA-Evq"/>
-                            <constraint firstItem="pLa-fs-RGv" firstAttribute="trailing" secondItem="8a7-UO-Dq4" secondAttribute="trailing" constant="-3" id="Q4h-NS-YQO"/>
                             <constraint firstItem="pSF-tA-v1J" firstAttribute="top" secondItem="zac-Rc-ala" secondAttribute="bottom" constant="24" id="Uax-zH-6wk"/>
                             <constraint firstItem="zac-Rc-ala" firstAttribute="top" secondItem="Gs3-Br-Hry" secondAttribute="bottom" constant="10" id="Z06-BB-9Lh"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pSF-tA-v1J" secondAttribute="trailing" constant="20" symbolic="YES" id="ZFt-L3-1xl"/>
                             <constraint firstItem="8a7-UO-Dq4" firstAttribute="top" secondItem="pSF-tA-v1J" secondAttribute="bottom" constant="8" id="boA-Y4-Rgb"/>
                             <constraint firstItem="8a7-UO-Dq4" firstAttribute="leading" secondItem="d9p-Qa-P0Z" secondAttribute="leading" constant="20" id="dah-9r-GKj"/>
                             <constraint firstItem="zac-Rc-ala" firstAttribute="leading" secondItem="d9p-Qa-P0Z" secondAttribute="leading" constant="20" id="dsd-Id-tCd"/>
-                            <constraint firstItem="Mt9-9v-ilJ" firstAttribute="bottom" secondItem="zac-Rc-ala" secondAttribute="bottom" constant="-3" id="hVM-0r-npF"/>
                             <constraint firstAttribute="trailing" secondItem="8a7-UO-Dq4" secondAttribute="trailing" constant="20" id="loD-4v-hVp"/>
                             <constraint firstAttribute="trailing" secondItem="zac-Rc-ala" secondAttribute="trailing" constant="20" id="use-l8-8Pz"/>
                         </constraints>
@@ -773,9 +755,7 @@
                     <navigationItem key="navigationItem" id="FmF-cc-2fV"/>
                     <connections>
                         <outlet property="nickName" destination="zac-Rc-ala" id="5lp-xN-2Zz"/>
-                        <outlet property="nickNameVerifylbl" destination="Mt9-9v-ilJ" id="5jo-Br-xWd"/>
                         <outlet property="profileTextView" destination="8a7-UO-Dq4" id="Xbd-be-qZc"/>
-                        <outlet property="textViewVerifylbl" destination="pLa-fs-RGv" id="DgC-kR-cmE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWe-xD-9Ck" userLabel="First Responder" sceneMemberID="firstResponder"/>

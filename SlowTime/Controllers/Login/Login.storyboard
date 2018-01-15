@@ -206,7 +206,7 @@
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ag6-40-dSp">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ag6-40-dSp">
                                 <rect key="frame" x="20" y="111.5" width="335" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Wck-SJ-1xU"/>
@@ -215,35 +215,19 @@
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEc-4r-iQ8">
-                                <rect key="frame" x="352" y="152.5" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0e-Rx-qNf">
-                                <rect key="frame" x="352" y="335" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Whm-md-XX4" firstAttribute="top" secondItem="j8U-CG-6cK" secondAttribute="bottom" constant="30" id="0pa-bn-qf2"/>
                             <constraint firstItem="Whm-md-XX4" firstAttribute="centerX" secondItem="vEU-VJ-izg" secondAttribute="centerX" id="473-5y-fRt"/>
                             <constraint firstItem="Ag6-40-dSp" firstAttribute="leading" secondItem="vEU-VJ-izg" secondAttribute="leading" constant="20" id="QHR-rR-4BR"/>
-                            <constraint firstItem="pEc-4r-iQ8" firstAttribute="bottom" secondItem="Ag6-40-dSp" secondAttribute="bottom" constant="-3" id="RZ5-Ub-guI"/>
                             <constraint firstAttribute="trailing" secondItem="j8U-CG-6cK" secondAttribute="trailing" constant="20" id="Ryd-FS-pDN"/>
                             <constraint firstItem="Ag6-40-dSp" firstAttribute="top" secondItem="elM-5f-S5d" secondAttribute="bottom" constant="10" id="SRG-Yi-wFg"/>
                             <constraint firstAttribute="trailing" secondItem="Ag6-40-dSp" secondAttribute="trailing" constant="20" id="V0g-k5-v6a"/>
                             <constraint firstItem="elM-5f-S5d" firstAttribute="top" secondItem="vEU-VJ-izg" secondAttribute="top" constant="84" id="Wjn-rx-BW0"/>
-                            <constraint firstItem="R0e-Rx-qNf" firstAttribute="trailing" secondItem="j8U-CG-6cK" secondAttribute="trailing" constant="-3" id="aEO-o9-r8J"/>
                             <constraint firstItem="elM-5f-S5d" firstAttribute="leading" secondItem="vEU-VJ-izg" secondAttribute="leading" constant="20" id="clY-ET-a3Z"/>
                             <constraint firstItem="eC0-ag-Xz4" firstAttribute="top" secondItem="Ag6-40-dSp" secondAttribute="bottom" constant="24" id="i8p-Yl-uRe"/>
-                            <constraint firstItem="pEc-4r-iQ8" firstAttribute="trailing" secondItem="Ag6-40-dSp" secondAttribute="trailing" constant="-3" id="opK-sC-RYV"/>
                             <constraint firstItem="j8U-CG-6cK" firstAttribute="top" secondItem="eC0-ag-Xz4" secondAttribute="bottom" constant="8" id="pGG-CV-l6V"/>
-                            <constraint firstItem="R0e-Rx-qNf" firstAttribute="bottom" secondItem="j8U-CG-6cK" secondAttribute="bottom" constant="-3" id="tpa-fD-15W"/>
                             <constraint firstItem="eC0-ag-Xz4" firstAttribute="leading" secondItem="elM-5f-S5d" secondAttribute="leading" id="xOB-34-p7u"/>
                             <constraint firstItem="j8U-CG-6cK" firstAttribute="leading" secondItem="vEU-VJ-izg" secondAttribute="leading" constant="20" id="zpQ-Iq-N9H"/>
                         </constraints>
@@ -252,9 +236,7 @@
                     <connections>
                         <outlet property="nextButton" destination="Whm-md-XX4" id="gOD-56-5N2"/>
                         <outlet property="nickName" destination="Ag6-40-dSp" id="inA-aC-aRO"/>
-                        <outlet property="nickNameVerifylbl" destination="pEc-4r-iQ8" id="zmU-o2-TbB"/>
                         <outlet property="profileTextView" destination="j8U-CG-6cK" id="VZ3-01-Nqg"/>
-                        <outlet property="textViewVerifylbl" destination="R0e-Rx-qNf" id="ucS-sE-DgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHF-S5-YMY" userLabel="First Responder" sceneMemberID="firstResponder"/>

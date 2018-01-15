@@ -13,16 +13,17 @@ import PKHUD
 
 class InformationController: LoginBaseViewController {
     
-    @IBOutlet weak var nickNameVerifylbl: UILabel!
-    @IBOutlet weak var textViewVerifylbl: UILabel!
-
-    
     @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var nickName: UITextField! {
         didSet {
             nickName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
             nickName.leftViewMode = .always
+            
+            nickName.layer.borderColor = UIColor.black.cgColor
+            nickName.layer.borderWidth = 1
+            nickName.layer.masksToBounds = true
+            nickName.delegate = self
         }
     }
     
@@ -31,6 +32,8 @@ class InformationController: LoginBaseViewController {
             profileTextView.layer.borderColor = UIColor.black.cgColor
             profileTextView.layer.borderWidth = 1
             profileTextView.layer.masksToBounds = true
+            
+            profileTextView.delegate = self
         }
     }
     
@@ -39,16 +42,6 @@ class InformationController: LoginBaseViewController {
         super.viewDidLoad()
         
         hideOrShowBtn(btnType: .dis, hide: true)
-        
-        nickName.rx.text.orEmpty.asObservable().bind { [weak self] in
-            self?.nickNameVerifylbl.text = String(describing: $0.count) + " / 5"
-            }
-            .disposed(by: disposeBag)
-        
-        profileTextView.rx.text.orEmpty.asObservable().bind { [weak self] in
-            self?.textViewVerifylbl.text = String(describing: $0.count) + " / 50"
-            }
-            .disposed(by: disposeBag)
         
         nextButton.rx.tap
             .throttle(1, scheduler: MainScheduler.instance)
@@ -67,6 +60,21 @@ class InformationController: LoginBaseViewController {
     }
     
     private func profileRequest() {
+        view.endEditing(true)
+        
+        if (nickName.text?.count)! > 12 {
+            nickName.layer.borderColor = UIColor.red.cgColor
+            HUD.flash(.label("昵称超限"), delay: 1)
+            return
+        }
+        
+        if profileTextView.text.count > 50 {
+            profileTextView.layer.borderColor = UIColor.red.cgColor
+            HUD.flash(.label("个人介绍超限"), delay: 1)
+            return
+        }
+        
+
         let provider = MoyaProvider<Request>()
         provider.rx.request(.profile(nickName: nickName.text!, profile: profileTextView.text!))
             .asObservable()
@@ -93,5 +101,16 @@ class InformationController: LoginBaseViewController {
             .disposed(by: disposeBag)
     }
     
+}
+
+
+extension InformationController: UITextFieldDelegate, UITextViewDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        nickName.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        profileTextView.layer.borderColor = UIColor.black.cgColor
+    }
 }
 
