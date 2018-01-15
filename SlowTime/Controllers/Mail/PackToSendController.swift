@@ -186,11 +186,12 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
         guard indexPath.item < stamps.count else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stampCell", for: indexPath) as! MyStampCell
             cell.iconImg.image = RI.add_stamp()
+            cell.countLbl.isHidden = true
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stampCell", for: indexPath) as! MyStampCell
         cell.stamp = stamps[indexPath.row]
-        
+        cell.countLbl.isHidden = false
         return cell
     }
     
