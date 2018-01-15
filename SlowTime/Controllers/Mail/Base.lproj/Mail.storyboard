@@ -46,8 +46,8 @@
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="nHM-DU-gNj">
                                                     <rect key="frame" x="16" y="54" width="343" height="1"/>
                                                 </imageView>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="youchuo-black" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-4K-vby">
-                                                    <rect key="frame" x="320" y="16.5" width="35" height="23"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="youchuo-red" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-4K-vby">
+                                                    <rect key="frame" x="295" y="12" width="60" height="32"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1075,7 +1075,6 @@
         <image name="icon_arrow_down" width="22" height="12"/>
         <image name="long" width="375" height="667"/>
         <image name="yinzhang" width="26" height="28"/>
-        <image name="youchuo-black" width="35" height="23"/>
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>

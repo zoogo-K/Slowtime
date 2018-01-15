@@ -59,7 +59,7 @@ class UserListController: BaseViewController {
         navBar.barBackgroundImage = UIImage(color: .clear)
         navBar.backgroundColor = .clear
         navBar.wr_setBottomLineHidden(hidden: true)
-        navBar.wr_setRightButton(image: RI.setting()!)
+        navBar.wr_setRightButton(title: "设置", titleColor: .white)
         navBar.onClickRightButton = { [weak self] in
             self?.performSegue(withIdentifier: R.segue.userListController.showSettings, sender: nil)
         }

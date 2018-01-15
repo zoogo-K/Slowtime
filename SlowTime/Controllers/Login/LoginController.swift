@@ -20,6 +20,9 @@ class LoginController: LoginBaseViewController {
         didSet {
             phoneTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
             phoneTextField.leftViewMode = .always
+            phoneTextField.layer.borderWidth = 1.0
+            phoneTextField.layer.borderColor = UIColor.black.cgColor
+            phoneTextField.delegate = self
         }
     }
     
@@ -80,8 +83,6 @@ class LoginController: LoginBaseViewController {
             }
             .disposed(by: disposeBag)
         
-        
-        
         getCodeButton.rx.tap
             .throttle(60, scheduler: MainScheduler.instance)
             .bind { [unowned self] in
@@ -117,8 +118,7 @@ class LoginController: LoginBaseViewController {
                 HUD.flash(.label(mess), delay: 1.0)
             })
             .bind(onNext: { (json) in
-//                DLog(json)
-                HUD.flash(.label(json["message"].stringValue), delay: 1.0)
+                HUD.flash(.label("验证码已发送"), delay: 1.0)
             })
             .disposed(by: disposeBag)
     }
@@ -130,8 +130,8 @@ class LoginController: LoginBaseViewController {
         provider.rx.requestWithLoading(.login(phoneNumber: phoneTextField.text!, loginCode: codeTextField.text!))
             .asObservable()
             .mapJSON()
-            .filterSuccessfulCode({ (_, mess) in
-                HUD.flash(.label(mess), delay: 1.0)
+            .filterSuccessfulCode({ (code, mess) in
+                HUD.flash(.label(code), delay: 1.0)
             })
             .filterObject(to: User.self)
             .subscribe { [weak self] (event) in
@@ -149,11 +149,19 @@ class LoginController: LoginBaseViewController {
                     UserDefaults.standard.set(user.profile!, forKey: "profile_key")
                     UserDefaults.standard.set(true, forKey: "isLogin_key")
                     
-                }else if case .error = event {
-                    HUD.flash(.label("请求失败！"), delay: 1.0)
                 }
             }
             .disposed(by: disposeBag)
     }
 }
 
+
+extension LoginController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        phoneTextField.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        phoneTextField.layer.borderColor = (phoneTextField.text?.trimmingCharacters(in: .whitespaces).localizedLowercase)! =~ Pattern.phone ? UIColor.black.cgColor : UIColor.red.cgColor
+    }
+}

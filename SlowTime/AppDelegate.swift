@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        
+        // pkhud初始化
+        HUD.dimsBackground = false
+        HUD.allowsInteraction = false
         return true
     }
     
