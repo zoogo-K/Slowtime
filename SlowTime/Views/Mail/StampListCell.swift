@@ -12,13 +12,17 @@ import RxSwift
 
 class StampListCell: UICollectionViewCell {
     
-    @IBOutlet weak var countLbl: UILabel!
-    @IBOutlet weak var countBottomLbl: UILabel!
+    @IBOutlet weak var countLbl: UILabel! {
+        didSet {
+            countLbl.layer.cornerRadius = 9
+            countLbl.layer.masksToBounds = true
+        }
+    }
 
     @IBOutlet weak var iconBtn: UIButton!
     
     @IBOutlet weak var cutBtn: UIButton!
-    @IBOutlet weak var addBtn: UIButton!
+
     
     
     var stampCount = Variable(0)
@@ -39,10 +43,8 @@ class StampListCell: UICollectionViewCell {
         
         stampCount.asObservable()
             .subscribe(onNext: { [unowned self](num) in
-                self.countBottomLbl.isHidden = num <= 0
                 self.cutBtn.isHidden = num <= 0
-                self.addBtn.isHidden = num <= 0
-                self.countLbl.isHidden = num <= 0
+                self.countLbl.backgroundColor = num <= 0 ? .lightGray : .red
             })
             .disposed(by: disposeBag)
         
@@ -53,11 +55,6 @@ class StampListCell: UICollectionViewCell {
             }
             .disposed(by: disposeBag)
         
-        addBtn.rx.tap
-            .bind { [unowned self] in
-                self.changeStampCount(isAdd: true)
-            }
-            .disposed(by: disposeBag)
         
         cutBtn.rx.tap
             .bind { [unowned self] in
@@ -69,7 +66,6 @@ class StampListCell: UICollectionViewCell {
     
     @objc private func changeStampCount(isAdd: Bool) {        
         countLbl.text = isAdd ? "\(stampCount.value + 1)" : "\(stampCount.value - 1)"
-        countBottomLbl.text = countLbl.text
         stampCount.value = Int(countLbl.text!)!
         contentView.layoutSubviews()
     }

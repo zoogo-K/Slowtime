@@ -15,13 +15,14 @@ class MailListController: BaseViewController {
     
     var friend: Friend?
     
+    private var editIndexPath: IndexPath = IndexPath(row: -1, section: 0)
+    
     private var mails: [ListMail]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navBar.title = friend?.nickname
-        
         
     }
     
@@ -129,5 +130,39 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删"
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        editIndexPath = indexPath
+        view.setNeedsLayout()
+    }
+    
+    
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if editIndexPath.row < 0 { return }
+        
+        let cell = tableview.cellForRow(at: editIndexPath)
+        let sup = UIDevice.current.systemVersion >= "11" ? tableview : cell!
+        let swipeStr = UIDevice.current.systemVersion >= "11" ? "UISwipeActionPullView" : "UITableViewCellDeleteConfirmationView"
+        let actionStr = UIDevice.current.systemVersion >= "11" ? "UISwipeActionStandardButton" : "_UITableViewCellActionButton"
+        
+        for subview in sup.subviews {
+            if String(describing: subview).range(of: swipeStr) != nil {
+                for sub in subview.subviews {
+                    if String(describing: sub).range(of: actionStr) != nil {
+                        if let button = sub as? UIButton {
+                            button.titleLabel?.font = .my_systemFont(ofSize: 15)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
