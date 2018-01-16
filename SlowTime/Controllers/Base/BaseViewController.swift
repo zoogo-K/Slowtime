@@ -40,7 +40,7 @@ class BaseViewController: UIViewController {
         navBar.wr_setTintColor(color: .black)
         
         if self.navigationController?.childViewControllers.count != 1 {
-            navBar.wr_setLeftButton(image: RI.left()!)
+            navBar.wr_setLeftButton(title: "返回", titleColor: .black)
         }
     }
 

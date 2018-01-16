@@ -106,7 +106,7 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let alert = HexaGlobalAlert(title: "删除后将无法再恢复,少年要想好~")
+            let alert = CQMAlert(title: "删除后将无法再恢复,少年要想好~")
             let confirmAction = AlertOption(title: "我想好了", type: .normal, action: { [weak self] in
                 self?.deleteMailRequest(mailId: (self?.mails![indexPath.row].id!)!)
                 //删除 并刷新。

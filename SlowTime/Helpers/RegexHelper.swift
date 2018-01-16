@@ -10,7 +10,7 @@ import UIKit
 
 struct Pattern {
     static let email = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
-    static let phone = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$"
+    static let phone = "^134[0-8]\\d{7}$|^13[^4]\\d{8}$|^14[5-9]\\d{8}$|^15[^4]\\d{8}$|^16[6]\\d{8}$|^17[0-8]\\d{8}$|^18[\\d]{9}$|^19[8,9]\\d{8}$"
     static let lowerUpperCase = "([a-z]+)([A-Z]+)"
     static let number = "\\d"
     static let hexaName = "^([a-zA-Z\u{4E00}-\u{9FA5}\\d]+)$"

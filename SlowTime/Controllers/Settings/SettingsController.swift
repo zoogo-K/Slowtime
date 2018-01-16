@@ -68,7 +68,7 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
             performSegue(withIdentifier: R.segue.settingsController.showUserAgreement, sender: nil)
             break
         case "logout":
-            let alert = HexaGlobalAlert(title: "退出登录")
+            let alert = CQMAlert(title: "退出登录")
             let confirmAction = AlertOption(title: "我要退出", type: .normal, action: { [weak self] in
                 self?.logOut()
             })
