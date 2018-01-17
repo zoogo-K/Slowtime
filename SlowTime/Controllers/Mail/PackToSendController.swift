@@ -66,7 +66,7 @@ class PackToSendController: UIViewController {
         super.viewDidLoad()
         
         mailViewMaillbl.text = mail?.content
-        mailViewTimeLbl.text = mail?.updateTime
+        mailViewTimeLbl.text = mail?.updateTime?.StringFormartTime()
         mailViewFromUserlbl.text = mail?.fromUser?.nickname
         mailViewFromUserZip.text = mail?.fromUser?.zipCode
         mailViewToUserZip.text = mail?.toUser?.zipCode

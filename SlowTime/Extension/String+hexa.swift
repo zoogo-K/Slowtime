@@ -66,6 +66,21 @@ extension String {
 
 extension String {
     
+    func StringFormartTime()-> String {
+        
+        let subStrArr = components(separatedBy: "-")
+        var newStr = ""
+        for index in 0 ..< subStrArr.count {
+            switch index {
+            case 0: newStr += subStrArr[0] + "年"
+            case 1: newStr += subStrArr[1] + "月"
+            case 2: newStr += subStrArr[2] + "号"
+            default:()
+            }
+        }
+        return newStr
+    }
+    
     func StringToCGFloat()->(CGFloat){
         
         var cgFloat: CGFloat = 0

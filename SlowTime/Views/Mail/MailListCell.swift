@@ -23,11 +23,11 @@ class MailListCell: UITableViewCell {
             
             switch listMail?.emailType {
             case 1?:
-                createTimeLbl.text = (listMail?.updateTime)! + " 收"
+                createTimeLbl.text = (listMail?.updateTime?.StringFormartTime())! + " 收"
             case 2?:
-                createTimeLbl.text = (listMail?.updateTime)! + " 寄"
+                createTimeLbl.text = (listMail?.updateTime?.StringFormartTime())! + " 寄"
             default:
-                createTimeLbl.text = (listMail?.updateTime)! + " 草稿"
+                createTimeLbl.text = (listMail?.updateTime?.StringFormartTime())! + " 草稿"
             }
         }
     }
