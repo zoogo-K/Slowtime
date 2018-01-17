@@ -172,7 +172,13 @@ class PackToSendController: BaseViewController {
                     self?.stampImageView.y = 0
                     self?.postmarkImgView.y = 0
                 }, completion: { (fin) in
-                    self?.popAction()
+                
+                    for vc in (self?.navigationController?.viewControllers)! {
+                        if vc is MailListController {
+                            self?.navigationController?.popToViewController(vc, animated: true)
+                        }
+                    }
+                    
                 })
             })
             .disposed(by: disposeBag)
