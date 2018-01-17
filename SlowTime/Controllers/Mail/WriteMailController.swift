@@ -37,7 +37,19 @@ class WriteMailController: BaseViewController {
         
         navBar.wr_setRightButton(title: "装入信封", titleColor: .black)
         navBar.onClickLeftButton = { [weak self] in
-            self?.saveMail()
+            if (self?.mailContentTextView.text.count)! > 0 {
+                let alert = CQMAlert(title: "要保存草稿吗？")
+                let confirmAction = AlertOption(title: "保存", type: .normal, action: { [weak self] in
+                    self?.saveMail(isPop: true)
+                })
+                let cancelAction = AlertOption(title: "不了", type: .cancel, action: { [weak self] in
+                    self?.popAction()
+                })
+                alert.addAlertOptions([cancelAction, confirmAction])
+                alert.show()
+            }else {
+                self?.popAction()
+            }
         }
         navBar.onClickRightButton = { [weak self] in
             self?.saveMail(isPop: false)

@@ -248,7 +248,7 @@ extension WRCustomNavigationBar
             let size = title.stringRect(with: .my_systemFont(ofSize: 16))
             let btnWidth = size.width
             let top:CGFloat = WRCustomNavigationBar.isIphoneX ? 44 : 20
-            leftButton.frame = CGRect(x: 12, y: top, width: btnWidth, height: 44)
+            leftButton.frame = CGRect(x: 18, y: top, width: btnWidth, height: 44)
             leftButton.setTitleColor(titleColor, for: .normal)
             leftButton.titleLabel?.font = .my_systemFont(ofSize: 16)
         }else {
@@ -266,7 +266,7 @@ extension WRCustomNavigationBar
             let size = title.stringRect(with: .my_systemFont(ofSize: 16))
             let btnWidth = size.width
             let top:CGFloat = WRCustomNavigationBar.isIphoneX ? 44 : 20
-            rightButton.frame = CGRect(x: WRScreenWidth-btnWidth-12, y: top, width: btnWidth, height: 44)
+            rightButton.frame = CGRect(x: WRScreenWidth-btnWidth-18, y: top, width: btnWidth, height: 44)
             rightButton.setTitleColor(titleColor, for: .normal)
             rightButton.titleLabel?.font = .my_systemFont(ofSize: 16)
         }else {

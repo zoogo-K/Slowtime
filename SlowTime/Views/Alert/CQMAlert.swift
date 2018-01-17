@@ -170,6 +170,12 @@ public class CQMAlert: UIView {
     }
     
     
+    private let alertFootView: UIView = {
+        $0.backgroundColor = .clear
+        return $0
+    }(UIView())
+    
+    
     private let backView: UIView = {
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 4

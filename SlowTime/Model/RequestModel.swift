@@ -18,7 +18,7 @@ public struct User: Parseable {
     public var accessToken: String?
     public var createTime: String?
     public var updateTime: String?
-    
+    public var zipCode: String?
 
     public static var identifier: String = "user"
     
@@ -31,10 +31,9 @@ public struct User: Parseable {
         accessToken <-      json["accessToken"].stringValue
         createTime  <-      json["createTime"].stringValue
         updateTime  <-      json["updateTime"].stringValue
+        zipCode     <-      json["zipCode"].stringValue
     }
 }
-
-
 
 
 public struct Friend: Parseable {
@@ -87,6 +86,8 @@ public struct Mail: Parseable {
 
     public var fromUser: User?
     public var toUser: User?
+    
+    public var stampIcon: String?
 
     public static var identifier: String = "mail"
 
@@ -97,6 +98,7 @@ public struct Mail: Parseable {
         emailType   <-      json["emailType"].intValue
         createTime  <-      json["createTime"].stringValue
         updateTime  <-      json["updateTime"].stringValue
+        stampIcon   <-      json["stampIcon"].stringValue
 
         fromUser    <-      User(json: json["fromUser"])
         toUser      <-      User(json: json["toUser"])

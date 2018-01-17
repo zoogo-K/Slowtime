@@ -17,6 +17,10 @@ class PackToSendController: UIViewController {
     @IBOutlet weak var mailViewFromUserlbl: UILabel!
     @IBOutlet weak var mailViewMaillbl: UILabel!
     
+    @IBOutlet weak var mailViewFromUserZip: UILabel!
+    @IBOutlet weak var mailViewToUserZip: UILabel!
+    
+    
     @IBOutlet weak var mailView: UIView!
     
     @IBOutlet weak var enevlopeTopImg: UIImageView! {
@@ -64,6 +68,9 @@ class PackToSendController: UIViewController {
         mailViewMaillbl.text = mail?.content
         mailViewTimeLbl.text = mail?.updateTime
         mailViewFromUserlbl.text = mail?.fromUser?.nickname
+        mailViewFromUserZip.text = mail?.fromUser?.zipCode
+        mailViewToUserZip.text = mail?.toUser?.zipCode
+        
         
         enevlopeBottomViewTouserlbl.text = "\(String(describing: mail?.toUser?.nickname ?? "")) 收"
         enevlopeBottomViewfromuserlbl.text = "\(String(describing: mail?.fromUser?.nickname ?? "")) 寄"
