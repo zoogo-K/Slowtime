@@ -11,7 +11,7 @@ import Moya
 import RxSwift
 import Kingfisher
 
-class PackToSendController: UIViewController {
+class PackToSendController: BaseViewController {
     
     @IBOutlet weak var mailViewTimeLbl: UILabel!
     @IBOutlet weak var mailViewFromUserlbl: UILabel!
@@ -35,8 +35,6 @@ class PackToSendController: UIViewController {
     
     @IBOutlet weak var enevlopBTopCons: NSLayoutConstraint!
     
-    var popRoot: (()-> Void)?
-    
     private var stamps: [Stamp] = [Stamp]()
     private var hasDrag: Bool = false
     
@@ -48,13 +46,8 @@ class PackToSendController: UIViewController {
     
     var mail: Mail?
     
-    let disposeBag = DisposeBag()
-    
     @IBOutlet weak var stampCollectionView: UICollectionView!
     
-    @IBAction func disAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     @IBOutlet weak var statusLbl: UILabel!
     
     private var stampImageView: UIImageView = UIImageView()
@@ -75,6 +68,10 @@ class PackToSendController: UIViewController {
         enevlopeBottomViewTouserlbl.text = "\(String(describing: mail?.toUser?.nickname ?? "")) 收"
         enevlopeBottomViewfromuserlbl.text = "\(String(describing: mail?.fromUser?.nickname ?? "")) 寄"
         
+        
+        navBar.barBackgroundImage = UIImage(color: .clear)
+        navBar.backgroundColor = .clear
+        navBar.wr_setBottomLineHidden(hidden: true)
     }
     
     
@@ -175,9 +172,7 @@ class PackToSendController: UIViewController {
                     self?.stampImageView.y = 0
                     self?.postmarkImgView.y = 0
                 }, completion: { (fin) in
-                    self?.dismiss(animated: true, completion: {
-                        self?.popRoot!()
-                    })
+                    self?.popAction()
                 })
             })
             .disposed(by: disposeBag)
@@ -212,6 +207,10 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
             return
         }
         
+        // 隐藏返回按钮，禁用左滑返回
+        navBar.wr_setLeftButton(title: "", titleColor: .black)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        view.isUserInteractionEnabled = false
         
         // 获取当前点击的cell
         let cell = collectionView.cellForItem(at: indexPath) as! MyStampCell
@@ -257,5 +256,9 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
                 self.sendMailRequest(stampId: self.stamps[indexPath.row].id!, mailID: (self.mail?.id)!)
             })
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 }

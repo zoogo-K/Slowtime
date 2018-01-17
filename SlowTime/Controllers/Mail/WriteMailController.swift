@@ -9,6 +9,7 @@
 import UIKit
 import Moya
 import PKHUD
+import SwiftyJSON
 
 class WriteMailController: BaseViewController {
     
@@ -16,7 +17,7 @@ class WriteMailController: BaseViewController {
     
     var ifEdit = false
     var mailId = ""
-    
+    var mail = Mail(json: JSON())
     
     @IBOutlet weak var toUserLabel: UILabel!
     
@@ -84,6 +85,7 @@ class WriteMailController: BaseViewController {
     
     //离开此页则算保存邮件
     fileprivate func saveMail(isPop: Bool? = true) {
+        view.endEditing(true)
         var target: Request
         if ifEdit {
             target = .editMail(mailId: mailId, toUser: (friend?.userHash)!, content: mailContentTextView.text)
@@ -97,24 +99,27 @@ class WriteMailController: BaseViewController {
             .filterSuccessfulCode()
             .filterObject(to: Mail.self)
             .subscribe { [weak self] (event) in
-                if isPop! {
-                    // 为何animated为true 就会pop两次
-//                    self?.wr_toLastViewController(animated: true)
-                    self?.navigationController?.popViewController(animated: false)
-                }else {
-                   
-                    if case .next(let mail) = event {
-                        let packToSend = R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController") as! PackToSendController
-                        packToSend.mail = mail
-                        packToSend.popRoot = {
-                            self?.navigationController?.popToRootViewController(animated: false)
-                        }
-                        self?.present(packToSend, animated: true, completion: nil)
+                if case .next(let mail) = event {
+                    if isPop! {
+                        self?.navigationController?.popViewController(animated: true)
+                    } else {
+                        self?.mail = mail
+                        self?.performSegue(withIdentifier: R.segue.writeMailController.showSend, sender: nil)
                     }
                 }
             }
             .disposed(by: disposeBag)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let send = R.segue.writeMailController.showSend(segue: segue) {
+            send.destination.mail = mail
+            return
+        }
+    }
+    
+    
     
     private func screenshot() -> UIImage {
         UIGraphicsBeginImageContext(view.size)

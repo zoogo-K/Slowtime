@@ -236,6 +236,7 @@
                         <outlet property="tableview" destination="eOv-75-gOz" id="5SV-nJ-cWo"/>
                         <segue destination="EId-xQ-sIF" kind="show" identifier="showGetMail" id="RTr-En-rpk"/>
                         <segue destination="BPC-BJ-dEe" kind="show" identifier="showdraft" id="klb-rs-L99"/>
+                        <segue destination="BPC-BJ-dEe" kind="show" identifier="showWrite" id="8pb-tF-SCr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdS-MU-ZEu" sceneMemberID="firstResponder"/>
@@ -411,6 +412,7 @@
                         <outlet property="formUserLabel" destination="oXt-qV-fvm" id="6mz-VA-cY5"/>
                         <outlet property="mailContentTextView" destination="YND-wr-Tq9" id="YMq-zG-zdE"/>
                         <outlet property="toUserLabel" destination="M4W-mY-CgI" id="a4J-y2-6C9"/>
+                        <segue destination="d66-sx-b8k" kind="show" identifier="showSend" id="bGB-9x-aFQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMd-AH-AyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,19 +475,8 @@
                                     <constraint firstAttribute="trailing" secondItem="Pbz-Qz-cxn" secondAttribute="trailing" constant="12" id="xQU-QE-SUf"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXH-9O-Rav">
-                                <rect key="frame" x="325" y="32" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="Olk-fa-AHV"/>
-                                    <constraint firstAttribute="height" constant="30" id="n3b-D9-iae"/>
-                                </constraints>
-                                <state key="normal" image="cha"/>
-                                <connections>
-                                    <action selector="disAction:" destination="d66-sx-b8k" eventType="touchUpInside" id="Ozl-QT-Xva"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope_top" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-vE-fV4">
-                                <rect key="frame" x="38" y="241" width="300" height="81"/>
+                                <rect key="frame" x="38" y="285" width="300" height="81"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2q-N2-bAW">
                                 <rect key="frame" x="0.0" y="527" width="375" height="140"/>
@@ -558,7 +549,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0V-y5-fq1">
-                                <rect key="frame" x="38" y="281" width="300" height="165"/>
+                                <rect key="frame" x="38" y="325" width="300" height="165"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-a6-ef6">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
@@ -618,9 +609,7 @@
                             <constraint firstAttribute="trailing" secondItem="j2q-N2-bAW" secondAttribute="trailing" id="BuB-hf-WNc"/>
                             <constraint firstAttribute="bottom" secondItem="j2q-N2-bAW" secondAttribute="bottom" id="Cxa-Uz-xuW"/>
                             <constraint firstItem="eIr-vE-fV4" firstAttribute="centerX" secondItem="OQi-5c-h3E" secondAttribute="centerX" id="Gu5-X0-tc3"/>
-                            <constraint firstAttribute="trailing" secondItem="BXH-9O-Rav" secondAttribute="trailing" constant="20" id="L2Q-sm-tuv"/>
                             <constraint firstItem="AgY-4X-NDx" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" id="MFG-Df-7Cc"/>
-                            <constraint firstItem="BXH-9O-Rav" firstAttribute="top" secondItem="iZB-lp-Ec1" secondAttribute="top" constant="32" id="MME-2K-ylW"/>
                             <constraint firstItem="eIr-vE-fV4" firstAttribute="top" secondItem="OQi-5c-h3E" secondAttribute="top" constant="221" id="Nh7-ZP-Zbp"/>
                             <constraint firstItem="c0V-y5-fq1" firstAttribute="centerX" secondItem="eIr-vE-fV4" secondAttribute="centerX" id="O40-vO-hOc"/>
                             <constraint firstItem="j2q-N2-bAW" firstAttribute="top" secondItem="OiR-a3-DNd" secondAttribute="bottom" constant="25" id="U16-Br-2Up"/>
@@ -649,7 +638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="As0-sh-Ld0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4693.6000000000004" y="33.733133433283363"/>
+            <point key="canvasLocation" x="3922" y="34"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="rav-xa-dJw">
@@ -944,7 +933,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZe-Xo-cRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5580" y="33.733133433283363"/>
+            <point key="canvasLocation" x="4809" y="34"/>
         </scene>
         <!--Agreement Controller-->
         <scene sceneID="Do6-35-p2p">
@@ -1154,6 +1143,6 @@
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ftG-we-VqN"/>
+        <segue reference="8pb-tF-SCr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,16 +13,15 @@ import PKHUD
 class BaseViewController: UIViewController {
     
     lazy var navBar = WRCustomNavigationBar.CustomNavigationBar()
-
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         navigationController?.navigationBar.isHidden = true
         automaticallyAdjustsScrollViewInsets = false
-
+        
         
         view.addSubview(navBar)
         
@@ -43,7 +42,12 @@ class BaseViewController: UIViewController {
             navBar.wr_setLeftButton(title: "返回", titleColor: .black)
         }
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
     @objc fileprivate func back()
     {
         _ = navigationController?.popViewController(animated: true)
@@ -57,5 +61,9 @@ class BaseViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    deinit{
+        DLog("\(self) 💔💔💔")
+    }
 }
 
