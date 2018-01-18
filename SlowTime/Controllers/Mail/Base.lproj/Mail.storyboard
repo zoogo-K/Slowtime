@@ -356,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YND-wr-Tq9">
-                                <rect key="frame" x="15" y="157.5" width="345" height="433"/>
+                                <rect key="frame" x="15" y="157.5" width="345" height="451.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -374,13 +374,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXt-qV-fvm">
-                                <rect key="frame" x="360" y="620.5" width="0.0" height="0.0"/>
+                                <rect key="frame" x="360" y="639" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年3月28日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXN-n2-1ZY">
-                                <rect key="frame" x="237.5" y="628.5" width="122.5" height="18.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXN-n2-1ZY">
+                                <rect key="frame" x="360" y="647" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -955,7 +955,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-3v-Z3g">
                                                 <rect key="frame" x="25" y="8" width="325" height="3101.5"/>
-                                                <mutableString key="text">欢迎您来到从前慢
+                                                <string key="text">欢迎您来到从前慢
 
 请您仔细阅读以下条款，如果您对本协议的任何条款表示异议，您可以选择不进入从前慢。当您注册成功，无论是进入从前慢，还是在从前慢上发布任何内容，或者是直接或通过各类方式（如站外API引用等）间接使用从前慢 App 的行为，都将被视作已无条件接受本声明所涉全部内容。
 
@@ -1028,7 +1028,7 @@
 
 根据互联网的发展和有关法律、法规及规范性文件的变化，或者因业务发展需要，从前慢有权对本协议的条款作出修改或变更，一旦本协议的内容发生变动，从前慢将会直接在从前慢网站上公布修改之后的协议内容，该公布行为视为从前慢已经通知用户修改内容。从前慢也可采用电子邮件或私信的传送方式，提示用户协议条款的修改、服务变更、或其它重要事项。
 
-如果不同意从前慢对本协议相关条款所做的修改，用户有权并应当停止使用从前慢。如果用户继续使用从前慢，则视为用户接受从前慢对本协议相关条款所做的修改。</mutableString>
+如果不同意从前慢对本协议相关条款所做的修改，用户有权并应当停止使用从前慢。如果用户继续使用从前慢，则视为用户接受从前慢对本协议相关条款所做的修改。</string>
                                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1073,32 +1073,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="从前慢：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwK-5c-Kmk">
-                                <rect key="frame" x="15" y="123" width="68" height="18.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwK-5c-Kmk">
+                                <rect key="frame" x="15" y="123" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你好！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQT-yI-dFQ">
-                                <rect key="frame" x="15" y="149.5" width="51" height="18.5"/>
+                                <rect key="frame" x="15" y="131" width="51" height="18.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你的朋友：CC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1f-J3-Pic">
-                                <rect key="frame" x="250.5" y="602" width="109.5" height="18.5"/>
+                                <rect key="frame" x="250.5" y="620.5" width="109.5" height="18.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年3月28日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAh-x2-Q3f">
-                                <rect key="frame" x="237.5" y="628.5" width="122.5" height="18.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAh-x2-Q3f">
+                                <rect key="frame" x="360" y="647" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="is9-z9-CP7">
-                                <rect key="frame" x="15" y="176" width="345" height="396"/>
+                                <rect key="frame" x="15" y="157.5" width="345" height="433"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1125,6 +1125,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ASy-4h-z3n"/>
                     </view>
+                    <connections>
+                        <outlet property="createTimelbl" destination="bAh-x2-Q3f" id="4vZ-Fv-EAO"/>
+                        <outlet property="formUserLabel" destination="X1f-J3-Pic" id="y1H-eP-xvD"/>
+                        <outlet property="mailContentTextView" destination="is9-z9-CP7" id="T1l-4y-9GC"/>
+                        <outlet property="toUserLabel" destination="TwK-5c-Kmk" id="W1V-jm-VmD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Scq-XS-9wl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

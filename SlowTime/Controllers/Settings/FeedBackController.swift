@@ -7,31 +7,64 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class FeedBackController: BaseViewController {
+    
+    @IBOutlet weak var toUserLabel: UILabel!
+    
+    @IBOutlet weak var formUserLabel: UILabel!
+    
+    @IBOutlet weak var createTimelbl: UILabel!
+    
+    @IBOutlet weak var mailContentTextView: UITextView!
+    
+    
+    private var friend = Friend.create(with: NSDictionary(contentsOf: URL.CQMCacheURL!) as! [String : Any])
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navBar.title = "意见反馈"
+        
+        
+        toUserLabel.text = (friend?.nickname)! + ":"
+        formUserLabel.text = UserDefaults.standard.string(forKey: "nickname_key")
+        createTimelbl.text = "2017年3月28日"
 
-        // Do any additional setup after loading the view.
+        navBar.wr_setRightButton(title: "发送", titleColor: .black)
+        navBar.onClickRightButton = { [weak self] in
+            self?.send()
+        }
+    
+        
+        view.rx.sentMessage(#selector(touchesBegan(_:with:)))
+            .bind { [unowned self] (_) in
+                _ = self.view.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
+        mailContentTextView.becomeFirstResponder()
+    }
+    
+    
+    fileprivate func send() {
+        view.endEditing(true)
+        let provider = MoyaProvider<Request>()
+        provider.rx.request(.writeMail(toUser: (friend?.userHash)!, content: mailContentTextView.text))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .filterObject(to: Mail.self)
+            .bind(onNext: { [weak self] (_) in
+                self?.popAction()
+            })
+            .disposed(by: disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

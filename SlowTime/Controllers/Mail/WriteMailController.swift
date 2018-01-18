@@ -34,7 +34,7 @@ class WriteMailController: BaseViewController {
         
         toUserLabel.text = (friend?.nickname)! + ":"
         formUserLabel.text = UserDefaults.standard.string(forKey: "nickname_key")
-        createTimelbl.text = "测试时间"
+        createTimelbl.text = "2017年3月28日"
         
         navBar.wr_setRightButton(title: "装入信封", titleColor: .black)
         navBar.onClickLeftButton = { [weak self] in

@@ -43,10 +43,15 @@ public func <- <T: Parseable>(left: inout T!, right: String) {
     }
 }
 
-
+// 增加一个初始化方法，以及一个identifier
 public protocol Parseable {
     init(json: JSON)
     
     static var identifier: String { get }
+}
+
+// 归档
+public protocol Archivable {
+    var archived: NSDictionary { get }
 }
 

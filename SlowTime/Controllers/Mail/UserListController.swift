@@ -106,6 +106,11 @@ class UserListController: BaseViewController {
                 if case .next(let friends) = event {
                     self?.friends = friends
                     DispatchQueue.main.async {
+                        friends.forEach({ (friend) in
+                            if friend.nickname == "从前慢" {
+                                (friend.archived as NSDictionary).write(to: URL.CQMCacheURL!, atomically: true)
+                            }
+                        })
                         self?.tableview.reloadData()
                     }
                 }else if case .error = event {

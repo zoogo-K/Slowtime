@@ -264,7 +264,4 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
 }
