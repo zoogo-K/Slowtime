@@ -131,7 +131,7 @@ class LoginController: LoginBaseViewController {
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode({ (code, mess) in
-                HUD.flash(.label(code), delay: 1.0)
+                HUD.flash(.label(mess), delay: 1.0)
             })
             .filterObject(to: User.self)
             .subscribe { [weak self] (event) in
