@@ -14,6 +14,16 @@ class ReadMailController: BaseViewController {
     
     var friend: Friend?
     
+    @IBOutlet weak var envelopeBottomTearView: UIView!
+    
+    @IBOutlet weak var mailView: UIView!
+    
+    @IBOutlet weak var yinzhangImg: UIImageView! {
+        didSet {
+            yinzhangImg.isHidden = true
+        }
+    }
+    
     @IBOutlet weak var toUserName: UILabel!
     
     @IBOutlet weak var createTime: UILabel!
@@ -21,6 +31,13 @@ class ReadMailController: BaseViewController {
     @IBOutlet weak var fromUserName: UILabel!
     
     @IBOutlet weak var mailContent: UILabel!
+    
+    @IBOutlet weak var mailScrollView: UIScrollView! {
+        didSet {
+            mailScrollView.backgroundColor = UIColor(patternImage: RI.mailbg()!)
+        }
+    }
+    
     
     var emailType: Int = 1
     
@@ -45,7 +62,7 @@ class ReadMailController: BaseViewController {
             .filterObject(to: Mail.self)
             .subscribe { [weak self] (event) in
                 if case .next(let mail) = event {
-                    self?.toUserName.text = mail.toUser?.nickname
+                    self?.toUserName.text = (mail.toUser?.nickname)! + ":"
                     self?.fromUserName.text = mail.fromUser?.nickname
                     self?.mailContent.text = mail.content
                     self?.createTime.text = mail.updateTime?.StringFormartTime()
@@ -55,6 +72,24 @@ class ReadMailController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        envelopeBottomTearView.layer.transform = CATransform3DMakeRotation(CGFloat.pi, 0, 0, 1)
+    }
+    
+   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 左下角印章的iphoneX适配
+        yinzhangImg.y = max(yinzhangImg.y, Screen.height - yinzhangImg.height - 16 -  (WRCustomNavigationBar.isIphoneX ? (44 + 34) : 20))
+        yinzhangImg.isHidden = false
+    }
+    
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let mailList = R.segue.readMailController.showWrite(segue: segue) {
