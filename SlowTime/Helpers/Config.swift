@@ -57,7 +57,11 @@ public struct Config {
         }
     }
     
-
+    
+    // 本地缓存的从前慢
+    public static var CqmUser: Friend? {
+        return Friend.create(with: NSDictionary(contentsOf: URL.CQMCacheURL!) ?? NSDictionary())
+    }
     
     
     public static var randomColor: UIColor {

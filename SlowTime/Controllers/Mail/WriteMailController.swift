@@ -36,18 +36,10 @@ class WriteMailController: BaseViewController {
         formUserLabel.text = UserDefaults.standard.string(forKey: "nickname_key")
         createTimelbl.text = "2017年3月28日"
         
-        navBar.wr_setRightButton(title: "装入信封", titleColor: .black)
+        navBar.wr_setRightButton(title: friend == Config.CqmUser ? "发送" :" 装入信封", titleColor: .black)
         navBar.onClickLeftButton = { [weak self] in
-            if (self?.mailContentTextView.text.count)! > 0 {
-                let alert = CQMAlert(title: "要保存草稿吗？")
-                let confirmAction = AlertOption(title: "保存", type: .normal, action: { [weak self] in
-                    self?.saveMail(isPop: true)
-                })
-                let cancelAction = AlertOption(title: "不了", type: .cancel, action: { [weak self] in
-                    self?.popAction()
-                })
-                alert.addAlertOptions([cancelAction, confirmAction])
-                alert.show()
+            if (self?.mailContentTextView.text.count)! > 0 && self?.friend != Config.CqmUser {
+                self?.saveMail(isPop: true)
             }else {
                 self?.popAction()
             }
@@ -55,6 +47,13 @@ class WriteMailController: BaseViewController {
         navBar.onClickRightButton = { [weak self] in
             self?.saveMail(isPop: false)
         }
+        
+        mailContentTextView.rx.text.orEmpty
+            .asObservable()
+            .bind { [weak self](text) in
+                self?.navBar.wr_setLeftButton(title: text.count > 0 ? "存草稿" : "返回", titleColor: .black)
+            }
+            .disposed(by: disposeBag)
         
         
         view.rx.sentMessage(#selector(touchesBegan(_:with:)))

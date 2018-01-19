@@ -38,7 +38,8 @@ public struct User: Parseable {
 
 
 
-public struct Friend: Parseable, Archivable {
+public struct Friend: Parseable, Archivable, Equatable {
+    
     public var nickname: String?
     public var userHash: String?
     public var profile: String?
@@ -60,7 +61,7 @@ public struct Friend: Parseable, Archivable {
         ]
     }
     
-    static func create(with dict: [String: Any]) -> Friend? {
+    static func create(with dict: NSDictionary) -> Friend? {
         do {
             let data = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             return Friend(json: try JSON(data: data))
@@ -68,6 +69,14 @@ public struct Friend: Parseable, Archivable {
             DLog(error)
             return nil
         }
+    }
+    
+    public static func ==(lhs: Friend, rhs: Friend) -> Bool {
+        return lhs.nickname == rhs.nickname
+    }
+    
+    public static func !=(lhs: Friend, rhs: Friend) -> Bool {
+        return lhs.nickname != rhs.nickname
     }
 }
 
@@ -80,6 +89,9 @@ public struct ListMail: Parseable {
     public var createTime: String?
     public var updateTime: String?
     
+    public var fromUser: User?
+    public var toUser: User?
+    
     public static var identifier: String = "mails"
     
     public init(json: JSON) {
@@ -89,6 +101,9 @@ public struct ListMail: Parseable {
         emailType   <-      json["emailType"].intValue
         createTime  <-      json["createTime"].stringValue
         updateTime  <-      json["updateTime"].stringValue
+        
+        fromUser    <-      User(json: json["fromUser"])
+        toUser      <-      User(json: json["toUser"])
     }
 }
 

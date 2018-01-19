@@ -9,6 +9,7 @@
 import UIKit
 import Moya
 import SwiftyJSON
+import PKHUD
 
 class FeedBackController: BaseViewController {
     
@@ -21,7 +22,7 @@ class FeedBackController: BaseViewController {
     @IBOutlet weak var mailContentTextView: UITextView!
     
     
-    private var friend = Friend.create(with: NSDictionary(contentsOf: URL.CQMCacheURL!) as! [String : Any])
+    private var friend = Config.CqmUser
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,7 @@ class FeedBackController: BaseViewController {
             .filterSuccessfulCode()
             .filterObject(to: Mail.self)
             .bind(onNext: { [weak self] (_) in
+                HUD.flash(.label("已发送"), delay: 1.0)
                 self?.popAction()
             })
             .disposed(by: disposeBag)

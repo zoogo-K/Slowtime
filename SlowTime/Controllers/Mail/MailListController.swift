@@ -86,7 +86,7 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if mails![indexPath.row].emailType == 3 {
+        if mails![indexPath.row].emailType == 3 && friend != Config.CqmUser {
             performSegue(withIdentifier: R.segue.mailListController.showdraft, sender: mails![indexPath.row])
         }else {
             performSegue(withIdentifier: R.segue.mailListController.showGetMail, sender: mails![indexPath.row])

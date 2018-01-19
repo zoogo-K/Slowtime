@@ -27,7 +27,7 @@ class MailListCell: UITableViewCell {
             case 2?:
                 createTimeLbl.text = (listMail?.updateTime?.StringFormartTime())! + " 寄"
             default:
-                createTimeLbl.text = (listMail?.updateTime?.StringFormartTime())! + " 草稿"
+                createTimeLbl.text = listMail?.toUser?.nickname == Config.CqmUser?.nickname ?(listMail?.updateTime?.StringFormartTime())! + " 寄" : (listMail?.updateTime?.StringFormartTime())! + " 草稿"
             }
         }
     }

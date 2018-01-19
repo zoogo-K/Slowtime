@@ -107,7 +107,7 @@ class UserListController: BaseViewController {
                     self?.friends = friends
                     DispatchQueue.main.async {
                         friends.forEach({ (friend) in
-                            if friend.nickname == "从前慢" {
+                            if friend == Config.CqmUser {
                                 (friend.archived as NSDictionary).write(to: URL.CQMCacheURL!, atomically: true)
                             }
                         })
