@@ -53,7 +53,6 @@ class ReadMailController: BaseViewController {
     
     var mailId: String = ""
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

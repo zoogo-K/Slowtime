@@ -37,6 +37,11 @@ class WriteMailController: BaseViewController {
         createTimelbl.text = "2017年3月28日"
         
         navBar.wr_setRightButton(title: friend == Config.CqmUser ? "发送" :" 装入信封", titleColor: .black)
+        
+        navBar.onClickRightButton = { [weak self] in
+            self?.saveMail(isPop: false)
+        }
+        
         navBar.onClickLeftButton = { [weak self] in
             if (self?.mailContentTextView.text.count)! > 0 && self?.friend != Config.CqmUser {
                 self?.saveMail(isPop: true)
@@ -44,9 +49,7 @@ class WriteMailController: BaseViewController {
                 self?.popAction()
             }
         }
-        navBar.onClickRightButton = { [weak self] in
-            self?.saveMail(isPop: false)
-        }
+
         
         mailContentTextView.rx.text.orEmpty
             .asObservable()
