@@ -294,10 +294,22 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stamp" translatesAutoresizingMaskIntoConstraints="NO" id="QKz-iL-R1y">
+                                                        <rect key="frame" x="232" y="10" width="52" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="52" id="SGK-p2-nEl"/>
+                                                            <constraint firstAttribute="height" constant="70" id="fxx-CA-XeQ"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="youchuo-black" translatesAutoresizingMaskIntoConstraints="NO" id="JnE-9W-SPn">
+                                                        <rect key="frame" x="203" y="15" width="52" height="34"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="JnE-9W-SPn" secondAttribute="trailing" constant="45" id="00b-rM-MSW"/>
                                                     <constraint firstAttribute="trailing" secondItem="Bas-lL-DaX" secondAttribute="trailing" constant="18" id="8z3-n2-nUa"/>
+                                                    <constraint firstItem="QKz-iL-R1y" firstAttribute="top" secondItem="kZp-9C-RsA" secondAttribute="top" constant="10" id="CRk-mb-DfQ"/>
                                                     <constraint firstItem="4FJ-DI-S2p" firstAttribute="leading" secondItem="kZp-9C-RsA" secondAttribute="leading" constant="20" id="GT3-iO-Hhv"/>
                                                     <constraint firstItem="9On-sZ-Baa" firstAttribute="centerX" secondItem="Wae-OZ-lt5" secondAttribute="centerX" id="Gtm-UD-eJs"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4FJ-DI-S2p" secondAttribute="trailing" constant="20" symbolic="YES" id="I42-Vf-kFK"/>
@@ -305,8 +317,10 @@
                                                     <constraint firstAttribute="width" constant="300" id="LKC-kM-tT6"/>
                                                     <constraint firstItem="Bas-lL-DaX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kZp-9C-RsA" secondAttribute="leading" constant="20" symbolic="YES" id="NpD-gB-pSo"/>
                                                     <constraint firstItem="9On-sZ-Baa" firstAttribute="top" secondItem="Wae-OZ-lt5" secondAttribute="bottom" constant="16" id="PRK-cj-adc"/>
+                                                    <constraint firstItem="JnE-9W-SPn" firstAttribute="top" secondItem="kZp-9C-RsA" secondAttribute="top" constant="15" id="Sn7-kX-d1N"/>
                                                     <constraint firstAttribute="height" constant="165" id="XKG-qh-je4"/>
                                                     <constraint firstItem="NZb-fB-uPH" firstAttribute="top" secondItem="kZp-9C-RsA" secondAttribute="top" id="XZI-cY-2C8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QKz-iL-R1y" secondAttribute="trailing" constant="16" id="arQ-cr-KI4"/>
                                                     <constraint firstAttribute="trailing" secondItem="NZb-fB-uPH" secondAttribute="trailing" id="dGq-iH-pFa"/>
                                                     <constraint firstItem="Wae-OZ-lt5" firstAttribute="centerX" secondItem="kZp-9C-RsA" secondAttribute="centerX" id="hrc-pC-sff"/>
                                                     <constraint firstItem="4FJ-DI-S2p" firstAttribute="top" secondItem="kZp-9C-RsA" secondAttribute="top" constant="15" id="i8Y-9o-9IH"/>
@@ -395,6 +409,11 @@
                     <connections>
                         <outlet property="createTime" destination="heW-ut-QZk" id="CzY-uz-Y5u"/>
                         <outlet property="envelopeBottomTearView" destination="kZp-9C-RsA" id="FJh-Cc-k8e"/>
+                        <outlet property="envelopeBottomTearViewFromUserZip" destination="Bas-lL-DaX" id="Ubj-g2-8rh"/>
+                        <outlet property="envelopeBottomTearViewStamp" destination="QKz-iL-R1y" id="UAj-q2-vue"/>
+                        <outlet property="envelopeBottomTearViewToUserZip" destination="4FJ-DI-S2p" id="OsF-zW-alK"/>
+                        <outlet property="envelopeBottomTearViewTouserlbl" destination="Wae-OZ-lt5" id="gsr-Sa-OaD"/>
+                        <outlet property="envelopeBottomTearViewfromuserlbl" destination="9On-sZ-Baa" id="6xp-Mm-GCp"/>
                         <outlet property="fromUserName" destination="ATf-F0-ns8" id="WXu-BR-JWO"/>
                         <outlet property="mailContent" destination="KoA-Kh-yTm" id="fbM-H6-cii"/>
                         <outlet property="mailScrollView" destination="NSw-hI-NNr" id="eOb-2Z-Vez"/>
@@ -1207,7 +1226,9 @@
         <image name="envelope_top" width="300" height="81"/>
         <image name="icon_arrow_down" width="22" height="12"/>
         <image name="long" width="375" height="667"/>
+        <image name="stamp" width="80" height="109"/>
         <image name="yinzhang" width="26" height="28"/>
+        <image name="youchuo-black" width="52" height="34"/>
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>

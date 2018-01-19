@@ -62,7 +62,7 @@ class PackToSendController: BaseViewController {
         mailViewTimeLbl.text = mail?.updateTime?.StringFormartTime()
         mailViewFromUserlbl.text = mail?.fromUser?.nickname
         mailViewFromUserZip.text = mail?.fromUser?.zipCode
-        mailViewToUserZip.text = mail?.toUser?.zipCode
+        mailViewToUserZip.text = mail?.toUser?.zipCode?.StringToZipCode()
         
         
         enevlopeBottomViewTouserlbl.text = "\(String(describing: mail?.toUser?.nickname ?? "")) 收"

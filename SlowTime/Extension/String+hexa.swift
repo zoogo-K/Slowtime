@@ -81,6 +81,15 @@ extension String {
         return newStr
     }
     
+    
+    func StringToZipCode()-> String {
+        var newStr = ""
+        for index in 0 ..< self.count {
+            newStr += self[self.index(self.startIndex, offsetBy: index)..<self.index(self.startIndex, offsetBy: index + 1)]  + "  "
+        }
+        return newStr
+    }
+    
     func StringToCGFloat()->(CGFloat){
         
         var cgFloat: CGFloat = 0

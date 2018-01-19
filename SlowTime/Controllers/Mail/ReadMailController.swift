@@ -9,10 +9,20 @@
 import UIKit
 import Moya
 import PKHUD
+import Kingfisher
 
 class ReadMailController: BaseViewController {
     
     var friend: Friend?
+    
+    @IBOutlet weak var envelopeBottomTearViewStamp: UIImageView!
+    
+    @IBOutlet weak var envelopeBottomTearViewToUserZip: UILabel!
+    @IBOutlet weak var envelopeBottomTearViewTouserlbl: UILabel!
+    
+    @IBOutlet weak var envelopeBottomTearViewfromuserlbl: UILabel!
+    @IBOutlet weak var envelopeBottomTearViewFromUserZip: UILabel!
+    
     
     @IBOutlet weak var envelopeBottomTearView: UIView!
     
@@ -46,13 +56,6 @@ class ReadMailController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if emailType == 1 {
-            navBar.wr_setRightButton(title: "写回信", titleColor: .black)
-            navBar.onClickRightButton = { [weak self] in
-                self?.performSegue(withIdentifier: R.segue.readMailController.showWrite, sender: nil)
-            }
-        }
         
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.getMail(mailId: mailId))
@@ -66,11 +69,20 @@ class ReadMailController: BaseViewController {
                     self?.fromUserName.text = mail.fromUser?.nickname
                     self?.mailContent.text = mail.content
                     self?.createTime.text = mail.updateTime?.StringFormartTime()
+                    
+                    self?.envelopeBottomTearViewToUserZip.text = mail.toUser?.zipCode?.StringToZipCode()
+                    self?.envelopeBottomTearViewTouserlbl.text = (mail.toUser?.nickname)! + " 收"
+                    self?.envelopeBottomTearViewfromuserlbl.text = (mail.fromUser?.nickname)! + " 寄"
+                    self?.envelopeBottomTearViewFromUserZip.text = mail.fromUser?.zipCode
+
+                    self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon!) ?? URL(string: "")!), placeholder: RI.add_stamp())
+
                 }else if case .error = event {
                     HUD.flash(.label("请求失败！"), delay: 1.0)
                 }
             }
             .disposed(by: disposeBag)
+        
     }
     
     
@@ -78,6 +90,13 @@ class ReadMailController: BaseViewController {
         super.viewWillAppear(animated)
         
         envelopeBottomTearView.layer.transform = CATransform3DMakeRotation(CGFloat.pi, 0, 0, 1)
+        
+        if emailType == 1 {
+            navBar.wr_setRightButton(title: "写回信", titleColor: .black)
+            navBar.onClickRightButton = { [weak self] in
+                self?.performSegue(withIdentifier: R.segue.readMailController.showWrite, sender: nil)
+            }
+        }
     }
     
    
