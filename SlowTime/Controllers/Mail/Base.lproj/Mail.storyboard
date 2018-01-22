@@ -449,11 +449,12 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NJA-1o-zwm">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="129"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="NJA-1o-zwm" secondAttribute="trailing" constant="15" id="8mA-02-bGW"/>
                                                 <constraint firstAttribute="bottom" secondItem="NJA-1o-zwm" secondAttribute="bottom" id="9uq-OE-cgj"/>
@@ -461,6 +462,7 @@
                                                 <constraint firstItem="NJA-1o-zwm" firstAttribute="leading" secondItem="58R-4Y-AON" secondAttribute="leading" constant="15" id="Tdc-Yy-VNV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="contentTextView" destination="NJA-1o-zwm" id="fVd-Qh-wBg"/>
                                         </connections>
@@ -1157,11 +1159,12 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MLg-ac-8MH">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="129"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="MLg-ac-8MH" secondAttribute="trailing" constant="15" id="87m-XN-V0c"/>
                                                 <constraint firstItem="MLg-ac-8MH" firstAttribute="top" secondItem="dPH-lI-5iY" secondAttribute="top" id="UIZ-Nz-HN3"/>
@@ -1169,6 +1172,7 @@
                                                 <constraint firstItem="MLg-ac-8MH" firstAttribute="leading" secondItem="dPH-lI-5iY" secondAttribute="leading" constant="15" id="nRx-sX-wQa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="contentTextView" destination="MLg-ac-8MH" id="4Wu-zc-yOJ"/>
                                         </connections>

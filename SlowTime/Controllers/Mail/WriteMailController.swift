@@ -23,6 +23,7 @@ class WriteMailController: BaseViewController {
         didSet {
             tableView.tableHeaderView = header
             tableView.tableFooterView = footer
+            tableView.backgroundColor = UIColor(patternImage: RI.mailbg()!)
         }
     }
     
@@ -57,7 +58,7 @@ class WriteMailController: BaseViewController {
         navBar.wr_setRightButton(title: friend == Config.CqmUser ? "发送" :" 装入信封", titleColor: .black)
         
         navBar.onClickRightButton = { [weak self] in
-            self?.saveMail(isPop: false)
+            self?.friend == Config.CqmUser ? self?.send() : self?.saveMail(isPop: false)
         }
         
         navBar.onClickLeftButton = { [weak self] in
@@ -74,7 +75,7 @@ class WriteMailController: BaseViewController {
         cell?.contentTextView.rx.text.orEmpty
             .asObservable()
             .bind { [weak self](text) in
-                self?.navBar.wr_setLeftButton(title: text.count > 0 ? "存草稿" : "返回", titleColor: .black)
+                self?.navBar.wr_setLeftButton(title: text.count > 0 && self?.friend != Config.CqmUser ? "存草稿" : "返回", titleColor: .black)
             }
             .disposed(by: disposeBag)
 
@@ -101,6 +102,24 @@ class WriteMailController: BaseViewController {
         }
     }
     
+    
+    
+    fileprivate func send() {
+        view.endEditing(true)
+        let provider = MoyaProvider<Request>()
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextCell
+        provider.rx.request(.writeMail(toUser: (friend?.userHash)!, content: (cell.contentTextView.text)!))
+            .asObservable()
+            .mapJSON()
+            .filterSuccessfulCode()
+            .filterObject(to: Mail.self)
+            .bind(onNext: { [weak self] (_) in
+                HUD.flash(.label("已发送"), delay: 1.0)
+                self?.popAction()
+            })
+            .disposed(by: disposeBag)
+    }
+    
     //离开此页则算保存邮件
     fileprivate func saveMail(isPop: Bool? = true) {
         view.endEditing(true)
@@ -125,6 +144,8 @@ class WriteMailController: BaseViewController {
                         self?.mail = mail
                         self?.performSegue(withIdentifier: R.segue.writeMailController.showSend, sender: nil)
                     }
+                }else if case .error = event {
+                    HUD.flash(.label("请检查输入内容！"), delay: 1.0)
                 }
             }
             .disposed(by: disposeBag)

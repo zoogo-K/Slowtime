@@ -18,6 +18,7 @@ class FeedBackController: BaseViewController {
         didSet {
             tableView.tableHeaderView = header
             tableView.tableFooterView = footer
+            tableView.backgroundColor = UIColor(patternImage: RI.mailbg()!)
         }
     }
     
@@ -48,8 +49,6 @@ class FeedBackController: BaseViewController {
         super.viewDidLoad()
         
         navBar.title = "意见反馈"        
-        
-        
         
         navBar.wr_setRightButton(title: "发送", titleColor: .black)
         navBar.onClickRightButton = { [weak self] in

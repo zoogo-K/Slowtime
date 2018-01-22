@@ -96,7 +96,7 @@ class InformationController: BaseViewController {
                     UIApplication.shared.keyWindow?.rootViewController = navigationController
                     
                 }else if case .error = event {
-                    HUD.flash(.label("请求失败！"), delay: 1.0)
+                    HUD.flash(.label("请检查输入内容！"), delay: 1.0)
                 }
             }
             .disposed(by: disposeBag)
