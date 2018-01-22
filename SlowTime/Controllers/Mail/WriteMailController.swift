@@ -19,24 +19,40 @@ class WriteMailController: BaseViewController {
     var mailId = ""
     var mail = Mail(json: JSON())
     
-    @IBOutlet weak var toUserLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.tableHeaderView = header
+            tableView.tableFooterView = footer
+        }
+    }
     
-    @IBOutlet weak var formUserLabel: UILabel!
+    var contentText: String = ""
     
-    @IBOutlet weak var createTimelbl: UILabel!
+    var cellHeight: CGFloat = 160
     
-    @IBOutlet weak var mailContentTextView: UITextView!
+    private lazy var header: WriteHeader = {
+        $0.toUserName.text = (friend?.nickname)! + ":"
+        $0.endBlock = { [weak self] in
+            self?.view.endEditing(true)
+            let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
+            self?.cellHeight =  max(160, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
+            self?.contentText = (cell?.contentTextView.text)!
+            self?.tableView.reloadData()
+        }
+        return $0
+    }(Bundle.main.loadNibNamed("WriteHeaderFooter", owner: self, options: nil)![0] as! WriteHeader)
     
-    @IBOutlet weak var mailContentTextViewHeightCon: NSLayoutConstraint!
+    private lazy var footer: WriteFooter = {
+        $0.fromUserName.text = UserDefaults.standard.string(forKey: "nickname_key")
+        $0.time.text = "2017年3月28日"
+        return $0
+    }(Bundle.main.loadNibNamed("WriteHeaderFooter", owner: self, options: nil)![1] as! WriteFooter)
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navBar.title = "写给" + (friend?.nickname)!
-        
-        toUserLabel.text = (friend?.nickname)! + ":"
-        formUserLabel.text = UserDefaults.standard.string(forKey: "nickname_key")
-        createTimelbl.text = "2017年3月28日"
         
         navBar.wr_setRightButton(title: friend == Config.CqmUser ? "发送" :" 装入信封", titleColor: .black)
         
@@ -45,7 +61,8 @@ class WriteMailController: BaseViewController {
         }
         
         navBar.onClickLeftButton = { [weak self] in
-            if (self?.mailContentTextView.text.count)! > 0 && self?.friend != Config.CqmUser {
+            let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextCell
+            if (cell.contentTextView.text.count) > 0 && self?.friend != Config.CqmUser {
                 self?.saveMail(isPop: true)
             }else {
                 self?.popAction()
@@ -53,33 +70,18 @@ class WriteMailController: BaseViewController {
         }
 
         
-        mailContentTextView.rx.text.orEmpty
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
+        cell?.contentTextView.rx.text.orEmpty
             .asObservable()
             .bind { [weak self](text) in
                 self?.navBar.wr_setLeftButton(title: text.count > 0 ? "存草稿" : "返回", titleColor: .black)
             }
             .disposed(by: disposeBag)
+
+        cell?.contentTextView.becomeFirstResponder()
         
         
-        mailContentTextView.rx.text.orEmpty
-            .asObservable()
-            .bind { [weak self](text) in
-                if text.count < 10 { return }
-                self?.mailContentTextViewHeightCon.constant = text.stringRect(with: .my_systemFont(ofSize: 17)).height + 20
-            }
-            .disposed(by: disposeBag)
-        
-        
-        
-        view.rx.sentMessage(#selector(touchesBegan(_:with:)))
-            .bind { [unowned self] (_) in
-                _ = self.view.endEditing(true)
-            }
-            .disposed(by: disposeBag)
-        
-        mailContentTextView.becomeFirstResponder()
-        
-        if ifEdit {
+        if ifEdit { //草稿
             let provider = MoyaProvider<Request>()
             provider.rx.requestWithLoading(.getMail(mailId: mailId))
                 .asObservable()
@@ -88,7 +90,9 @@ class WriteMailController: BaseViewController {
                 .filterObject(to: Mail.self)
                 .subscribe { [weak self] (event) in
                     if case .next(let mail) = event {
-                        self?.mailContentTextView.text = mail.content
+                        self?.contentText = mail.content!
+                        self?.cellHeight =  max(160, (self?.contentText.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
+                        self?.tableView.reloadData()
                     }else if case .error = event {
                         HUD.flash(.label("请求失败！"), delay: 1.0)
                     }
@@ -101,10 +105,11 @@ class WriteMailController: BaseViewController {
     fileprivate func saveMail(isPop: Bool? = true) {
         view.endEditing(true)
         var target: Request
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
         if ifEdit {
-            target = .editMail(mailId: mailId, toUser: (friend?.userHash)!, content: mailContentTextView.text)
+            target = .editMail(mailId: mailId, toUser: (friend?.userHash)!, content: (cell?.contentTextView.text)!)
         }else {
-            target = .writeMail(toUser: (friend?.userHash)!, content: mailContentTextView.text)
+            target = .writeMail(toUser: (friend?.userHash)!, content: (cell?.contentTextView.text)!)
         }
         let provider = MoyaProvider<Request>()
         provider.rx.request(target)
@@ -132,28 +137,24 @@ class WriteMailController: BaseViewController {
             return
         }
     }
+}
+
+
+extension WriteMailController: UITableViewDelegate, UITableViewDataSource {
     
-    
-    
-    private func screenshot() -> UIImage {
-        UIGraphicsBeginImageContext(view.size)
-        let ctx = UIGraphicsGetCurrentContext();
-        view.layer.render(in: ctx!)
-        //获取图片
-        let newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        return newImage!
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "textCell", for: indexPath) as! TextCell
+        cell.contentTextView.text = contentText
+        return cell
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
 }
+
