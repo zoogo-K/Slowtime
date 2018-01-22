@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 import PKHUD
 
-class LoginController: LoginBaseViewController {
+class LoginController: BaseViewController {
     
     @IBOutlet weak var phoneLbl: UILabel!
     @IBOutlet weak var codeLbl: UILabel!
@@ -73,7 +73,10 @@ class LoginController: LoginBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hideOrShowBtn(btnType: .all, hide: true)
+        navBar.barBackgroundImage = UIImage(color: .clear)
+        navBar.backgroundColor = .clear
+        navBar.wr_setBottomLineHidden(hidden: true)        
+        
         
         phoneTextField.rx.text.orEmpty
             .map { $0.trimmingCharacters(in: .whitespaces).localizedLowercase =~ Pattern.phone }
@@ -139,14 +142,16 @@ class LoginController: LoginBaseViewController {
                     if user.nickname != "" {
                         let navigationController = R.storyboard.mail().instantiateInitialViewController()! as? UINavigationController
                         UIApplication.shared.keyWindow?.rootViewController = navigationController
+                        
+                        UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
+                        UserDefaults.standard.set(user.userHash!, forKey: "userHash_key")
+                        UserDefaults.standard.set(user.nickname!, forKey: "nickname_key")
+                        UserDefaults.standard.set(user.profile!, forKey: "profile_key")
                     } else {
                         self?.performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
                     }
                     
-                    UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
-                    UserDefaults.standard.set(user.userHash!, forKey: "userHash_key")
-                    UserDefaults.standard.set(user.nickname!, forKey: "nickname_key")
-                    UserDefaults.standard.set(user.profile!, forKey: "profile_key")
+
                     UserDefaults.standard.set(true, forKey: "isLogin_key")
                     
                 }

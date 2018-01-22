@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 import PKHUD
 
-class InformationController: LoginBaseViewController {
+class InformationController: BaseViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
@@ -41,7 +41,8 @@ class InformationController: LoginBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hideOrShowBtn(btnType: .dis, hide: true)
+        
+        navBar.title = "完善信息"
         
         nextButton.rx.tap
             .throttle(1, scheduler: MainScheduler.instance)

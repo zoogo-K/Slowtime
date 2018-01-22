@@ -25,7 +25,7 @@ class ProfileController: BaseViewController {
             nickName.delegate = self
         }
     }
-
+    
     @IBOutlet weak var profileTextView: UITextView! {
         didSet {
             profileTextView.layer.borderColor = UIColor.black.cgColor
@@ -37,7 +37,7 @@ class ProfileController: BaseViewController {
         }
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,12 +53,12 @@ class ProfileController: BaseViewController {
                 _ = self.view.endEditing(true)
             }
             .disposed(by: disposeBag)
-    
+        
     }
     
     private func changeProfileRequest() {
         view.endEditing(true)
-
+        
         if (nickName.text?.count)! > 12 {
             nickName.layer.borderColor = UIColor.red.cgColor
             HUD.flash(.label("昵称超限"), delay: 1)
@@ -80,20 +80,18 @@ class ProfileController: BaseViewController {
                 HUD.flash(.label(mess), delay: 1.0)
             })
             .filterObject(to: User.self)
-            .subscribe { [weak self] (event) in
-                if case .next(let user) = event {
-                    
+            .bind(onNext: { [weak self] (user) in
+                if user.userHash != "" {
                     UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
                     UserDefaults.standard.set(user.userHash!, forKey: "userHash_key")
                     UserDefaults.standard.set(user.nickname!, forKey: "nickname_key")
                     UserDefaults.standard.set(user.profile!, forKey: "profile_key")
-                    self?.popAction()
-                    
                 }
-            }
+                self?.popAction()
+            })
             .disposed(by: disposeBag)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

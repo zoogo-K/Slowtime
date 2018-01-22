@@ -74,7 +74,7 @@ class ReadMailController: BaseViewController {
                     self?.envelopeBottomTearViewfromuserlbl.text = (mail.fromUser?.nickname)! + " 寄"
                     self?.envelopeBottomTearViewFromUserZip.text = mail.fromUser?.zipCode
 
-                    self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon!) ?? URL(string: "")!), placeholder: RI.add_stamp())
+                    self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon ?? "") ?? URL(string: "")!), placeholder: RI.add_stamp())
 
                 }else if case .error = event {
                     HUD.flash(.label("请求失败！"), delay: 1.0)

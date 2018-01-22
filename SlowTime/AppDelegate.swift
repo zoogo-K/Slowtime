@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // pkhud初始化
         HUD.dimsBackground = false
-        HUD.allowsInteraction = false
+        HUD.allowsInteraction = true
         return true
     }
     

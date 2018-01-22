@@ -43,22 +43,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="TYg-UI-DF7">
-                                <rect key="frame" x="128" y="60" width="119" height="55.5"/>
+                                <rect key="frame" x="128" y="60" width="119" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记得早先年少时" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KD4-LT-HZP">
-                                        <rect key="frame" x="0.0" y="0.0" width="119" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="119" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="S8h-9A-BXu"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大家诚诚恳恳" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVg-aG-sTt">
-                                        <rect key="frame" x="0.0" y="18.5" width="119" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="24" width="119" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="fJK-EW-CiI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="说一句 是一句" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCG-2i-ets">
-                                        <rect key="frame" x="0.0" y="37" width="119" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="48" width="119" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="gkz-4q-uze"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -71,19 +80,19 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aG-bZ-ElF">
-                                <rect key="frame" x="20" y="175" width="48" height="17.5"/>
+                                <rect key="frame" x="20" y="191.5" width="48" height="17.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcJ-9h-cHD">
-                                <rect key="frame" x="20" y="270.5" width="48" height="17.5"/>
+                                <rect key="frame" x="20" y="287" width="48" height="17.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pqC-Xr-Vrs">
-                                <rect key="frame" x="20" y="202.5" width="335" height="44"/>
+                                <rect key="frame" x="20" y="219" width="335" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="duW-c8-JL1"/>
                                 </constraints>
@@ -92,7 +101,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCu-fl-pn9">
-                                <rect key="frame" x="128" y="388" width="118" height="36"/>
+                                <rect key="frame" x="128" y="404.5" width="118" height="36"/>
                                 <color key="backgroundColor" red="0.78666502237319946" green="0.00088333955500274897" blue="0.0026817009784281254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="118" id="glf-ky-4pf"/>
@@ -104,7 +113,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Puh-cI-yCy">
-                                <rect key="frame" x="255" y="305.5" width="100" height="29"/>
+                                <rect key="frame" x="255" y="322" width="100" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="mtQ-IY-reF"/>
                                 </constraints>
@@ -117,7 +126,7 @@
                                 </state>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIS-72-bia">
-                                <rect key="frame" x="20" y="298" width="219" height="44"/>
+                                <rect key="frame" x="20" y="314.5" width="219" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="19I-xy-xAe"/>
                                 </constraints>
