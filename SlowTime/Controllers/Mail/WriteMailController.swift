@@ -27,6 +27,8 @@ class WriteMailController: BaseViewController {
     
     @IBOutlet weak var mailContentTextView: UITextView!
     
+    @IBOutlet weak var mailContentTextViewHeightCon: NSLayoutConstraint!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +59,16 @@ class WriteMailController: BaseViewController {
                 self?.navBar.wr_setLeftButton(title: text.count > 0 ? "存草稿" : "返回", titleColor: .black)
             }
             .disposed(by: disposeBag)
+        
+        
+        mailContentTextView.rx.text.orEmpty
+            .asObservable()
+            .bind { [weak self](text) in
+                if text.count < 10 { return }
+                self?.mailContentTextViewHeightCon.constant = text.stringRect(with: .my_systemFont(ofSize: 17)).height + 20
+            }
+            .disposed(by: disposeBag)
+        
         
         
         view.rx.sentMessage(#selector(touchesBegan(_:with:)))

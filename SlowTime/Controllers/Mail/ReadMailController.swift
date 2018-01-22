@@ -15,6 +15,7 @@ class ReadMailController: BaseViewController {
     
     var friend: Friend?
     
+    @IBOutlet weak var envelopeBottomTearHeightCon: NSLayoutConstraint!
     @IBOutlet weak var envelopeBottomTearViewStamp: UIImageView!
     
     @IBOutlet weak var envelopeBottomTearViewToUserZip: UILabel!
@@ -69,13 +70,15 @@ class ReadMailController: BaseViewController {
                     self?.mailContent.text = mail.content
                     self?.createTime.text = mail.updateTime?.StringFormartTime()
                     
-                    self?.envelopeBottomTearViewToUserZip.text = mail.toUser?.zipCode?.StringToZipCode()
-                    self?.envelopeBottomTearViewTouserlbl.text = (mail.toUser?.nickname)! + " 收"
-                    self?.envelopeBottomTearViewfromuserlbl.text = (mail.fromUser?.nickname)! + " 寄"
-                    self?.envelopeBottomTearViewFromUserZip.text = mail.fromUser?.zipCode
+                    
+                    if self?.emailType == 1 {
+                        self?.envelopeBottomTearViewToUserZip.text = mail.toUser?.zipCode?.StringToZipCode()
+                        self?.envelopeBottomTearViewTouserlbl.text = (mail.toUser?.nickname)! + " 收"
+                        self?.envelopeBottomTearViewfromuserlbl.text = (mail.fromUser?.nickname)! + " 寄"
+                        self?.envelopeBottomTearViewFromUserZip.text = mail.fromUser?.zipCode
 
-                    self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon ?? "") ?? URL(string: "")!), placeholder: RI.add_stamp())
-
+                        self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon ?? "") ?? URL(string: "")!), placeholder: RI.add_stamp())
+                    }
                 }else if case .error = event {
                     HUD.flash(.label("请求失败！"), delay: 1.0)
                 }
@@ -88,6 +91,7 @@ class ReadMailController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        envelopeBottomTearHeightCon.constant = emailType == 1 ? 165 : 24
         envelopeBottomTearView.layer.transform = CATransform3DMakeRotation(CGFloat.pi, 0, 0, 1)
         
         if emailType == 1 {

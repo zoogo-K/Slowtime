@@ -62,6 +62,18 @@ extension String {
         let attrStr = attr.font(font)
         return attrStr.boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil).size
     }
+    
+    
+    
+    func textHeight(with font:UIFont ,width: CGFloat) -> CGFloat {
+        
+        let normalText: String = self
+        let size = CGSize(width: width, height: 1000)
+        let dic = NSDictionary(object: font, forKey: NSAttributedStringKey.font as NSCopying)
+        let stringSize = normalText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [NSAttributedStringKey : Any], context:nil).size
+        return stringSize.height
+    }
+    
 }
 
 extension String {
