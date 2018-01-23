@@ -627,6 +627,9 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-a6-ef6">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
                                     </imageView>
+                                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="youchuo-black" translatesAutoresizingMaskIntoConstraints="NO" id="cJd-mp-WQQ">
+                                        <rect key="frame" x="203" y="15" width="52" height="34"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AAA 收" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToR-yc-i48">
                                         <rect key="frame" x="124" y="62" width="52" height="17"/>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
@@ -654,6 +657,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stamp" translatesAutoresizingMaskIntoConstraints="NO" id="rRm-uO-fCW">
+                                        <rect key="frame" x="232" y="10" width="52" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="QjI-Za-he3"/>
+                                            <constraint firstAttribute="height" constant="70" id="jlf-g9-0dY"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -668,11 +678,15 @@
                                     <constraint firstItem="2Ku-s4-fgg" firstAttribute="top" secondItem="ToR-yc-i48" secondAttribute="bottom" constant="16" id="Cry-Yb-v6d"/>
                                     <constraint firstItem="SVR-TY-dTI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c0V-y5-fq1" secondAttribute="leading" constant="20" symbolic="YES" id="EQK-aq-w9s"/>
                                     <constraint firstItem="Gk7-Nu-NX4" firstAttribute="top" secondItem="c0V-y5-fq1" secondAttribute="top" constant="15" id="KMz-KX-wez"/>
+                                    <constraint firstAttribute="trailing" secondItem="rRm-uO-fCW" secondAttribute="trailing" constant="16" id="Ljw-SK-Fl6"/>
                                     <constraint firstAttribute="trailing" secondItem="gyL-a6-ef6" secondAttribute="trailing" id="QOb-ky-ioX"/>
                                     <constraint firstItem="ToR-yc-i48" firstAttribute="top" secondItem="c0V-y5-fq1" secondAttribute="top" constant="62" id="TJV-iL-zeo"/>
                                     <constraint firstAttribute="trailing" secondItem="SVR-TY-dTI" secondAttribute="trailing" constant="18" id="Wso-ro-CaD"/>
                                     <constraint firstItem="2Ku-s4-fgg" firstAttribute="centerX" secondItem="ToR-yc-i48" secondAttribute="centerX" id="c81-UT-jJ2"/>
+                                    <constraint firstItem="rRm-uO-fCW" firstAttribute="top" secondItem="c0V-y5-fq1" secondAttribute="top" constant="10" id="gdq-tY-FGp"/>
+                                    <constraint firstItem="cJd-mp-WQQ" firstAttribute="top" secondItem="c0V-y5-fq1" secondAttribute="top" constant="15" id="tP6-3q-bDc"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gk7-Nu-NX4" secondAttribute="trailing" constant="20" symbolic="YES" id="v5h-KV-h6c"/>
+                                    <constraint firstAttribute="trailing" secondItem="cJd-mp-WQQ" secondAttribute="trailing" constant="45" id="yh0-2g-UAX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -699,6 +713,8 @@
                         <outlet property="enevlopeBottomViewTouserlbl" destination="ToR-yc-i48" id="aVX-9b-Mi4"/>
                         <outlet property="enevlopeBottomViewfromuserlbl" destination="2Ku-s4-fgg" id="CcU-Lu-fef"/>
                         <outlet property="enevlopeTopImg" destination="eIr-vE-fV4" id="kUL-Ri-vpa"/>
+                        <outlet property="envelopeBottomViewStamp" destination="rRm-uO-fCW" id="dKl-XE-9da"/>
+                        <outlet property="envelopeBottomViewYouchuo" destination="cJd-mp-WQQ" id="mWL-ma-eRn"/>
                         <outlet property="mailView" destination="AgY-4X-NDx" id="yeG-a7-jB1"/>
                         <outlet property="mailViewFromUserZip" destination="SVR-TY-dTI" id="Oz0-at-bd8"/>
                         <outlet property="mailViewFromUserlbl" destination="y9B-2V-wYm" id="lS2-MG-yf1"/>
@@ -1219,6 +1235,6 @@
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ftG-we-VqN"/>
+        <segue reference="6a2-AH-6mC"/>
     </inferredMetricsTieBreakers>
 </document>
