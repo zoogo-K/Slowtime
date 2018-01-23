@@ -17,7 +17,9 @@ class FeedBackController: BaseViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.tableHeaderView = header
+//            tableView.tableHeaderView?.height = 76
             tableView.tableFooterView = footer
+//            tableView.tableFooterView?.height = 86
             tableView.backgroundColor = UIColor(patternImage: RI.mailbg()!)
         }
     }

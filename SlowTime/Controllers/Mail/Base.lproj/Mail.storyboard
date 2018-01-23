@@ -874,12 +874,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7B-me-HAJ">
-                                <rect key="frame" x="325" y="32" width="30" height="30"/>
+                                <rect key="frame" x="321" y="32" width="34" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mIJ-TT-YJT"/>
-                                    <constraint firstAttribute="width" constant="30" id="si1-Fb-73M"/>
                                 </constraints>
-                                <state key="normal" image="cha"/>
+                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
+                                <state key="normal" title="取消">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="disAction:" destination="g8Z-Kf-9TW" eventType="touchUpInside" id="CKi-e3-2gs"/>
                                 </connections>
@@ -987,6 +989,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Z7B-me-HAJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eaf-m2-6qi" secondAttribute="leading" constant="20" symbolic="YES" id="4ez-67-o5p"/>
                             <constraint firstItem="g3U-tF-wql" firstAttribute="trailing" secondItem="pPa-TA-dPa" secondAttribute="trailing" id="AoP-eH-WGl"/>
                             <constraint firstItem="g3U-tF-wql" firstAttribute="trailing" secondItem="GhN-I8-gJ6" secondAttribute="trailing" id="UYb-8l-0cz"/>
                             <constraint firstItem="GhN-I8-gJ6" firstAttribute="leading" secondItem="g3U-tF-wql" secondAttribute="leading" id="Xpk-F4-AJg"/>
@@ -1204,7 +1207,6 @@
     </scenes>
     <resources>
         <image name="Line" width="375" height="1"/>
-        <image name="cha" width="15" height="15"/>
         <image name="dotted_line" width="350" height="208"/>
         <image name="envelope_bottom" width="300" height="165"/>
         <image name="envelope_bottom_tear" width="300" height="165"/>
@@ -1217,6 +1219,6 @@
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6a2-AH-6mC"/>
+        <segue reference="ftG-we-VqN"/>
     </inferredMetricsTieBreakers>
 </document>
