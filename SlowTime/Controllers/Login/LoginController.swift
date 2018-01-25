@@ -151,7 +151,6 @@ class LoginController: BaseViewController {
                         self?.performSegue(withIdentifier: R.segue.loginController.showInfo, sender: nil)
                     }
                     
-
                     UserDefaults.standard.set(true, forKey: "isLogin_key")
                     
                 }

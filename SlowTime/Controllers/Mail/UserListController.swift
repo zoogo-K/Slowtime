@@ -95,6 +95,9 @@ class UserListController: BaseViewController {
     }
     
     private func request() {
+        let group = DispatchGroup()
+        group.enter()
+        
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.friends)
             .asObservable()
@@ -102,7 +105,7 @@ class UserListController: BaseViewController {
             .filterSuccessfulCode()
             .flatMap(to: Friend.self)
             .subscribe { [weak self] (event) in
-                self?.tableview.mj_header.endRefreshing()
+                group.leave()
                 if case .next(let friends) = event {
                     self?.friends = friends
                     DispatchQueue.main.async {
@@ -119,6 +122,7 @@ class UserListController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        group.enter()
         
         let providerRecommends = MoyaProvider<Request>()
         providerRecommends.rx.requestWithLoading(.recommends)
@@ -127,7 +131,7 @@ class UserListController: BaseViewController {
             .filterSuccessfulCode()
             .flatMap(to: Friend.self)
             .subscribe { [weak self] (event) in
-                self?.tableview.mj_header.endRefreshing()
+                group.leave()
                 if case .next(let friends) = event {
                     DispatchQueue.main.async {
                         self?.commendView.isHidden = false
@@ -139,6 +143,11 @@ class UserListController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        
+        group.notify(queue: DispatchQueue.main) {
+            self.tableview.mj_header.endRefreshing()
+        }
     }
     
     

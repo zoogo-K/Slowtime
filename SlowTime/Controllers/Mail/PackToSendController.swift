@@ -10,6 +10,7 @@ import UIKit
 import Moya
 import RxSwift
 import Kingfisher
+import PKHUD
 
 class PackToSendController: BaseViewController {
     
@@ -57,6 +58,9 @@ class PackToSendController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         
         mailViewMaillbl.text = mail?.content
         mailViewTimeLbl.text = mail?.updateTime?.StringFormartTime()
@@ -167,7 +171,7 @@ class PackToSendController: BaseViewController {
                     self?.enevlopeBottomView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                     self?.enevlopeBottomView.alpha = 0.5
                 }, completion: { (fin) in
-                    
+                    HUD.flash(.label("已发送"), delay: 1.0)
                     if (self?.navigationController?.viewControllers.contains(where: { $0 is MailListController }))! {
                         for vc in (self?.navigationController?.viewControllers)! {
                             if vc is MailListController {
@@ -211,7 +215,6 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
         
         // 隐藏返回按钮，禁用左滑返回
         navBar.wr_setLeftButton(title: "", titleColor: .black)
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         view.isUserInteractionEnabled = false
         
         // 获取当前点击的cell

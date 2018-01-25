@@ -78,8 +78,8 @@ class WriteMailController: BaseViewController {
                 self?.navBar.wr_setLeftButton(title: text.count > 0 && self?.friend != Config.CqmUser ? "存草稿" : "返回", titleColor: .black)
             }
             .disposed(by: disposeBag)
-
-        cell?.contentTextView.becomeFirstResponder()
+        
+//        cell?.contentTextView.becomeFirstResponder()
         
         
         if ifEdit { //草稿
@@ -101,7 +101,6 @@ class WriteMailController: BaseViewController {
                 .disposed(by: disposeBag)
         }
     }
-    
     
     
     fileprivate func send() {

@@ -59,6 +59,13 @@ class ProfileController: BaseViewController {
     private func changeProfileRequest() {
         view.endEditing(true)
         
+        if (nickName.text?.count)! == 0 || profileTextView.text.count == 0{
+            HUD.flash(.label("请检查输入内容！"), delay: 1.0)
+            return
+        }
+        
+        
+        
         if (nickName.text?.count)! > 12 {
             nickName.layer.borderColor = UIColor.red.cgColor
             HUD.flash(.label("昵称超限"), delay: 1)
