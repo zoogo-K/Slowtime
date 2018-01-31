@@ -62,7 +62,7 @@ class ReadMailController: BaseViewController {
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
-            .filterObject(to: Mail.self)
+            .mapObject(to: Mail.self)
             .subscribe { [weak self] (event) in
                 if case .next(let mail) = event {
                     self?.toUserName.text = (mail.toUser?.nickname)! + ":"

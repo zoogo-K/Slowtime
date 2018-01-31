@@ -115,7 +115,7 @@ fileprivate extension JSON {
     }
     
     
-    fileprivate func filterObject<T: Parseable>(to type: T.Type) -> T {
+    fileprivate func mapObject<T: Parseable>(to type: T.Type) -> T {
         return T(json: self["data"][T.identifier])
     }
     
@@ -136,9 +136,9 @@ fileprivate extension JSON {
 
 public extension ObservableType where E == JSON {
     
-    public func filterObject<T: Parseable>(to type: T.Type) -> Observable<T> {
+    public func mapObject<T: Parseable>(to type: T.Type) -> Observable<T> {
         return flatMap { json -> Observable<T> in
-            return Observable.just(json.filterObject(to: type))
+            return Observable.just(json.mapObject(to: type))
         }
     }
     

@@ -79,7 +79,7 @@ class FeedBackController: BaseViewController {
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode()
-            .filterObject(to: Mail.self)
+            .mapObject(to: Mail.self)
             .bind(onNext: { [weak self] (_) in
                 HUD.flash(.label("已发送"), delay: 1.0)
                 self?.popAction()

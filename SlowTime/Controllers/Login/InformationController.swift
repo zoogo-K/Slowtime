@@ -90,7 +90,7 @@ class InformationController: BaseViewController {
             .filterSuccessfulCode({ (_, mess) in
                 HUD.flash(.label(mess), delay: 1.0)
             })
-            .filterObject(to: User.self)
+            .mapObject(to: User.self)
             .subscribe { (event) in
                 if case .next(let user) = event {
                     

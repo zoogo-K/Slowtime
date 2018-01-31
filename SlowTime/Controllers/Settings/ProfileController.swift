@@ -86,7 +86,7 @@ class ProfileController: BaseViewController {
             .filterSuccessfulCode({ (code, mess) in
                 HUD.flash(.label(mess), delay: 1.0)
             })
-            .filterObject(to: User.self)
+            .mapObject(to: User.self)
             .bind(onNext: { [weak self] (user) in
                 if user.userHash != "" {
                     UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")

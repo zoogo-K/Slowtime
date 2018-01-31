@@ -136,7 +136,7 @@ class LoginController: BaseViewController {
             .filterSuccessfulCode({ (code, mess) in
                 HUD.flash(.label(mess), delay: 1.0)
             })
-            .filterObject(to: User.self)
+            .mapObject(to: User.self)
             .subscribe { [weak self] (event) in
                 if case .next(let user) = event {
                     if user.nickname != "" {
