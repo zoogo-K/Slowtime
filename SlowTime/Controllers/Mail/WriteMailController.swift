@@ -25,7 +25,6 @@ class WriteMailController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-//            tableView.tableHeaderView = header
             tableView.tableFooterView = footer
             tableView.backgroundColor = UIColor(patternImage: RI.mailbg()!)
         }
@@ -33,14 +32,20 @@ class WriteMailController: BaseViewController {
     
     var contentText: String = ""
     
-    var cellHeight: CGFloat = 160
+    var cellHeight: CGFloat = 200
     
     private lazy var footer: WriteFooter = {
         $0.fromUserName.text = UserDefaults.standard.string(forKey: "nickname_key")
-        $0.time.text = "2017年3月28日"
+        $0.time.text = getTimes()
         return $0
     }(Bundle.main.loadNibNamed("WriteHeaderFooter", owner: self, options: nil)![1] as! WriteFooter)
     
+    func getTimes() -> String {
+        let calendar: Calendar = Calendar(identifier: .gregorian)
+        var comps: DateComponents = DateComponents()
+        comps = calendar.dateComponents([.year,.month,.day], from: Date())
+        return "\(String(describing: comps.year!))年\(String(describing: comps.month!))月\(String(describing: comps.day!))号"
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +57,8 @@ class WriteMailController: BaseViewController {
         navBar.onClickRightButton = { [weak self] in
             self?.friend == Config.CqmUser ? self?.send() : self?.saveMail(isPop: false)
         }
+        
+        navBar.wr_setLeftButton(title: " 存草稿", titleColor: .black)
         
         navBar.onClickLeftButton = { [weak self] in
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextCell
@@ -66,21 +73,10 @@ class WriteMailController: BaseViewController {
         NotificationCenter.default.addObserver(forName: .endEdit, object: nil, queue: .main) { [weak self] (_) in
             self?.view.endEditing(true)
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-            self?.cellHeight =  max(160, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
+            self?.cellHeight =  max(200, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
             self?.contentText = (cell?.contentTextView.text)!
             self?.tableView.reloadData()
         }
-        
-        
-//        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-//        cell?.contentTextView.rx.text.orEmpty
-//            .asObservable()
-//            .bind { [weak self](text) in
-//                self?.navBar.wr_setLeftButton(title: text.count > 0 && self?.friend != Config.CqmUser ? " 存草稿" : "返回", titleColor: .black)
-//            }
-//            .disposed(by: disposeBag)
-        
-//        cell?.contentTextView.becomeFirstResponder()
     }
     
     

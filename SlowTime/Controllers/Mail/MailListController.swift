@@ -128,7 +128,7 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
             mailList.destination.friend = friend
         }else if let editMail = R.segue.mailListController.showdraft(segue: segue) {
             editMail.destination.friend = friend
-            editMail.destination.isEditing = true
+            editMail.destination.ifEdit = true
             editMail.destination.contentText = mailContent
             editMail.destination.mailId = mail.id!
         }

@@ -38,9 +38,17 @@ class FeedBackController: BaseViewController {
     
     private lazy var footer: WriteFooter = {
         $0.fromUserName.text = UserDefaults.standard.string(forKey: "nickname_key")
-        $0.time.text = "2017年3月28日"
+        $0.time.text = getTimes()
         return $0
     }(Bundle.main.loadNibNamed("WriteHeaderFooter", owner: self, options: nil)![1] as! WriteFooter)
+    
+    
+    func getTimes() -> String {
+        let calendar: Calendar = Calendar(identifier: .gregorian)
+        var comps: DateComponents = DateComponents()
+        comps = calendar.dateComponents([.year,.month,.day], from: Date())
+        return "\(String(describing: comps.year!))年\(String(describing: comps.month!))月\(String(describing: comps.day!))号"
+    }
     
     
     private var friend = Config.CqmUser
