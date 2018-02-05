@@ -44,15 +44,12 @@ class MailListController: BaseViewController {
                 if case .next(let mails) = event {
                     self?.mails = mails
                     DispatchQueue.main.async {
-
                         if mails.contains(where: { $0.emailType == 1 }) {
-                            
                             self?.navBar.wr_setRightButton(title: "写信", titleColor: .black)
                             self?.navBar.onClickRightButton = { [weak self] in
                                 self?.performSegue(withIdentifier: R.segue.mailListController.showWrite, sender: nil)
                             }
                         }
-                        
                         self?.tableview.reloadData()
                     }
                 }else if case .error = event {

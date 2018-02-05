@@ -53,6 +53,7 @@
 		6FE9D7522015BD3D007202DC /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE9D7512015BD3D007202DC /* TextCell.swift */; };
 		6FE9D7542015C9FE007202DC /* WriteHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE9D7532015C9FE007202DC /* WriteHeaderFooter.swift */; };
 		6FE9D7562015CA06007202DC /* WriteHeaderFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE9D7552015CA06007202DC /* WriteHeaderFooter.xib */; };
+		6FF55BB1202472A400113DA6 /* ng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF55BB0202472A400113DA6 /* ng.swift */; };
 		6FFA424D2010A4EA00D61E11 /* URL+slowTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFA424C2010A4EA00D61E11 /* URL+slowTime.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		6FE9D7512015BD3D007202DC /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		6FE9D7532015C9FE007202DC /* WriteHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteHeaderFooter.swift; sourceTree = "<group>"; };
 		6FE9D7552015CA06007202DC /* WriteHeaderFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WriteHeaderFooter.xib; sourceTree = "<group>"; };
+		6FF55BB0202472A400113DA6 /* ng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ng.swift; sourceTree = "<group>"; };
 		6FFA424C2010A4EA00D61E11 /* URL+slowTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+slowTime.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 				6F2940EB1FF4E4BD00873A9A /* WriteMailController.swift */,
 				6F2940ED1FF4EDBA00873A9A /* PackToSendController.swift */,
 				6F9FF5FB1FFDE4F5007D6DA8 /* StampListController.swift */,
+				6FF55BB0202472A400113DA6 /* ng.swift */,
 				6FB8AEC71FF3B7DE009DA465 /* Mail.storyboard */,
 			);
 			path = Mail;
@@ -472,6 +475,7 @@
 				6F887B6B1FF48E810097B640 /* UIImage+hexa.swift in Sources */,
 				6FFA424D2010A4EA00D61E11 /* URL+slowTime.swift in Sources */,
 				6F887B6D1FF48E810097B640 /* UIDevice+hexa.swift in Sources */,
+				6FF55BB1202472A400113DA6 /* ng.swift in Sources */,
 				6FC4CC4F200354EE00CE915B /* WRCustomNavigationBar.swift in Sources */,
 				6F2940EC1FF4E4BD00873A9A /* WriteMailController.swift in Sources */,
 				6FDDF5E11FFC8A4E008D7C1D /* CQMAlert.swift in Sources */,
@@ -625,7 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 35FZ4X5X4K;
+				DEVELOPMENT_TEAM = XN88PY869D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -633,7 +637,7 @@
 				INFOPLIST_FILE = SlowTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqmapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -646,7 +650,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 35FZ4X5X4K;
+				DEVELOPMENT_TEAM = XN88PY869D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -654,7 +658,7 @@
 				INFOPLIST_FILE = SlowTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqmapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

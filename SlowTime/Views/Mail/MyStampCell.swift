@@ -17,7 +17,7 @@ class MyStampCell: UICollectionViewCell {
     var stamp: Stamp? {
         didSet {
             countLbl.text = "\(stamp?.count ?? 1)"
-            iconImg.kf.setImage(with: ImageResource(downloadURL: URL(string: (stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.add_stamp())
+            iconImg.kf.setImage(with: ImageResource(downloadURL: URL(string: (stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.stamp())
         }
     }
     

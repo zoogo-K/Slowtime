@@ -102,7 +102,21 @@ public class CQMAlert: UIView {
         
         switch options.count {
         case 1:
-            break
+            let leftButton = getButtonWith(actionType: options[0].type)
+            alertFootView.addSubview(leftButton)
+            leftButton.snp.makeConstraints {
+                $0.width.equalTo(100)
+                $0.height.equalTo(36)
+                $0.centerX.equalToSuperview()
+                $0.bottom.equalToSuperview().offset(-20)
+            }
+            leftButton.rx.tap
+                .bind { [weak self] in
+                    self?.hideAction()
+                }
+                .disposed(by: disposeBag)
+            leftButton.setTitle(options[0].title, for: .normal)
+            
         case 2:
             
             let leftButton = getButtonWith(actionType: options[0].type)

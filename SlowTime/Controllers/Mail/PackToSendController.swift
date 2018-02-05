@@ -227,9 +227,9 @@ extension PackToSendController: UICollectionViewDelegate, UICollectionViewDataSo
         let stampImageView = UIImageView()
         
         // 设置图片
-        stampImageView.kf.setImage(with: ImageResource(downloadURL: URL(string: (cell.stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.add_stamp())
+        stampImageView.kf.setImage(with: ImageResource(downloadURL: URL(string: (cell.stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.stamp())
         // envelopeBottomViewStamp设置图片
-        envelopeBottomViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: (cell.stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.add_stamp())
+        envelopeBottomViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: (cell.stamp?.icon)!) ?? URL(string: "")!), placeholder: RI.stamp())
         
         // 设置其frame
         stampImageView.frame = CGRect(x: point.x, y: point.y, width: envelopeBottomViewStamp.width, height: envelopeBottomViewStamp.height)

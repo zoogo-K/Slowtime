@@ -44,7 +44,7 @@ public enum Request {
     
     case stamps
     case userStamp
-    case orderStamp(stamps: [[String:String]])
+    case orderStamp(receipt: String, stamps: [[String:String]])
 }
 
 
@@ -86,7 +86,7 @@ extension Request: Moya.TargetType {
         case .userStamp:
             return "/stamps/user"
         case .orderStamp:
-            return "/order"
+            return "/iapay"
 
         }
     }
@@ -118,8 +118,8 @@ extension Request: Moya.TargetType {
             return ["toUser": toUser, "content": content]
         case .sendMail(let stampId, _):
             return ["stampId": stampId]
-        case .orderStamp(let stamps):
-            return ["stamps": stamps]
+        case .orderStamp(let receipt, let stamps):
+            return ["receipt-data": receipt, "stamps": stamps]
         default:
             return nil
         }

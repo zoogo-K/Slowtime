@@ -32,7 +32,7 @@ class StampListCell: UICollectionViewCell {
     
     var stamp: Stamp? {
         didSet {
-            iconBtn.kf.setBackgroundImage(with: ImageResource(downloadURL: URL(string: (stamp?.icon)!) ?? URL(string: "")!), for: .normal, placeholder: RI.add_stamp())
+            iconBtn.kf.setBackgroundImage(with: ImageResource(downloadURL: URL(string: (stamp?.icon)!) ?? URL(string: "")!), for: .normal, placeholder: RI.stamp())
         }
     }
     

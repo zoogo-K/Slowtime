@@ -29,12 +29,6 @@ class ReadMailController: BaseViewController {
     
     @IBOutlet weak var mailView: UIView!
     
-    @IBOutlet weak var yinzhangImg: UIImageView! {
-        didSet {
-            yinzhangImg.isHidden = true
-        }
-    }
-    
     @IBOutlet weak var toUserName: UILabel!
     
     @IBOutlet weak var createTime: UILabel!
@@ -77,7 +71,7 @@ class ReadMailController: BaseViewController {
                         self?.envelopeBottomTearViewfromuserlbl.text = (mail.fromUser?.nickname)! + " 寄"
                         self?.envelopeBottomTearViewFromUserZip.text = mail.fromUser?.zipCode
 
-                        self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon ?? "") ?? URL(string: "")!), placeholder: RI.add_stamp())
+                        self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon ?? "") ?? URL(string: "")!), placeholder: RI.stamp())
                     }
                 }else if case .error = event {
                     HUD.flash(.label("请求失败！"), delay: 1.0)
@@ -99,15 +93,9 @@ class ReadMailController: BaseViewController {
             navBar.onClickRightButton = { [weak self] in
                 self?.performSegue(withIdentifier: R.segue.readMailController.showWrite, sender: nil)
             }
+        } else if emailType == 2 {
+            navBar.wr_setRightButton(title: "已寄出", titleColor: .lightGray)
         }
-    }
-    
-   
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // 左下角印章的iphoneX适配
-        yinzhangImg.y = max(yinzhangImg.y, Screen.height - yinzhangImg.height - 16 -  (WRCustomNavigationBar.isIphoneX ? (44 + 34) : 20))
-        yinzhangImg.isHidden = false
     }
     
     

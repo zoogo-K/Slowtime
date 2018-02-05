@@ -251,6 +251,10 @@ extension WRCustomNavigationBar
             leftButton.frame = CGRect(x: 0, y: top, width: btnWidth, height: 44)
             leftButton.setTitleColor(titleColor, for: .normal)
             leftButton.titleLabel?.font = .my_systemFont(ofSize: 16)
+            
+            if title == "存草稿" {
+                leftButton.setImage(RI.left(), for: .normal)
+            }
         }else {
             leftButton.setImage(normal, for: .normal)
             leftButton.setImage(highlighted, for: .highlighted)
