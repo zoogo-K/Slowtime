@@ -17,7 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="WriteHeader" customModule="SlowTime" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dV2-3r-4lq">
@@ -26,19 +26,11 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你好！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn3-WN-6Se">
-                    <rect key="frame" x="16" y="46.5" width="51" height="18.5"/>
-                    <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="bn3-WN-6Se" firstAttribute="leading" secondItem="dV2-3r-4lq" secondAttribute="leading" id="MOs-wD-X51"/>
                 <constraint firstItem="dV2-3r-4lq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="MU8-5L-HcJ"/>
                 <constraint firstItem="dV2-3r-4lq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="RmP-ok-utA"/>
-                <constraint firstItem="bn3-WN-6Se" firstAttribute="top" secondItem="dV2-3r-4lq" secondAttribute="bottom" constant="8" id="vLY-H5-1Qa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

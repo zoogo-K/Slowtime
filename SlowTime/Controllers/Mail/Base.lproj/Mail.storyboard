@@ -447,7 +447,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NJA-1o-zwm">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="129"/>
+                                                    <rect key="frame" x="15" y="12" width="345" height="117"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -457,7 +457,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="NJA-1o-zwm" secondAttribute="trailing" constant="15" id="8mA-02-bGW"/>
                                                 <constraint firstAttribute="bottom" secondItem="NJA-1o-zwm" secondAttribute="bottom" id="9uq-OE-cgj"/>
-                                                <constraint firstItem="NJA-1o-zwm" firstAttribute="top" secondItem="58R-4Y-AON" secondAttribute="top" id="MZO-cm-Zmh"/>
+                                                <constraint firstItem="NJA-1o-zwm" firstAttribute="top" secondItem="58R-4Y-AON" secondAttribute="top" constant="12" id="MZO-cm-Zmh"/>
                                                 <constraint firstItem="NJA-1o-zwm" firstAttribute="leading" secondItem="58R-4Y-AON" secondAttribute="leading" constant="15" id="Tdc-Yy-VNV"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -576,8 +576,8 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eAC-0d-dvC">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="108"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utz-Sc-Moy">
-                                                            <rect key="frame" x="80" y="0.0" width="0.0" height="0.0"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utz-Sc-Moy">
+                                                            <rect key="frame" x="60.5" y="0.0" width="19.5" height="17.5"/>
                                                             <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -986,7 +986,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhN-I8-gJ6">
                                 <rect key="frame" x="0.0" y="579" width="375" height="88"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTO-av-DWk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZvD-7n-fdK">
+                                        <rect key="frame" x="276" y="44.5" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTO-av-DWk">
                                         <rect key="frame" x="128" y="26" width="118" height="36"/>
                                         <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1003,6 +1009,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="bVn-IT-1Jk"/>
                                     <constraint firstItem="YTO-av-DWk" firstAttribute="centerX" secondItem="GhN-I8-gJ6" secondAttribute="centerX" id="eY7-Oc-Wbm"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZvD-7n-fdK" secondAttribute="trailing" constant="8" id="gRq-kN-hHs"/>
+                                    <constraint firstItem="ZvD-7n-fdK" firstAttribute="leading" secondItem="YTO-av-DWk" secondAttribute="trailing" constant="30" id="lPm-Hg-OG3"/>
+                                    <constraint firstItem="ZvD-7n-fdK" firstAttribute="centerY" secondItem="YTO-av-DWk" secondAttribute="centerY" id="shh-Rs-KsH"/>
                                     <constraint firstItem="YTO-av-DWk" firstAttribute="centerY" secondItem="GhN-I8-gJ6" secondAttribute="centerY" id="uXn-Rz-kPO"/>
                                 </constraints>
                             </view>
@@ -1025,6 +1034,7 @@
                     <connections>
                         <outlet property="payBtn" destination="YTO-av-DWk" id="prM-CJ-7oL"/>
                         <outlet property="stampListCollectionView" destination="pPa-TA-dPa" id="KFX-7z-jVP"/>
+                        <outlet property="total" destination="ZvD-7n-fdK" id="5Yd-Bj-l8D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZe-Xo-cRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -112,6 +112,7 @@ public class CQMAlert: UIView {
             }
             leftButton.rx.tap
                 .bind { [weak self] in
+                    options[0].action?()
                     self?.hideAction()
                 }
                 .disposed(by: disposeBag)

@@ -12,9 +12,14 @@ import RxSwift
 import PKHUD
 import StoreKit
 
+extension Notification.Name {
+    static let calculate = Notification.Name("calculate")
+}
+
 class StampListController: UIViewController {
     
     @IBOutlet weak var payBtn: UIButton!
+    @IBOutlet weak var total: UILabel!
     
     private var stamps: [Stamp]?
     
@@ -33,8 +38,18 @@ class StampListController: UIViewController {
     private var prices: [Int] = []
     private var stampOrders: [[String: String]] = [[String: String]]()
     
+    
+    private var totalPrice: Int = 0
+    private var totalCount: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        NotificationCenter.default.addObserver(forName: .calculate, object: nil, queue: .main) { [weak self] (_) in
+            self?.calculate()
+        }
+        
         
         // 请求产品
         SKPaymentQueue.default().add(self)
@@ -60,7 +75,7 @@ class StampListController: UIViewController {
         payBtn.rx.tap
             .throttle(1, scheduler: MainScheduler.instance)
             .bind { [unowned self] in
-                self.calculate()
+                self.buy()
             }
             .disposed(by: disposeBag)
         
@@ -86,8 +101,10 @@ class StampListController: UIViewController {
     }
     
     private func calculate() {
-        var totalPrice: Int = 0
-        var totalCount: Int = 0
+        totalCount = 0
+        totalPrice = 0
+        stampOrders.removeAll()
+        
         for i in 0..<stamps!.count {
             let cell = stampListCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! StampListCell
             if cell.stampCount.value > 0 {
@@ -96,8 +113,13 @@ class StampListController: UIViewController {
                 stampOrders.append(["stampId": (cell.stamp?.id)!, "count": "\(cell.stampCount.value)"])
             }
         }
+        total.text = "共 \(totalCount) 元"
+        payBtn.isEnabled = totalCount != 0 ? true : false
+    }
+    
+    private func buy() {
         
-        if totalCount == 0 || totalCount >= 50 || prices.count == 0 { return }
+        if totalCount == 0 || totalCount > 50 || prices.count == 0 { return }
         
         if prices.contains(where: { $0 == totalCount }) {
             self.onSelectRechargePackages(productId: "com.vincross.cqm.yp\(totalCount)")
@@ -109,7 +131,7 @@ class StampListController: UIViewController {
             
             let alert = CQMAlert(title: "苹果不许支付\(totalCount)元，你可以加\(prices[countIndex!+1]-totalCount)张凑\(prices[countIndex!+1])张或者减\(totalCount-prices[countIndex!-1])张凑\(prices[countIndex!-1])张。")
             let confirmAction = AlertOption(title: "好的", type: .normal, action: { [weak self] in
-                self?.prices.remove(at: countIndex!)
+                self?.prices.remove((self?.totalCount)!)
             })
             alert.addAlertOptions([confirmAction])
             alert.show()
@@ -118,6 +140,7 @@ class StampListController: UIViewController {
     
     
     deinit{
+        NotificationCenter.default.removeObserver(self)
         SKPaymentQueue.default().remove(self)
     }
     

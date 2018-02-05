@@ -20,6 +20,10 @@ class MailListController: BaseViewController {
     
     private var mails: [ListMail]?
     
+    private var isdelete: Bool = false
+    
+    private var mailContent: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +59,10 @@ class MailListController: BaseViewController {
                 }else if case .error = event {
                     self?.mails = [ListMail]()
                     DispatchQueue.main.async {
+                        if (self?.isdelete)! {
+                            self?.popAction()
+                            return
+                        }
                         self?.tableview.reloadData()
                     }
                     DLog("没有数据")
@@ -84,7 +92,21 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if mails![indexPath.row].emailType == 3 && friend != Config.CqmUser {
-            performSegue(withIdentifier: R.segue.mailListController.showdraft, sender: mails![indexPath.row])
+            let provider = MoyaProvider<Request>()
+            provider.rx.request(.getMail(mailId: mails![indexPath.row].id!))
+                .asObservable()
+                .mapJSON()
+                .filterSuccessfulCode()
+                .mapObject(to: Mail.self)
+                .subscribe { [weak self] (event) in
+                    if case .next(let mail) = event {
+                        self?.mailContent = mail.content!
+                        self?.performSegue(withIdentifier: R.segue.mailListController.showdraft, sender: self?.mails![indexPath.row])
+                    }else if case .error = event {
+                        DLog("草稿邮件错误")
+                    }
+                }
+                .disposed(by: disposeBag)
         }else {
             performSegue(withIdentifier: R.segue.mailListController.showGetMail, sender: mails![indexPath.row])
         }
@@ -106,7 +128,8 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
             mailList.destination.friend = friend
         }else if let editMail = R.segue.mailListController.showdraft(segue: segue) {
             editMail.destination.friend = friend
-            editMail.destination.ifEdit = true
+            editMail.destination.isEditing = true
+            editMail.destination.contentText = mailContent
             editMail.destination.mailId = mail.id!
         }
     }
@@ -118,8 +141,10 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let alert = CQMAlert(title: "删除后将无法再恢复,少年要想好~")
+            let alertTitle = mails?.count == 1 ? "删掉最后一封，你们将很难再恢复联系了，想好了吗？" : "删除信件后将无法再恢复，少年要想好"
+            let alert = CQMAlert(title: alertTitle)
             let confirmAction = AlertOption(title: "我想好了", type: .normal, action: { [weak self] in
+                self?.isdelete = true
                 self?.deleteMailRequest(mailId: (self?.mails![indexPath.row].id!)!)
                 //删除 并刷新。
             })

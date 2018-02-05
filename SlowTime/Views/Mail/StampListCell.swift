@@ -12,12 +12,7 @@ import RxSwift
 
 class StampListCell: UICollectionViewCell {
     
-    @IBOutlet weak var countLbl: UILabel! {
-        didSet {
-            countLbl.layer.cornerRadius = 9
-            countLbl.layer.masksToBounds = true
-        }
-    }
+    @IBOutlet weak var countLbl: UILabel!
 
     @IBOutlet weak var iconBtn: UIButton!
     
@@ -44,7 +39,7 @@ class StampListCell: UICollectionViewCell {
         stampCount.asObservable()
             .subscribe(onNext: { [unowned self](num) in
                 self.cutBtn.isHidden = num <= 0
-                self.countLbl.backgroundColor = num <= 0 ? .lightGray : .red
+                self.countLbl.backgroundColor = num <= 0 ? .lightGray : UIColor(hexString: "#C90000")
             })
             .disposed(by: disposeBag)
         
@@ -67,6 +62,7 @@ class StampListCell: UICollectionViewCell {
     @objc private func changeStampCount(isAdd: Bool) {        
         countLbl.text = isAdd ? "\(stampCount.value + 1)" : "\(stampCount.value - 1)"
         stampCount.value = Int(countLbl.text!)!
+        NotificationCenter.default.post(name: .calculate, object: nil)
         contentView.layoutSubviews()
     }
     

@@ -59,9 +59,6 @@ class PackToSendController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-
-        
         mailViewMaillbl.text = mail?.content
         mailViewTimeLbl.text = mail?.updateTime?.StringFormartTime()
         mailViewFromUserlbl.text = mail?.fromUser?.nickname
@@ -86,6 +83,8 @@ class PackToSendController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         let provider = MoyaProvider<Request>()
         provider.rx.requestWithLoading(.userStamp)
             .asObservable()
@@ -166,7 +165,7 @@ class PackToSendController: BaseViewController {
             .filterSuccessfulCode()
             .bind(onNext: { [weak self] (json) in
                 self?.enevlopBTopCons.constant = -20
-                UIView.animate(withDuration: 1, animations: {
+                UIView.animate(withDuration: 0.5, animations: {
                     self?.view.layoutIfNeeded()
                     self?.enevlopeBottomView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                     self?.enevlopeBottomView.alpha = 0.5

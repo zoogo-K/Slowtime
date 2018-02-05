@@ -11,6 +11,10 @@ import Moya
 import PKHUD
 import SwiftyJSON
 
+extension Notification.Name {
+    static let endEdit = Notification.Name("endEdit")
+}
+
 class WriteMailController: BaseViewController {
     
     var friend: Friend?
@@ -21,7 +25,7 @@ class WriteMailController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-            tableView.tableHeaderView = header
+//            tableView.tableHeaderView = header
             tableView.tableFooterView = footer
             tableView.backgroundColor = UIColor(patternImage: RI.mailbg()!)
         }
@@ -30,18 +34,6 @@ class WriteMailController: BaseViewController {
     var contentText: String = ""
     
     var cellHeight: CGFloat = 160
-    
-    private lazy var header: WriteHeader = {
-        $0.toUserName.text = (friend?.nickname)! + ":"
-        $0.endBlock = { [weak self] in
-            self?.view.endEditing(true)
-            let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-            self?.cellHeight =  max(160, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
-            self?.contentText = (cell?.contentTextView.text)!
-            self?.tableView.reloadData()
-        }
-        return $0
-    }(Bundle.main.loadNibNamed("WriteHeaderFooter", owner: self, options: nil)![0] as! WriteHeader)
     
     private lazy var footer: WriteFooter = {
         $0.fromUserName.text = UserDefaults.standard.string(forKey: "nickname_key")
@@ -69,37 +61,26 @@ class WriteMailController: BaseViewController {
                 self?.popAction()
             }
         }
-
         
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-        cell?.contentTextView.rx.text.orEmpty
-            .asObservable()
-            .bind { [weak self](text) in
-                self?.navBar.wr_setLeftButton(title: text.count > 0 && self?.friend != Config.CqmUser ? " 存草稿" : "返回", titleColor: .black)
-            }
-            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.addObserver(forName: .endEdit, object: nil, queue: .main) { [weak self] (_) in
+            self?.view.endEditing(true)
+            let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
+            self?.cellHeight =  max(160, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
+            self?.contentText = (cell?.contentTextView.text)!
+            self?.tableView.reloadData()
+        }
+        
+        
+//        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
+//        cell?.contentTextView.rx.text.orEmpty
+//            .asObservable()
+//            .bind { [weak self](text) in
+//                self?.navBar.wr_setLeftButton(title: text.count > 0 && self?.friend != Config.CqmUser ? " 存草稿" : "返回", titleColor: .black)
+//            }
+//            .disposed(by: disposeBag)
         
 //        cell?.contentTextView.becomeFirstResponder()
-        
-        
-        if ifEdit { //草稿
-            let provider = MoyaProvider<Request>()
-            provider.rx.requestWithLoading(.getMail(mailId: mailId))
-                .asObservable()
-                .mapJSON()
-                .filterSuccessfulCode()
-                .mapObject(to: Mail.self)
-                .subscribe { [weak self] (event) in
-                    if case .next(let mail) = event {
-                        self?.contentText = mail.content!
-                        self?.cellHeight =  max(160, (self?.contentText.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
-                        self?.tableView.reloadData()
-                    }else if case .error = event {
-                        HUD.flash(.label("请求失败！"), delay: 1.0)
-                    }
-                }
-                .disposed(by: disposeBag)
-        }
     }
     
     
@@ -156,6 +137,10 @@ class WriteMailController: BaseViewController {
             send.destination.mail = mail
             return
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
