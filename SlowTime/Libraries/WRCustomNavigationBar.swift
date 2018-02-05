@@ -252,7 +252,7 @@ extension WRCustomNavigationBar
             leftButton.setTitleColor(titleColor, for: .normal)
             leftButton.titleLabel?.font = .my_systemFont(ofSize: 16)
             
-            if title == "存草稿" {
+            if title == " 存草稿" {
                 leftButton.setImage(RI.left(), for: .normal)
             }
         }else {

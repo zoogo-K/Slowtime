@@ -54,6 +54,7 @@
 		6FE9D7542015C9FE007202DC /* WriteHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE9D7532015C9FE007202DC /* WriteHeaderFooter.swift */; };
 		6FE9D7562015CA06007202DC /* WriteHeaderFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FE9D7552015CA06007202DC /* WriteHeaderFooter.xib */; };
 		6FF55BB1202472A400113DA6 /* ng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF55BB0202472A400113DA6 /* ng.swift */; };
+		6FF55BB220282FF400113DA6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F9FF6001FFE3071007D6DA8 /* StoreKit.framework */; };
 		6FFA424D2010A4EA00D61E11 /* URL+slowTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFA424C2010A4EA00D61E11 /* URL+slowTime.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FF55BB220282FF400113DA6 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +362,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -628,6 +630,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XN88PY869D;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -639,6 +642,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = arm64;
@@ -649,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XN88PY869D;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -660,6 +666,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vincross.cqm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = arm64;

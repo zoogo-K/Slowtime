@@ -54,6 +54,7 @@ class StampListController: UIViewController {
             ])
         request.delegate = self
         request.start()
+        HUD.show(.progress)
         
         
         payBtn.rx.tap
@@ -96,7 +97,7 @@ class StampListController: UIViewController {
             }
         }
         
-        if totalCount == 0 || totalCount >= 50 { return }
+        if totalCount == 0 || totalCount >= 50 || prices.count == 0 { return }
         
         if prices.contains(where: { $0 == totalCount }) {
             self.onSelectRechargePackages(productId: "com.vincross.cqm.yp\(totalCount)")
@@ -108,7 +109,7 @@ class StampListController: UIViewController {
             
             let alert = CQMAlert(title: "苹果不许支付\(totalCount)元，你可以加\(prices[countIndex!+1]-totalCount)张凑\(prices[countIndex!+1])张或者减\(totalCount-prices[countIndex!-1])张凑\(prices[countIndex!-1])张。")
             let confirmAction = AlertOption(title: "好的", type: .normal, action: { [weak self] in
-                self?.prices.remove(totalCount)
+                self?.prices.remove(at: countIndex!)
             })
             alert.addAlertOptions([confirmAction])
             alert.show()
@@ -154,6 +155,7 @@ extension StampListController: SKProductsRequestDelegate, SKPaymentTransactionOb
             productDict.setObject(product, forKey: product.productIdentifier as NSCopying)
             prices.append(Int(truncating: product.price))
         }
+        HUD.hide()
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {

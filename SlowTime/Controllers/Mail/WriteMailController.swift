@@ -75,7 +75,7 @@ class WriteMailController: BaseViewController {
         cell?.contentTextView.rx.text.orEmpty
             .asObservable()
             .bind { [weak self](text) in
-                self?.navBar.wr_setLeftButton(title: text.count > 0 && self?.friend != Config.CqmUser ? "存草稿" : "返回", titleColor: .black)
+                self?.navBar.wr_setLeftButton(title: text.count > 0 && self?.friend != Config.CqmUser ? " 存草稿" : "返回", titleColor: .black)
             }
             .disposed(by: disposeBag)
         
