@@ -62,13 +62,16 @@ class WriteMailController: BaseViewController {
         navBar.wr_setLeftButton(title: " 存草稿", titleColor: .black)
         
         navBar.onClickLeftButton = { [weak self] in
+            self?.reloadTableView()
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextCell
             if (cell.contentTextView.text.count) > 0 && self?.friend != Config.CqmUser {
                 let alert = CQMAlert(title: "是否要保存草稿？")
                 let confirmAction = AlertOption(title: "保存", type: .normal, action: { [weak self] in
                     self?.saveMail(isPop: true)
                 })
-                let cancelAction = AlertOption(title: "不用了", type: .cancel, action: nil)
+                let cancelAction = AlertOption(title: "不用了", type: .cancel, action: {
+                    self?.popAction()
+                })
                 alert.addAlertOptions([cancelAction, confirmAction])
                 alert.show()
             }else {
@@ -78,14 +81,17 @@ class WriteMailController: BaseViewController {
         
         
         NotificationCenter.default.addObserver(forName: .endEdit, object: nil, queue: .main) { [weak self] (_) in
-            self?.view.endEditing(true)
-            let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-            self?.cellHeight =  max(190, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))!*1.5 + 20)
-            self?.contentText = (cell?.contentTextView.text)!
-            self?.tableView.reloadData()
+            self?.reloadTableView()
         }
     }
     
+    private func reloadTableView() {
+        view.endEditing(true)
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextCell
+        cellHeight =  max(190, (cell.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))!*1.5 + 20)
+        contentText = (cell.contentTextView.text)!
+        tableView.reloadData()
+    }
     
     fileprivate func send() {
         view.endEditing(true)
