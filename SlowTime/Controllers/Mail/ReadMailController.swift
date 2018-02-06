@@ -27,9 +27,7 @@ class ReadMailController: BaseViewController {
     
     @IBOutlet weak var envelopeBottomTearView: UIView!
     
-    @IBOutlet weak var mailView: UIView!
-    
-    @IBOutlet weak var toUserName: UILabel!
+    @IBOutlet weak var mailView: UIView!    
     
     @IBOutlet weak var createTime: UILabel!
     
@@ -59,7 +57,6 @@ class ReadMailController: BaseViewController {
             .mapObject(to: Mail.self)
             .subscribe { [weak self] (event) in
                 if case .next(let mail) = event {
-                    self?.toUserName.text = (mail.toUser?.nickname)! + ":"
                     self?.fromUserName.text = mail.fromUser?.nickname
                     self?.mailContent.text = mail.content
                     self?.createTime.text = mail.updateTime?.StringFormartTime()

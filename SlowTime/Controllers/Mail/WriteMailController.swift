@@ -32,7 +32,7 @@ class WriteMailController: BaseViewController {
     
     var contentText: String = ""
     
-    var cellHeight: CGFloat = 200
+    var cellHeight: CGFloat = 190
     
     private lazy var footer: WriteFooter = {
         $0.fromUserName.text = UserDefaults.standard.string(forKey: "nickname_key")
@@ -73,7 +73,7 @@ class WriteMailController: BaseViewController {
         NotificationCenter.default.addObserver(forName: .endEdit, object: nil, queue: .main) { [weak self] (_) in
             self?.view.endEditing(true)
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-            self?.cellHeight =  max(200, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
+            self?.cellHeight =  max(190, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
             self?.contentText = (cell?.contentTextView.text)!
             self?.tableView.reloadData()
         }

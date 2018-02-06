@@ -95,6 +95,7 @@ fileprivate extension JSON {
             UIApplication.shared.keyWindow?.rootViewController = navigationController
             
             UserDefaults.standard.set(nil, forKey: "accessToken_key")
+            UserDefaults.standard.set(nil, forKey: "sex_key")
             UserDefaults.standard.set(nil, forKey: "userHash_key")
             UserDefaults.standard.set(nil, forKey: "nickname_key")
             UserDefaults.standard.set(nil, forKey: "profile_key")

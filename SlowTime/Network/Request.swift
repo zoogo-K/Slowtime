@@ -30,7 +30,7 @@ public enum Request {
     case loginCode(phone: String)
     case login(phoneNumber: String, loginCode: String)
     case logout
-    case profile(nickName: String, profile: String)
+    case profile(nickName: String, profile: String, sex: String)
     
     case friends
     case recommends
@@ -110,8 +110,8 @@ extension Request: Moya.TargetType {
             return ["phoneNumber": phone]
         case .login(let phone, let loginCode):
             return ["phoneNumber": phone, "loginCode": loginCode]
-        case .profile(let nickName, let profile):
-            return ["nickName": nickName, "profile": profile]
+        case .profile(let nickName, let profile, let sex):
+            return ["nickName": nickName, "profile": profile, "sex": sex]
         case .writeMail(let toUser, let content):
             return ["toUser": toUser, "content": content]
         case .editMail(_, let toUser, let content):

@@ -20,6 +20,7 @@ public struct User: Parseable {
     public var createTime: String?
     public var updateTime: String?
     public var zipCode: String?
+    public var sex: String?
     
     public static var identifier: String = "user"
     
@@ -33,6 +34,7 @@ public struct User: Parseable {
         createTime  <-      json["createTime"].stringValue
         updateTime  <-      json["updateTime"].stringValue
         zipCode     <-      json["zipCode"].stringValue
+        sex         <-      json["sex"].stringValue
     }
 }
 

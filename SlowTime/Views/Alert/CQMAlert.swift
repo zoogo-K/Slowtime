@@ -167,7 +167,7 @@ public class CQMAlert: UIView {
         case .cancel:
             button.setTitleColor(.black, for: .normal)
             button.titleLabel?.font = .my_systemFont(ofSize: 13)
-            button.layer.borderColor = UIColor.black.cgColor
+            button.layer.borderColor = UIColor.darkGray.cgColor
             button.layer.borderWidth = 1
             button.layer.masksToBounds = true
         case .normal:

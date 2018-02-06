@@ -23,14 +23,14 @@ class FeedBackController: BaseViewController {
     }
     
     
-    var cellHeight: CGFloat = 160
+    var cellHeight: CGFloat = 140
     
     private lazy var header: WriteHeader = {
         $0.toUserName.text = (friend?.nickname)! + ":"
         $0.endBlock = { [weak self] in
             self?.view.endEditing(true)
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-            self?.cellHeight =  max(160, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
+            self?.cellHeight =  max(140, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
             self?.tableView.reloadData()
         }
         return $0

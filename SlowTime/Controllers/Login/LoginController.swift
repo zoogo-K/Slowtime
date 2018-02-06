@@ -21,7 +21,8 @@ class LoginController: BaseViewController {
             phoneTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 0))
             phoneTextField.leftViewMode = .always
             phoneTextField.layer.borderWidth = 1.0
-            phoneTextField.layer.borderColor = UIColor.black.cgColor
+            
+            phoneTextField.layer.borderColor = UIColor.darkGray.cgColor
             phoneTextField.delegate = self
         }
     }
@@ -149,6 +150,7 @@ class LoginController: BaseViewController {
                     
                     UserDefaults.standard.set(true, forKey: "isLogin_key")
                     UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
+                    UserDefaults.standard.set(user.sex!, forKey: "sex_key")
                     UserDefaults.standard.set(user.userHash!, forKey: "userHash_key")
                     UserDefaults.standard.set(user.nickname!, forKey: "nickname_key")
                     UserDefaults.standard.set(user.profile!, forKey: "profile_key")
@@ -161,7 +163,7 @@ class LoginController: BaseViewController {
 
 extension LoginController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        phoneTextField.layer.borderColor = UIColor.black.cgColor
+        phoneTextField.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

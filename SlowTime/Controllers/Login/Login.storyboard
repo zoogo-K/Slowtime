@@ -173,12 +173,12 @@
         <!--Information Controller-->
         <scene sceneID="wvF-oR-zHg">
             <objects>
-                <viewController id="z9v-Jm-7mq" customClass="InformationController" customModule="SlowTime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InformationController" id="z9v-Jm-7mq" customClass="InformationController" customModule="SlowTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RQC-8g-3ar"/>
                         <viewControllerLayoutGuide type="bottom" id="Pwb-pg-3cA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vEU-VJ-izg">
+                    <view key="view" alpha="0.94999999999999996" contentMode="scaleToFill" id="vEU-VJ-izg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -189,13 +189,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eC0-ag-Xz4">
-                                <rect key="frame" x="20" y="179.5" width="32" height="17.5"/>
+                                <rect key="frame" x="20" y="284" width="32" height="17.5"/>
+                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svv-oD-RlO">
+                                <rect key="frame" x="20" y="187.5" width="32" height="17.5"/>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whm-md-XX4">
-                                <rect key="frame" x="128.5" y="368" width="118" height="36"/>
+                                <rect key="frame" x="128.5" y="473" width="118" height="36"/>
                                 <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="c6y-XW-Y2Q"/>
@@ -206,15 +212,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j8U-CG-6cK">
-                                <rect key="frame" x="20" y="205" width="335" height="133"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="133" id="yyJ-c7-PLB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ag6-40-dSp">
                                 <rect key="frame" x="20" y="111.5" width="335" height="44"/>
                                 <constraints>
@@ -224,18 +221,67 @@
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j8U-CG-6cK">
+                                <rect key="frame" x="20" y="310" width="335" height="133"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="yyJ-c7-PLB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WxK-d7-soT" customClass="sexView" customModule="SlowTime" customModuleProvider="target">
+                                <rect key="frame" x="20" y="215" width="335" height="37"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deR-aN-Yvv">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="37"/>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
+                                        <state key="normal" title="男"/>
+                                        <state key="selected" title="男"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DwB-CC-YNo">
+                                        <rect key="frame" x="185" y="0.0" width="150" height="37"/>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
+                                        <state key="normal" title="女">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="selected" title="女"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="DwB-CC-YNo" secondAttribute="bottom" id="0h0-2V-Nkk"/>
+                                    <constraint firstAttribute="trailing" secondItem="DwB-CC-YNo" secondAttribute="trailing" id="6Tt-Yw-34H"/>
+                                    <constraint firstAttribute="height" constant="37" id="ABB-NS-jVk"/>
+                                    <constraint firstItem="DwB-CC-YNo" firstAttribute="width" secondItem="deR-aN-Yvv" secondAttribute="width" id="FBl-W5-dpF"/>
+                                    <constraint firstItem="deR-aN-Yvv" firstAttribute="leading" secondItem="WxK-d7-soT" secondAttribute="leading" id="UGh-WK-fxF"/>
+                                    <constraint firstItem="deR-aN-Yvv" firstAttribute="top" secondItem="WxK-d7-soT" secondAttribute="top" id="cR6-1V-6jA"/>
+                                    <constraint firstItem="DwB-CC-YNo" firstAttribute="leading" secondItem="deR-aN-Yvv" secondAttribute="trailing" constant="35" id="eMQ-Z0-Jox"/>
+                                    <constraint firstItem="DwB-CC-YNo" firstAttribute="top" secondItem="WxK-d7-soT" secondAttribute="top" id="hTj-8B-4bj"/>
+                                    <constraint firstAttribute="bottom" secondItem="deR-aN-Yvv" secondAttribute="bottom" id="wfi-Hf-Xx3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="manBtn" destination="deR-aN-Yvv" id="RX6-tl-gAS"/>
+                                    <outlet property="womenBtn" destination="DwB-CC-YNo" id="CF1-Mx-nfZ"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Whm-md-XX4" firstAttribute="top" secondItem="j8U-CG-6cK" secondAttribute="bottom" constant="30" id="0pa-bn-qf2"/>
                             <constraint firstItem="Whm-md-XX4" firstAttribute="centerX" secondItem="vEU-VJ-izg" secondAttribute="centerX" id="473-5y-fRt"/>
+                            <constraint firstItem="WxK-d7-soT" firstAttribute="trailing" secondItem="Ag6-40-dSp" secondAttribute="trailing" id="HJr-Bj-954"/>
+                            <constraint firstItem="svv-oD-RlO" firstAttribute="leading" secondItem="elM-5f-S5d" secondAttribute="leading" id="OAy-0g-Wjq"/>
                             <constraint firstItem="Ag6-40-dSp" firstAttribute="leading" secondItem="vEU-VJ-izg" secondAttribute="leading" constant="20" id="QHR-rR-4BR"/>
                             <constraint firstAttribute="trailing" secondItem="j8U-CG-6cK" secondAttribute="trailing" constant="20" id="Ryd-FS-pDN"/>
                             <constraint firstItem="Ag6-40-dSp" firstAttribute="top" secondItem="elM-5f-S5d" secondAttribute="bottom" constant="10" id="SRG-Yi-wFg"/>
                             <constraint firstAttribute="trailing" secondItem="Ag6-40-dSp" secondAttribute="trailing" constant="20" id="V0g-k5-v6a"/>
                             <constraint firstItem="elM-5f-S5d" firstAttribute="top" secondItem="vEU-VJ-izg" secondAttribute="top" constant="84" id="Wjn-rx-BW0"/>
+                            <constraint firstItem="WxK-d7-soT" firstAttribute="top" secondItem="svv-oD-RlO" secondAttribute="bottom" constant="10" id="a4P-CS-prU"/>
+                            <constraint firstItem="eC0-ag-Xz4" firstAttribute="top" secondItem="WxK-d7-soT" secondAttribute="bottom" constant="32" id="b5S-JD-5dj"/>
                             <constraint firstItem="elM-5f-S5d" firstAttribute="leading" secondItem="vEU-VJ-izg" secondAttribute="leading" constant="20" id="clY-ET-a3Z"/>
-                            <constraint firstItem="eC0-ag-Xz4" firstAttribute="top" secondItem="Ag6-40-dSp" secondAttribute="bottom" constant="24" id="i8p-Yl-uRe"/>
+                            <constraint firstItem="svv-oD-RlO" firstAttribute="top" secondItem="Ag6-40-dSp" secondAttribute="bottom" constant="32" id="dsX-L6-VgB"/>
+                            <constraint firstItem="WxK-d7-soT" firstAttribute="leading" secondItem="Ag6-40-dSp" secondAttribute="leading" id="eRG-q0-wvA"/>
                             <constraint firstItem="j8U-CG-6cK" firstAttribute="top" secondItem="eC0-ag-Xz4" secondAttribute="bottom" constant="8" id="pGG-CV-l6V"/>
                             <constraint firstItem="eC0-ag-Xz4" firstAttribute="leading" secondItem="elM-5f-S5d" secondAttribute="leading" id="xOB-34-p7u"/>
                             <constraint firstItem="j8U-CG-6cK" firstAttribute="leading" secondItem="vEU-VJ-izg" secondAttribute="leading" constant="20" id="zpQ-Iq-N9H"/>
@@ -246,11 +292,12 @@
                         <outlet property="nextButton" destination="Whm-md-XX4" id="gOD-56-5N2"/>
                         <outlet property="nickName" destination="Ag6-40-dSp" id="inA-aC-aRO"/>
                         <outlet property="profileTextView" destination="j8U-CG-6cK" id="VZ3-01-Nqg"/>
+                        <outlet property="sexView" destination="WxK-d7-soT" id="GBh-rR-qdg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHF-S5-YMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-350" y="251"/>
+            <point key="canvasLocation" x="-351.19999999999999" y="250.52473763118442"/>
         </scene>
     </scenes>
 </document>

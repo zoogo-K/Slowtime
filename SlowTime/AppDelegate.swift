@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UserDefaults.standard.bool(forKey: "isLogin_key"){
             let navigationController = R.storyboard.mail().instantiateInitialViewController()! as? UINavigationController
-//            let navigationController =       R.storyboard.mail().instantiateViewController(withIdentifier: "PackToSendController")
+//            let navigationController =       R.storyboard.login().instantiateViewController(withIdentifier: "InformationController")
+            
+//            InformationController
 
             window?.rootViewController = navigationController
         }else {
