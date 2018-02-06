@@ -16,6 +16,7 @@ class UserListController: BaseViewController {
     
     @IBOutlet weak var dottBtn: UIButton!
     
+    @IBOutlet weak var commendUserName: UILabel!
     @IBOutlet weak var commendUserInfo: UILabel!
     @IBOutlet weak var writeMailToCommendUser: UIButton!
     
@@ -133,7 +134,10 @@ class UserListController: BaseViewController {
                 if case .next(let friends) = event {
                     DispatchQueue.main.async {
                         self?.commendView.isHidden = false
+                        self?.commendUserName.text = friends.first!.nickname
                         self?.commendUserInfo.text = friends.first!.profile
+                        let title = friends.first?.sex == "男" ? "他" : "她"
+                        self?.writeMailToCommendUser.setTitle("写封信给\(title)", for: .normal)
                         self?.commendFriend = friends.first!
                     }
                 }else if case .error = event {

@@ -43,6 +43,7 @@ public struct User: Parseable {
 public struct Friend: Parseable, Archivable, Equatable {
     
     public var nickname: String?
+    public var sex: String?
     public var userHash: String?
     public var profile: String?
     public var hasNewMail: Bool?
@@ -54,6 +55,7 @@ public struct Friend: Parseable, Archivable, Equatable {
         userHash    <-      json["userHash"].stringValue
         profile     <-      json["profile"].stringValue
         hasNewMail  <-      json["hasNewMail"].boolValue
+        sex         <-      json["sex"].stringValue
     }
     
     public var archived: NSDictionary {

@@ -79,22 +79,10 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted_line" translatesAutoresizingMaskIntoConstraints="NO" id="FuO-nd-goX">
                                         <rect key="frame" x="12" y="12" width="351" height="208"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M40-0I-cZh">
-                                        <rect key="frame" x="134.5" y="172" width="106" height="34"/>
-                                        <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuU-2c-U01">
+                                        <rect key="frame" x="22" y="69" width="330" height="0.0"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="SGr-1z-1rr"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="106" id="w1u-LS-Hdh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
-                                        <state key="normal" title="写封信给TA">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj2-it-3tG">
-                                        <rect key="frame" x="22.5" y="42" width="330" height="122"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="330" id="Wqc-Rc-cQH"/>
+                                            <constraint firstAttribute="width" constant="330" id="kEF-KD-qjC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -108,17 +96,39 @@
                                         </constraints>
                                         <state key="normal" image="icon_arrow_down"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M40-0I-cZh">
+                                        <rect key="frame" x="134" y="172" width="106" height="34"/>
+                                        <color key="backgroundColor" red="0.78666502240000002" green="0.00088333955499999997" blue="0.002681700978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="SGr-1z-1rr"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="106" id="w1u-LS-Hdh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
+                                        <state key="normal" title="写封信给TA">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj2-it-3tG">
+                                        <rect key="frame" x="22" y="55" width="330" height="0.0"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="330" id="Wqc-Rc-cQH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="FuO-nd-goX" firstAttribute="centerX" secondItem="ov3-WZ-wD2" secondAttribute="centerX" id="0yo-gt-p7g"/>
+                                    <constraint firstItem="QuU-2c-U01" firstAttribute="centerX" secondItem="M40-0I-cZh" secondAttribute="centerX" id="2vB-Pu-zjZ"/>
                                     <constraint firstAttribute="trailing" secondItem="FuO-nd-goX" secondAttribute="trailing" constant="12" id="34Q-0H-svF"/>
                                     <constraint firstItem="js4-ym-Pee" firstAttribute="top" secondItem="ov3-WZ-wD2" secondAttribute="top" id="62f-NE-NWI"/>
-                                    <constraint firstItem="uj2-it-3tG" firstAttribute="top" secondItem="ov3-WZ-wD2" secondAttribute="top" constant="42" id="EP9-d0-jmZ"/>
+                                    <constraint firstItem="uj2-it-3tG" firstAttribute="top" secondItem="ov3-WZ-wD2" secondAttribute="top" constant="55" id="EP9-d0-jmZ"/>
                                     <constraint firstAttribute="height" constant="220" id="HZV-gh-teb"/>
                                     <constraint firstAttribute="bottom" secondItem="M40-0I-cZh" secondAttribute="bottom" constant="14" id="Jz2-1J-yHy"/>
-                                    <constraint firstItem="M40-0I-cZh" firstAttribute="top" secondItem="uj2-it-3tG" secondAttribute="bottom" constant="8" symbolic="YES" id="fPf-rn-KiM"/>
                                     <constraint firstItem="uj2-it-3tG" firstAttribute="centerX" secondItem="ov3-WZ-wD2" secondAttribute="centerX" id="jUP-H9-meP"/>
+                                    <constraint firstItem="QuU-2c-U01" firstAttribute="top" secondItem="uj2-it-3tG" secondAttribute="bottom" constant="14" id="l40-88-x85"/>
                                     <constraint firstItem="js4-ym-Pee" firstAttribute="leading" secondItem="ov3-WZ-wD2" secondAttribute="leading" id="mWB-Z1-H7d"/>
                                     <constraint firstItem="M40-0I-cZh" firstAttribute="centerX" secondItem="ov3-WZ-wD2" secondAttribute="centerX" id="o2V-Yr-XbI"/>
                                     <constraint firstAttribute="bottom" secondItem="FuO-nd-goX" secondAttribute="bottom" id="o7Y-MZ-7C2"/>
@@ -143,7 +153,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="iwf-nu-5Qf"/>
                     <connections>
-                        <outlet property="commendUserInfo" destination="uj2-it-3tG" id="lfI-Nv-kTY"/>
+                        <outlet property="commendUserInfo" destination="QuU-2c-U01" id="WIb-pX-a2i"/>
+                        <outlet property="commendUserName" destination="uj2-it-3tG" id="SY4-HM-brG"/>
                         <outlet property="commendView" destination="ov3-WZ-wD2" id="tQJ-3B-AcC"/>
                         <outlet property="dottBtn" destination="js4-ym-Pee" id="k4G-k6-2LI"/>
                         <outlet property="tableview" destination="bYK-LQ-P8P" id="lky-8y-ZOx"/>
@@ -1278,6 +1289,6 @@
         <image name="youchuo-red" width="60" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6a2-AH-6mC"/>
+        <segue reference="ftG-we-VqN"/>
     </inferredMetricsTieBreakers>
 </document>
