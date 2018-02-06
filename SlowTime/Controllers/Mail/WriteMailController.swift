@@ -30,7 +30,8 @@ class WriteMailController: BaseViewController {
         }
     }
     
-    var contentText: String = ""
+    
+    var contentText: String = "\(UserDefaults.standard.string(forKey: "nickname_key")!):" + "\n      "
     
     var cellHeight: CGFloat = 190
     
@@ -73,7 +74,7 @@ class WriteMailController: BaseViewController {
         NotificationCenter.default.addObserver(forName: .endEdit, object: nil, queue: .main) { [weak self] (_) in
             self?.view.endEditing(true)
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextCell
-            self?.cellHeight =  max(190, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))! + 20)
+            self?.cellHeight =  max(190, (cell!.contentTextView.text?.textHeight(with: .my_systemFont(ofSize: 17), width: Screen.width - 32))!*1.5 + 20)
             self?.contentText = (cell?.contentTextView.text)!
             self?.tableView.reloadData()
         }
@@ -90,7 +91,7 @@ class WriteMailController: BaseViewController {
             .filterSuccessfulCode()
             .mapObject(to: Mail.self)
             .bind(onNext: { [weak self] (_) in
-                HUD.flash(.label("已发送"), delay: 1.0)
+                HexaHUD.show(with: "已发送")
                 self?.popAction()
             })
             .disposed(by: disposeBag)
@@ -121,7 +122,7 @@ class WriteMailController: BaseViewController {
                         self?.performSegue(withIdentifier: R.segue.writeMailController.showSend, sender: nil)
                     }
                 }else if case .error = event {
-                    HUD.flash(.label("请检查输入内容！"), delay: 1.0)
+                    HexaHUD.show(with: "请检查输入内容！")
                 }
             }
             .disposed(by: disposeBag)
@@ -150,7 +151,7 @@ extension WriteMailController: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "textCell", for: indexPath) as! TextCell
-        cell.contentTextView.text = contentText
+        cell.contentTextView.attributedText = contentText.attr.font(.my_systemFont(ofSize: 17)).textColor(.black).lineSpace(7)
         return cell
     }
     

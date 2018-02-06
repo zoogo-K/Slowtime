@@ -187,7 +187,7 @@ extension StampListController: SKProductsRequestDelegate, SKPaymentTransactionOb
             // 如果小票状态是购买完成
             if (SKPaymentTransactionState.purchased == transaction.transactionState) {
                 // 更新界面或者数据，把用户购买得商品交给用户
-                HUD.flash(.label("支付成功"), delay: 1.0)
+//                HexaHUD.show(with: "支付成功")
                 // 验证购买凭据
                 // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
                 let receiptURL = Bundle.main.appStoreReceiptURL
@@ -203,7 +203,7 @@ extension StampListController: SKProductsRequestDelegate, SKPaymentTransactionOb
                         .mapJSON()
                         .filterSuccessfulCode()
                         .bind(onNext: { [weak self] (json) in
-                            HUD.flash(.success, delay: 1.0)
+                            HexaHUD.show(with: "购买成功")
                             self?.dismiss(animated: true, completion: nil)
                         })
                         .disposed(by: disposeBag)

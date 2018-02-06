@@ -89,7 +89,7 @@ class FeedBackController: BaseViewController {
             .filterSuccessfulCode()
             .mapObject(to: Mail.self)
             .bind(onNext: { [weak self] (_) in
-                HUD.flash(.label("已发送"), delay: 1.0)
+                HexaHUD.show(with: "已发送")
                 self?.popAction()
             })
             .disposed(by: disposeBag)

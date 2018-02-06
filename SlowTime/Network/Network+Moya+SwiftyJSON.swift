@@ -174,7 +174,7 @@ public extension Reactive where Base: Moya.MoyaProviderType {
 internal extension MoyaProviderType {
     
     internal func rxRequestWithLoading(_ token: Target) -> Observable<Response> {
-//        HUD.flash(.rotatingImage(RI.progress()))
+
         return Observable.create { observer in
             let cancellableToken = self.request(token, callbackQueue: nil, progress: nil) { result in
 //                HUD.hide()

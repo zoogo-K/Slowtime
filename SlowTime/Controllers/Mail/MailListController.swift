@@ -29,6 +29,10 @@ class MailListController: BaseViewController {
         
         navBar.title = friend?.nickname
         
+        navBar.wr_setRightButton(title: "写信", titleColor: .black)
+        navBar.onClickRightButton = { [weak self] in
+            self?.performSegue(withIdentifier: R.segue.mailListController.showWrite, sender: nil)
+        }
     }
     
     
@@ -48,12 +52,6 @@ class MailListController: BaseViewController {
                 if case .next(let mails) = event {
                     self?.mails = mails
                     DispatchQueue.main.async {
-                        if mails.contains(where: { $0.emailType == 1 }) {
-                            self?.navBar.wr_setRightButton(title: "写信", titleColor: .black)
-                            self?.navBar.onClickRightButton = { [weak self] in
-                                self?.performSegue(withIdentifier: R.segue.mailListController.showWrite, sender: nil)
-                            }
-                        }
                         self?.tableview.reloadData()
                     }
                 }else if case .error = event {
@@ -141,14 +139,14 @@ extension MailListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let alertTitle = mails?.count == 1 ? "删掉最后一封，你们将很难再恢复联系了，想好了吗？" : "删除信件后将无法再恢复，少年要想好"
+            let alertTitle = mails?.count == 1 ? "如果删掉这最后一封信，你和 TA 就失散在茫茫人海了。今生未必能再相遇，少年你要想好。" : "一封信就是一段故事，删掉之后无法恢复，少年你要想好。"
             let alert = CQMAlert(title: alertTitle)
-            let confirmAction = AlertOption(title: "我想好了", type: .normal, action: { [weak self] in
+            let confirmAction = AlertOption(title: "删掉", type: .normal, action: { [weak self] in
                 self?.isdelete = true
                 self?.deleteMailRequest(mailId: (self?.mails![indexPath.row].id!)!)
                 //删除 并刷新。
             })
-            let cancelAction = AlertOption(title: "我再想想", type: .cancel, action: nil)
+            let cancelAction = AlertOption(title: "留下", type: .cancel, action: nil)
             alert.addAlertOptions([cancelAction, confirmAction])
             alert.show()
         }

@@ -94,7 +94,7 @@ class ProfileController: BaseViewController {
         view.endEditing(true)
         
         if (nickName.text?.count)! == 0 || profileTextView.text.count == 0{
-            HUD.flash(.label("请检查输入内容！"), delay: 1.0)
+            HexaHUD.show(with: "请检查输入内容！")
             return
         }
         
@@ -102,13 +102,13 @@ class ProfileController: BaseViewController {
         
         if (nickName.text?.count)! > 12 {
             nickName.layer.borderColor = UIColor.red.cgColor
-            HUD.flash(.label("昵称超限"), delay: 1)
+            HexaHUD.show(with: "昵称超限")
             return
         }
         
         if profileTextView.text.count > 50 {
             profileTextView.layer.borderColor = UIColor.red.cgColor
-            HUD.flash(.label("个人介绍超限"), delay: 1)
+            HexaHUD.show(with: "个人介绍超限")
             return
         }
         
@@ -118,7 +118,7 @@ class ProfileController: BaseViewController {
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode({ (code, mess) in
-                HUD.flash(.label(mess), delay: 1.0)
+                HexaHUD.show(with: mess)
             })
             .mapObject(to: User.self)
             .bind(onNext: { [weak self] (user) in

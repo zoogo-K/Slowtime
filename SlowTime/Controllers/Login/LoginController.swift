@@ -54,7 +54,7 @@ class LoginController: BaseViewController {
     private var remainingSeconds: Int = 0 {
         willSet(newSeconds) {
             let seconds = newSeconds%60
-            getCodeButton.setTitle("重新发送 \(seconds)s", for: .normal)
+            getCodeButton.setTitle("重新发送（\(seconds)）", for: .normal)
         }
     }
     
@@ -119,10 +119,10 @@ class LoginController: BaseViewController {
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode({ (_, mess) in
-                HUD.flash(.label(mess), delay: 1.0)
+                HexaHUD.show(with: mess)
             })
             .bind(onNext: { (json) in
-                HUD.flash(.label("验证码已发送"), delay: 1.0)
+                HexaHUD.show(with: "验证码已发送")
             })
             .disposed(by: disposeBag)
     }
@@ -135,7 +135,7 @@ class LoginController: BaseViewController {
             .asObservable()
             .mapJSON()
             .filterSuccessfulCode({ (code, mess) in
-                HUD.flash(.label(mess), delay: 1.0)
+                HexaHUD.show(with: mess)
             })
             .mapObject(to: User.self)
             .subscribe { [weak self] (event) in

@@ -170,7 +170,6 @@ class PackToSendController: BaseViewController {
                     self?.enevlopeBottomView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                     self?.enevlopeBottomView.alpha = 0.5
                 }, completion: { (fin) in
-                    HUD.flash(.label("已发送"), delay: 1.0)
                     if (self?.navigationController?.viewControllers.contains(where: { $0 is MailListController }))! {
                         for vc in (self?.navigationController?.viewControllers)! {
                             if vc is MailListController {

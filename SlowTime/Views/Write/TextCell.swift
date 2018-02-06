@@ -12,12 +12,6 @@ class TextCell: UITableViewCell {
 
     @IBOutlet weak var contentTextView: UITextView!
     
-    var tt: String? {
-        didSet {
-            contentTextView.text = tt
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

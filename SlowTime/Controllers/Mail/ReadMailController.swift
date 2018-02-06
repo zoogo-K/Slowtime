@@ -58,9 +58,9 @@ class ReadMailController: BaseViewController {
             .subscribe { [weak self] (event) in
                 if case .next(let mail) = event {
                     self?.fromUserName.text = mail.fromUser?.nickname
-                    self?.mailContent.text = mail.content
-                    self?.createTime.text = mail.updateTime?.StringFormartTime()
+                    self?.mailContent.attributedText = mail.content?.attr.font(.my_systemFont(ofSize: 17)).textColor(.black).lineSpace(7)
                     
+                    self?.createTime.text = mail.updateTime?.StringFormartTime()
                     
                     if self?.emailType == 1 {
                         self?.envelopeBottomTearViewToUserZip.text = mail.toUser?.zipCode?.StringToZipCode()
@@ -71,7 +71,7 @@ class ReadMailController: BaseViewController {
                         self?.envelopeBottomTearViewStamp.kf.setImage(with: ImageResource(downloadURL: URL(string: mail.stampIcon ?? "") ?? URL(string: "")!), placeholder: RI.stamp())
                     }
                 }else if case .error = event {
-                    HUD.flash(.label("请求失败！"), delay: 1.0)
+                    HexaHUD.show(with: "请求失败！")
                 }
             }
             .disposed(by: disposeBag)

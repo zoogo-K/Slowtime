@@ -89,9 +89,8 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
             .mapJSON()
             .filterSuccessfulCode()
             .bind { (response) in
-                HUD.flash(.label(response.string), delay: 1.0)
-                
-                
+                HexaHUD.show(with: response.string ?? "")
+
                 let navigationController = R.storyboard.login().instantiateInitialViewController()! as? UINavigationController
                 UIApplication.shared.keyWindow?.rootViewController = navigationController
                 

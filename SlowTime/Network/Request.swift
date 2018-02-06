@@ -12,7 +12,8 @@ import RxMoya
 
 extension Moya.TargetType {
     var rootDomain: String {
-        return "http://slowtime.vcrxyz.com"
+        return "http://cqm.vincross.cn"
+//        return "http://slowtime.vcrxyz.com"
     }
     
     public var parameters: [String : Any]? { return nil }

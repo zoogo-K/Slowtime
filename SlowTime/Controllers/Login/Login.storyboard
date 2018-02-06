@@ -113,9 +113,9 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Puh-cI-yCy">
-                                <rect key="frame" x="255" y="322" width="100" height="29"/>
+                                <rect key="frame" x="235" y="322" width="120" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="mtQ-IY-reF"/>
+                                    <constraint firstAttribute="width" constant="120" id="mtQ-IY-reF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="FZSXSLKJW--GB1-0" family="FZSuXinShiLiuKaiS-R-GB" pointSize="15"/>
                                 <state key="normal" title="获取验证码">
@@ -126,7 +126,7 @@
                                 </state>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIS-72-bia">
-                                <rect key="frame" x="20" y="314.5" width="219" height="44"/>
+                                <rect key="frame" x="20" y="314.5" width="199" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="19I-xy-xAe"/>
                                 </constraints>
