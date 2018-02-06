@@ -59,7 +59,6 @@ class ProfileController: BaseViewController {
         
         navBar.title = "修改资料"
         
-        
         let nameValid = nickName.rx.text.orEmpty
             .map {
                 return $0 != UserDefaults.standard.string(forKey: "nickname_key")
@@ -123,6 +122,8 @@ class ProfileController: BaseViewController {
             .mapObject(to: User.self)
             .bind(onNext: { [weak self] (user) in
                 if user.userHash != "" {
+                    HexaHUD.show(with: "修改成功")
+
                     UserDefaults.standard.set(user.accessToken!, forKey: "accessToken_key")
                     UserDefaults.standard.set(user.sex!, forKey: "sex_key")
                     UserDefaults.standard.set(user.userHash!, forKey: "userHash_key")

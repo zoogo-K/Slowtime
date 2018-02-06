@@ -69,10 +69,10 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
             break
         case "logout":
             let alert = CQMAlert(title: "退出登录")
-            let confirmAction = AlertOption(title: "我要退出", type: .normal, action: { [weak self] in
+            let confirmAction = AlertOption(title: "退出", type: .normal, action: { [weak self] in
                 self?.logOut()
             })
-            let cancelAction = AlertOption(title: "我再想想", type: .cancel, action: nil)
+            let cancelAction = AlertOption(title: "取消", type: .cancel, action: nil)
             alert.addAlertOptions([cancelAction, confirmAction])
             alert.show()
             break

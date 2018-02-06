@@ -47,7 +47,7 @@ class WriteMailController: BaseViewController {
         comps = calendar.dateComponents([.year,.month,.day], from: Date())
         return "\(String(describing: comps.year!))年\(String(describing: comps.month!))月\(String(describing: comps.day!))号"
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,7 +64,13 @@ class WriteMailController: BaseViewController {
         navBar.onClickLeftButton = { [weak self] in
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextCell
             if (cell.contentTextView.text.count) > 0 && self?.friend != Config.CqmUser {
-                self?.saveMail(isPop: true)
+                let alert = CQMAlert(title: "是否要保存草稿？")
+                let confirmAction = AlertOption(title: "保存", type: .normal, action: { [weak self] in
+                    self?.saveMail(isPop: true)
+                })
+                let cancelAction = AlertOption(title: "不用了", type: .cancel, action: nil)
+                alert.addAlertOptions([cancelAction, confirmAction])
+                alert.show()
             }else {
                 self?.popAction()
             }
@@ -134,6 +140,11 @@ class WriteMailController: BaseViewController {
             send.destination.mail = mail
             return
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     deinit {
