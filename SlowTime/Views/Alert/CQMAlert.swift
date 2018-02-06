@@ -61,8 +61,8 @@ public class CQMAlert: UIView {
             titleLabel.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
                 $0.top.equalTo(20)
-                $0.left.equalTo(62)
-                $0.right.equalTo(-62)
+                $0.left.equalTo(38)
+                $0.right.equalTo(-38)
             }
         }
     }

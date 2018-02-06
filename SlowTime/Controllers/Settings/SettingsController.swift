@@ -89,7 +89,6 @@ extension SettingsController: UITableViewDelegate, UITableViewDataSource {
             .mapJSON()
             .filterSuccessfulCode()
             .bind { (response) in
-                HexaHUD.show(with: response.string ?? "")
 
                 let navigationController = R.storyboard.login().instantiateInitialViewController()! as? UINavigationController
                 UIApplication.shared.keyWindow?.rootViewController = navigationController

@@ -62,18 +62,9 @@ class WriteMailController: BaseViewController {
         navBar.wr_setLeftButton(title: " 存草稿", titleColor: .black)
         
         navBar.onClickLeftButton = { [weak self] in
-            self?.reloadTableView()
             let cell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextCell
             if (cell.contentTextView.text.count) > 0 && self?.friend != Config.CqmUser {
-                let alert = CQMAlert(title: "是否要保存草稿？")
-                let confirmAction = AlertOption(title: "保存", type: .normal, action: { [weak self] in
-                    self?.saveMail(isPop: true)
-                })
-                let cancelAction = AlertOption(title: "不用了", type: .cancel, action: {
-                    self?.popAction()
-                })
-                alert.addAlertOptions([cancelAction, confirmAction])
-                alert.show()
+                self?.saveMail(isPop: true)
             }else {
                 self?.popAction()
             }

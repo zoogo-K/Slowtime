@@ -9,3 +9,5 @@ github "CoderMJLee/MJRefresh"
 github "pkluz/PKHUD" ~> 4.0
 github "onevcat/Kingfisher"
 github "hackiftekhar/IQKeyboardManager"
+github "ibireme/YYText"
+

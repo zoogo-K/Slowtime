@@ -10,10 +10,22 @@ import UIKit
 
 class AgreementController: BaseViewController {
 
+    var ispresent = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navBar.title = "用户协议"
+        
+        
+        if ispresent {
+            navBar.wr_setLeftButton(title: "", titleColor: .black)
+            navBar.wr_setRightButton(title: "关闭", titleColor: .black)
+            navBar.onClickRightButton = { [weak self] in
+                self?.disAction()
+            }
+        }
 
         // Do any additional setup after loading the view.
     }

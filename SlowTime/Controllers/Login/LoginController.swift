@@ -10,8 +10,33 @@ import UIKit
 import RxSwift
 import Moya
 import PKHUD
+import YYText
 
 class LoginController: BaseViewController {
+    
+    @IBOutlet weak var agreelbl: YYLabel! {
+        didSet {
+            let link = "进入即同意用户协议"
+            
+            let attr = link.attr.alignment(.center).textColor(.black).font(.my_systemFont(ofSize: 15))
+            
+            let range = (attr.string as NSString).range(of: "用户协议")
+            attr.yy_setColor(.black, range: range)
+            
+            attr.yy_setUnderlineStyle(.styleSingle, range: range)
+            
+            attr.yy_setTextHighlight(range, color: nil, backgroundColor: nil) { (_, _, _, _) in
+                let agree = R.storyboard.mail.agreementController()
+                agree?.ispresent = true
+                self.present(agree!, animated: true, completion: nil)
+            }
+            agreelbl.numberOfLines = 0
+            agreelbl.textVerticalAlignment = .top
+            agreelbl.attributedText = attr
+        }
+    }
+    
+    
     
     @IBOutlet weak var phoneLbl: UILabel!
     @IBOutlet weak var codeLbl: UILabel!

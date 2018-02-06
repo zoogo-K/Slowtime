@@ -174,6 +174,9 @@ class PackToSendController: BaseViewController {
                         for vc in (self?.navigationController?.viewControllers)! {
                             if vc is MailListController {
                                 self?.navigationController?.popToViewController(vc, animated: true)
+                                DispatchQueue.main.async {
+                                    NotificationCenter.default.post(name: .sendToGetMail, object: mailID)
+                                }
                             }
                         }
                     }else {

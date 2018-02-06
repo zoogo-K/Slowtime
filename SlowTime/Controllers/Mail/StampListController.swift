@@ -73,7 +73,7 @@ class StampListController: UIViewController {
         
         
         payBtn.rx.tap
-            .throttle(1, scheduler: MainScheduler.instance)
+            .throttle(3, scheduler: MainScheduler.instance)
             .bind { [unowned self] in
                 self.buy()
             }
@@ -151,6 +151,7 @@ class StampListController: UIViewController {
         if(SKPaymentQueue.canMakePayments()){
             let payment = SKPayment(product: productDict[productId] as! SKProduct)
             SKPaymentQueue.default().add(payment)
+            HUD.show(.progress)
         }
         else{
             DLog("============不支持内购功能")
@@ -182,6 +183,7 @@ extension StampListController: SKProductsRequestDelegate, SKPaymentTransactionOb
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        HUD.hide()
         // 调试
         for transaction in transactions {
             // 如果小票状态是购买完成
@@ -216,7 +218,7 @@ extension StampListController: SKProductsRequestDelegate, SKPaymentTransactionOb
                 SKPaymentQueue.default().finishTransaction(transaction)
             }
             else if(SKPaymentTransactionState.failed == transaction.transactionState){
-                DLog("支付失败")
+                HexaHUD.show(with: "支付取消")
                 SKPaymentQueue.default().finishTransaction(transaction)
             }
         }

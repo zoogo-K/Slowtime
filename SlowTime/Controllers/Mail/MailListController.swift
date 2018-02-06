@@ -10,6 +10,10 @@ import UIKit
 import Moya
 import SwiftyJSON
 
+extension Notification.Name {
+    static let sendToGetMail = Notification.Name("sendToGetMail")
+}
+
 class MailListController: BaseViewController {
     
     @IBOutlet weak var tableview: UITableView!
@@ -33,6 +37,23 @@ class MailListController: BaseViewController {
         navBar.onClickRightButton = { [weak self] in
             self?.performSegue(withIdentifier: R.segue.mailListController.showWrite, sender: nil)
         }
+        
+        
+        NotificationCenter.default.addObserver(forName: .sendToGetMail, object: nil, queue: .main) { [weak self] (mailid) in
+            
+            guard let id = mailid.object as? String else{
+                return
+            }
+            let getmail = R.storyboard.mail.readMailController()
+            getmail?.mailId = id
+            getmail?.emailType = 2
+            self?.navigationController?.pushViewController(getmail!, animated: true)
+        }
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     
