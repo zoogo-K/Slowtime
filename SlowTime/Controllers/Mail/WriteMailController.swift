@@ -17,7 +17,11 @@ extension Notification.Name {
 
 class WriteMailController: BaseViewController {
     
-    var friend: Friend?
+    var friend: Friend? {
+        didSet {
+            contentText = "\(friend?.nickname ?? ""):" + "\n      "
+        }
+    }
     
     var ifEdit = false
     var mailId = ""
@@ -31,7 +35,7 @@ class WriteMailController: BaseViewController {
     }
     
     
-    var contentText: String = "\(UserDefaults.standard.string(forKey: "nickname_key")!):" + "\n      "
+    var contentText: String = ""
     
     var cellHeight: CGFloat = 190
     

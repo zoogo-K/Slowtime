@@ -129,7 +129,7 @@ class StampListController: UIViewController {
             
             let countIndex = prices.index(of: totalCount)?.hashValue
             
-            let alert = CQMAlert(title: "Apple Pay 的档位设置不允许支付\(totalCount)元，你可以加上\(prices[countIndex!+1]-totalCount)张凑\(prices[countIndex!+1])张，或减\(totalCount-prices[countIndex!-1])张凑\(prices[countIndex!-1])张。")
+            let alert = CQMAlert(title: "苹果应用内购的档位设置不允许支付\(totalCount)元，你可以加上\(prices[countIndex!+1]-totalCount)张凑\(prices[countIndex!+1])张，或减\(totalCount-prices[countIndex!-1])张凑\(prices[countIndex!-1])张。")
             let confirmAction = AlertOption(title: "好的", type: .normal, action: { [weak self] in
                 self?.prices.remove((self?.totalCount)!)
             })

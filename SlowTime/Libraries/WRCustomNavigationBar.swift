@@ -278,7 +278,9 @@ extension WRCustomNavigationBar
             rightButton.setImage(highlighted, for: .highlighted)
             rightButton.setTitle(title, for: .normal)
             rightButton.setTitleColor(titleColor, for: .normal)
-            rightButton.titleLabel?.font = .my_systemFont(ofSize: 16)            
+            rightButton.titleLabel?.font = .my_systemFont(ofSize: 16)
+            let top:CGFloat = WRCustomNavigationBar.isIphoneX ? 44 : 20
+            rightButton.frame = CGRect(x: WRScreenWidth-44-12, y: top, width: 44, height: 44)
         }
     }
 }

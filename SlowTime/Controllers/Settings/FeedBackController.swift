@@ -13,6 +13,7 @@ import PKHUD
 
 class FeedBackController: BaseViewController {
     
+    var contentText = ""
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -70,7 +71,12 @@ class FeedBackController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        
+        NotificationCenter.default.addObserver(forName: .endEdit, object: nil, queue: .main) { [weak self] (_) in
+            self?.view.endEditing(true)
+        }
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -111,6 +117,7 @@ extension FeedBackController: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "textCell", for: indexPath) as! TextCell
+        cell.contentTextView.text = contentText
         return cell
     }
     

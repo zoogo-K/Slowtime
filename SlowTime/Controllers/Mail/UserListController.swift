@@ -33,6 +33,9 @@ class UserListController: BaseViewController {
             tableview.tableFooterView = UIView()
         }
     }
+    
+    private var editIndexPath: IndexPath = IndexPath(row: -1, section: 0)
+    
     // 顶部刷新
     let header: MJRefreshNormalHeader = {
         $0.setTitle("下拉刷新", for: .idle)
@@ -47,6 +50,8 @@ class UserListController: BaseViewController {
     }(MJRefreshNormalHeader())
     
     private var friends: [Friend]?
+    
+    private var shieldFriends: [Friend] = []
     
     private var commendFriend: Friend = Friend(json: JSON())
     
@@ -193,5 +198,70 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
             performSegue(withIdentifier: R.segue.userListController.showMailList, sender: indexPath)
         }
     }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let friend = friends![indexPath.row]
+        
+        let title = shieldFriends.contains(where: { $0.userHash == friend.userHash }) ? "取消屏蔽" : "屏蔽"
+        let shieldAction = UITableViewRowAction(style: .normal, title: title) { [weak self] (action, indexpath) in
+            HexaHUD.show(with: title == "屏蔽" ? "已屏蔽" : "已取消屏蔽")
+            if title == "屏蔽" { self?.shieldFriends.append(friend) }
+            else { self?.shieldFriends.remove(friend) }
+            DispatchQueue.main.async {
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        }
+        
+        let reportAction = UITableViewRowAction(style: .normal, title: "举报") { [weak self] (action, indexpath) in
+            let feedback = R.storyboard.mail.feedBackController()
+            feedback?.contentText = "我要举报\(friend.nickname ?? "")这个用户，因为"
+            self?.navigationController?.pushViewController(feedback!, animated: true)
+        }
+        return [shieldAction, reportAction]
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        editIndexPath = indexPath
+        if friends![indexPath.row].nickname == "从前慢" {
+            editIndexPath = IndexPath(row: -1, section: 0)
+        }
+        view.setNeedsLayout()
+    }
+    
+    
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if editIndexPath.row < 0 { return }
+        
+        let cell = tableview.cellForRow(at: editIndexPath)
+        let sup = UIDevice.current.systemVersion >= "11" ? tableview : cell!
+        let swipeStr = UIDevice.current.systemVersion >= "11" ? "UISwipeActionPullView" : "UITableViewCellDeleteConfirmationView"
+        let actionStr = UIDevice.current.systemVersion >= "11" ? "UISwipeActionStandardButton" : "_UITableViewCellActionButton"
+        
+        for subview in sup.subviews {
+            if String(describing: subview).range(of: swipeStr) != nil {
+                
+                for index in 0 ..< subview.subviews.count {
+                    if String(describing: subview.subviews[index]).range(of: actionStr) != nil {
+                        if let button = subview.subviews[index] as? UIButton {
+                            button.titleLabel?.font = .my_systemFont(ofSize: 15)
+                            button.backgroundColor = index != 0 ? UIColor(hexString: "#F0F0F0") : UIColor(hexString: "#2E2E2E")
+                            button.setTitleColor(index != 0 ? .black : .white, for: .normal)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
