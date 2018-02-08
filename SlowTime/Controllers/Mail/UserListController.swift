@@ -207,7 +207,6 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
         let title = shieldFriends.contains(where: { $0.userHash == friend.userHash }) ? "取消屏蔽" : "屏蔽"
         
         let shieldAction = UITableViewRowAction(style: .normal, title: title) { [weak self] (action, indexpath) in
-            if friend.nickname == "从前慢" { return }
             HexaHUD.show(with: title == "屏蔽" ? "已屏蔽" : "已取消屏蔽")
             if title == "屏蔽" { self?.shieldFriends.append(friend) }
             else { self?.shieldFriends.remove(friend) }
@@ -217,7 +216,6 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let reportAction = UITableViewRowAction(style: .normal, title: "举报") { [weak self] (action, indexpath) in
-            if friend.nickname == "从前慢" { return }
             let feedback = R.storyboard.mail.feedBackController()
             feedback?.contentText = "我要举报\(friend.nickname ?? "")这个用户，因为"
             self?.navigationController?.pushViewController(feedback!, animated: true)
