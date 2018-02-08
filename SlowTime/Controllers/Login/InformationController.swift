@@ -60,11 +60,12 @@ class InformationController: BaseViewController {
             .disposed(by: disposeBag)
         
     }
+
     
     private func profileRequest() {
         view.endEditing(true)
         
-        if (nickName.text?.count)! == 0 || profileTextView.text.count == 0{
+        if (nickName.text?.count)! == 0{
             HexaHUD.show(with: "请检查输入内容！")
             return
         }

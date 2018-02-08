@@ -38,9 +38,9 @@ public extension Moya.MoyaProvider {
         self.init(endpointClosure: MoyaProvider.endpointMapping, requestClosure: MoyaProvider.requestMapping, manager: NetworkManger.shared.sessionManager)
     }
     
-    public final class func endpointMapping(for target: Target) -> Endpoint<Target> {
+    public final class func endpointMapping(for target: Target) -> Endpoint {
         let url = target.baseURL.absoluteString + target.path
-        let endpoint = Endpoint<Target>(
+        let endpoint = Endpoint(
             url: url,
             sampleResponseClosure: { .networkResponse(200, target.sampleData) },
             method: target.method,
@@ -51,7 +51,7 @@ public extension Moya.MoyaProvider {
     }
     
     
-    public final class func requestMapping(for endpoint: Endpoint<Target>, closure: RequestResultClosure) {
+    public final class func requestMapping(for endpoint: Endpoint, closure: RequestResultClosure) {
         guard NetworkReachability.shared.isReachable else {
             DLog("现在没网")
             closure(.failure(MoyaError.underlying(HexaError.noNetwork, nil)))

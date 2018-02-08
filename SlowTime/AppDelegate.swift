@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = R.storyboard.mail().instantiateInitialViewController()! as? UINavigationController
 //            let navigationController =       R.storyboard.login().instantiateViewController(withIdentifier: "InformationController")
             
-//            InformationController
-
             window?.rootViewController = navigationController
         }else {
             let navigationController = R.storyboard.login().instantiateInitialViewController()! as? UINavigationController
