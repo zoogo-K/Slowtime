@@ -202,6 +202,10 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
+        if indexPath.row >= friends?.count ?? 0 {
+            return []
+        }
+        
         let friend = friends![indexPath.row]
         
         let title = shieldFriends.contains(where: { $0.userHash == friend.userHash }) ? "取消屏蔽" : "屏蔽"
@@ -223,18 +227,12 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
         return [shieldAction, reportAction]
     }
     
-    
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    }
-    
-    
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-        editIndexPath = indexPath
-        view.setNeedsLayout()
+        if indexPath.row < friends?.count ?? 0 {
+            editIndexPath = indexPath
+            view.setNeedsLayout()
+        }
     }
-    
-    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -252,8 +250,14 @@ extension UserListController: UITableViewDelegate, UITableViewDataSource {
                     if String(describing: subview.subviews[index]).range(of: actionStr) != nil {
                         if let button = subview.subviews[index] as? UIButton {
                             button.titleLabel?.font = .my_systemFont(ofSize: 15)
-                            button.backgroundColor = index != 0 ? UIColor(hexString: "#F0F0F0") : UIColor(hexString: "#2E2E2E")
-                            button.setTitleColor(index != 0 ? .black : .white, for: .normal)
+                            
+                            if UIDevice.current.systemVersion >= "11" {
+                                button.backgroundColor = index == 0 ? UIColor(hexString: "#F0F0F0") : UIColor(hexString: "#2E2E2E")
+                                button.setTitleColor(index == 0 ? .black : .white, for: .normal)
+                            }else{
+                                button.backgroundColor = index != 0 ? UIColor(hexString: "#F0F0F0") : UIColor(hexString: "#2E2E2E")
+                                button.setTitleColor(index != 0 ? .black : .white, for: .normal)
+                            }
                         }
                     }
                 }
